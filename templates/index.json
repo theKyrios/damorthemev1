@@ -1,0 +1,32 @@
+{
+    "name" : "Index",
+    "sections" : {
+        "hero" : {
+            "type" : "heroSection"
+
+        },
+        "featured_collection" :
+        {
+            "type" : "featuredCollection",
+            "settings" : {
+                "featuredCollection" : "all"
+            }
+        },
+        "collections" : {
+            "type" : "collectionsSection"
+        },
+        "Product_Crousel1" : {
+            "type" : "productcrousel1",
+            "settings" : {
+                "featuredCollection" : "all"
+            }
+        },
+        "Product_Banner" : {
+            "type" : "productbanner"
+        },
+        "Shop_Category" : {
+            "type" : "category"
+        }
+    },
+    "order" : ["hero","collections","Shop_Category","Product_Crousel1","Product_Banner","featured_collection"]
+}

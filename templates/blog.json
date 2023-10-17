@@ -1,0 +1,9 @@
+{
+    "name" : "Template Blog",
+    "sections" : {
+        "main" : {
+            "type" : "templateblog"
+        }
+    },
+    "order" : ["main"]
+}

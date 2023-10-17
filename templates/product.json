@@ -1,0 +1,9 @@
+{
+    "name" : "Template Product",
+    "sections" : {
+        "main" : {
+            "type" : "templateproduct"
+        }
+    },
+    "order" : ["main"]
+}
