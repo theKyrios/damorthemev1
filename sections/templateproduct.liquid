@@ -69,9 +69,9 @@
 <!-- Top Div Start -->
 
 <div class="max-w-6xl mt-5">
-    <div class="flex gird grid-cols-1 md:grid-cols-2 gap-x-32">
+    <div class="md:flex gird grid-cols-1 md:grid-cols-2 gap-x-32">
         <!-- Product Media -->
-        <div class="productMedia-wizHades ml-10 w-3/5">
+        <div class="productMedia-wizHades md:ml-10 md:w-3/5">
                 <!-- Swiper -->
                 <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
                     <div class="swiper-wrapper">
@@ -98,7 +98,7 @@
         </div>
         <!-- Product Media End-->
         <!-- Product Info -->
-        <div class="productInfo-wizHades flex flex-col w-2/5">
+        <div class="productInfo-wizHades flex flex-col md:w-2/5 px-4 md:px-0 mt-4 md:mt-0">
             {% form 'product', product, id: 'product-form', novalidate : 'novalidate' %}
                 <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                 <div class="heading info">
