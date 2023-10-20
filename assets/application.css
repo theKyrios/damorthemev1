@@ -1060,6 +1060,10 @@ video {
   height: 50%;
 }
 
+.h-\[300px\] {
+  height: 300px;
+}
+
 .max-h-screen {
   max-height: 100vh;
 }
@@ -2691,6 +2695,14 @@ video {
     margin-top: 0px;
   }
 
+  .md\:mt-10 {
+    margin-top: 2.5rem;
+  }
+
+  .md\:ml-0 {
+    margin-left: 0px;
+  }
+
   .md\:block {
     display: block;
   }
@@ -2765,6 +2777,10 @@ video {
 
   .md\:items-center {
     align-items: center;
+  }
+
+  .md\:justify-center {
+    justify-content: center;
   }
 
   .md\:gap-28 {
