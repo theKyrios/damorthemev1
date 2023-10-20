@@ -26,7 +26,10 @@
         },
         "Shop_Category" : {
             "type" : "category"
+        },
+        "Featured_Product" : {
+            "type" : "featuredProduct"
         }
     },
-    "order" : ["hero","collections","Shop_Category","Product_Crousel1","Product_Banner","featured_collection"]
+    "order" : ["hero","Shop_Category","collections","Featured_Product","Product_Crousel1","Product_Banner","featured_collection"]
 }

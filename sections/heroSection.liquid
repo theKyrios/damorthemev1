@@ -1,63 +1,34 @@
-{% comment %}
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<style>
-  :root {
-  font-family: 'IBM Plex Sans', sans-serif;
-  }
-</style>
-
-<div class="w-screen bg-gray-300">
-
-    <div class="lg:h-[38rem] mx-auto flex max-w-screen-xl flex-col space-y-6 overflow-hidden px-6 pb-16 lg:flex-row lg:items-center">
-        <div class="w-full lg:w-1/2">
-            <div class="mt-10 lg:max-w-lg">
-                <p class="mb-4">— &nbsp&nbsp Top Collections</p>
-                <h1 class="font-[900] text-3xl text-gray-900 lg:text-5xl lg:leading-snug">Elevate your style with our trend-setting designs</h1>
-
-                <div class="mt-8 space-y-5 text-gray-600">Discover the fashion revolution you've been missing. Click 'Explore' now and seize the moment!</div>
-            </div>
-
-            <div class="mt-8 w-full rounded-md bg-transparent lg:max-w-md">
-                
-                
-                <a href="{{ routes.all_products_collection_url }}">
-                <button type="button" class="m-1 h-12 transform rounded-md bg-thirdcolor px-4 py-2 text-white transition-colors duration-200 focus:bg-gray-700 focus:outline-none hover:bg-gray-700">Explore Collections</button>
-                </a>
-            </div>
+<div class="w-scree h-screen grid grid-cols-1 md:grid-cols-2 bg-black">
+  <div class="relative w-full" style="height: 100vh">
+    <div class="bg-cover opacity-20 w-full" style="background-image: url('https://images.unsplash.com/photo-1605812860427-4024433a70fd?auto=format&fit=crop&q=80&w=2835&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); height: 100vh"></div>
+    <div class="w-full absolute inset-0 flex items-center justify-center">
+      <div>
+          <h3>
+            <a
+              href="filters.html"
+              class="mb-3 block text-lg text-white hover:text-primary xs:text-2xl sm:text-3xl lg:text-3xl xl:text-3xl"
+            >
+              Winter Vintage Collection
+            </a>
+          </h3>
+          <a
+            href="filters.html"
+            class="text-base font-semibold text-black hover:text-primary"
+          >
+            <button class="bg-white py-2 px-6 mt-10">
+            Shop Now
+            </button>
+          </a>
         </div>
-
-        <div class="relative hidden h-full w-full items-center justify-center lg:flex lg:w-1/2">
-            <div class="absolute z-10 lg:left-0">
-                <div class="flex items-center rounded-md border border-gray-100 bg-white px-4 py-3 shadow-lg">
-                    <p class="ml-4 w-56">
-                        <strong class="block text-lg font-medium">{{ collections['frontpage'].products[0].title }}</strong>
-                        <span class="text-xs text-gray-400"> Rs. 800 </span>
-                    </p>
-                </div>
-                <div class="mt-2 flex flex-col items-start rounded-md border border-gray-100 bg-white px-4 pt-3 pb-6 shadow-lg">
-                    <strong class="block text-lg font-medium">Achieved</strong>
-                    <div class="mt-4 flex items-center text-xs text-gray-400">
-                        Purchaces
-                        <div class="ml-4 h-4 w-56 overflow-hidden rounded-md bg-gray-100">
-                            <div class="h-full w-4/5 bg-green-500"></div>
-                        </div>
-                    </div>
-
-                    <div class="mt-4 flex items-center text-xs text-gray-400">
-                        Impressions
-                        <div class="ml-4 h-4 w-56 overflow-hidden rounded-md bg-gray-100">
-                            <div class="h-full w-1/8 bg-maincolor"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <img class="-scale-x-100 mt-auto ml-auto h-4/6 object-cover lg:max-w-2xl" src="{{ collections['frontpage'].products[0].featured_image | image_url }}" alt="glasses photo" />
-        </div>
-    </div>
+    </div>  
+  </div>
+  <div class="hidden md:block bg-cover relative w-full opacity-80" style="background-image: url('https://images.unsplash.com/photo-1520639888713-7851133b1ed0?auto=format&fit=crop&q=60&w=800&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fHw%3D'); height: 100vh">
+    
+  </div>
 </div>
-{% endcomment %}
-<section>
+
+{% comment %}
+<section class="w-screen">
     <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:px-12 lg:px-24 lg:py-24">
       <div class="flex flex-wrap items-center mx-auto max-w-7xl">
         <div class="w-full lg:max-w-lg lg:w-1/2 rounded-xl">
@@ -65,7 +36,7 @@
             <div class="relative w-full max-w-lg">
               <div class="absolute top-0 rounded-full bg-violet-300 -left-4 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
   
-              <div class="absolute rounded-full bg-secondcolor -bottom-24 right-20 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+              <div class="absolute rounded-full -bottom-24 right-20 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
               <div class="relative">
                 <img class="object-cover object-center mx-auto rounded-lg shadow-2xl" alt="hero" src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTY2fHxmYXNoaW9uJTIwc2hvZXN8ZW58MHwwfDB8fHww&w=800">
               </div>
@@ -88,3 +59,4 @@
       </div>
     </div>
   </section>
+{% endcomment %}
