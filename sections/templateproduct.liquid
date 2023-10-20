@@ -71,6 +71,7 @@
 <div class="max-w-6xl mt-5">
     <div class="flex gird grid-cols-1 md:grid-cols-2 gap-x-32">
         <!-- Product Media -->
+        <div class="hidden md:block">
             <div class="productMedia-wizHades ml-10 w-3/5">
                 <!-- Swiper -->
                 <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
@@ -96,6 +97,24 @@
                 </div>
                 <!-- Swiper End-->
             </div>
+        </div>
+        <div class="md:hidden">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    {% for media in product.media %}
+                        <div class="swiper-slide">
+                            
+                                {% render 'productmedia', media : media %}
+            
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
         <!-- Product Media End-->
         <!-- Product Info -->
         <div class="productInfo-wizHades flex flex-col">
