@@ -14,7 +14,7 @@ module.exports = {
         '200' : '54rem'
       },
       colors: {
-        'maincolor' : '#e07a5f',
+        'maincolor' : '#5C3A3A',
         'secondcolor' : '#3d405b',
         'thirdcolor' : '#a22b34'
   
