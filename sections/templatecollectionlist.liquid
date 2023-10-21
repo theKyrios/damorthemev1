@@ -39,14 +39,14 @@
           </ol>
         </nav>
         <div class= "max-w-6xl mx-auto" >
-            <div class="grid grid-cols-1 mx-auto md:grid-cols-3">
+            <div class="grid grid-cols-2 mx-auto md:grid-cols-4 gap-2">
                 {% for collection in collections %}
-                    {% if collection.all_products_count> 0 %}
+                    {% if collection.all_products_count > 0 %}
                         <main class="py-10 flex items-center justify-center flex-wrap">
                             <!--  card -->
                             <a href="{{ collection.url }}">
-                            <div class="bg-white w-72 h-96 shadow-md rounded m-3">
-                              <div class="h-3/4 w-full">
+                            <div class="bg-white w-72 h-fit shadow-md rounded m-3">
+                              <div class="h-fit w-full">
                                 <img class="object-cover rounded-t transition duration-1000 ease-in-out hover:scale-105 transform" src="{{ collection.featured_image | image_url }}" alt="piña">
                               </div>
                               <div class="w-full h-1/4 p-3">

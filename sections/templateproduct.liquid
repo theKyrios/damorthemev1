@@ -68,7 +68,7 @@
 
 <!-- Top Div Start -->
 
-<div class="max-w-6xl mt-5">
+<div class="max-w-6xl w-screen mt-5">
     <div class="md:flex gird grid-cols-1 md:grid-cols-2 gap-x-32">
         <!-- Product Media -->
         <div class="productMedia-wizHades md:ml-10 md:w-3/5">
@@ -106,7 +106,7 @@
                         <h3
                          class="text-2xl font-bold text-secondcolor sm:text-2xl md:text-2xl"
                         >
-                        {{ product.vendor }}'S
+                        {{ product.vendor }}
                         </h3>
                     
                     </div>
@@ -137,9 +137,9 @@
                     </div>
                     <!-- Sale badge ends-->
                 </div>
-                <div class="offers info flex-grow">
+                <div class="offers info flex-grow w-fit">
                     <!-- Offers Start -->
-                    <div class="mt-6 mb-20 grid grid-cols-2 gap-4 bg-green-200 border border-green-400">
+                    <div class="mt-6 mb-20 grid grid-cols-2 gap-4 bg-green-200 border w-fit border-green-400">
                         <div class="col-span-2 px-4 pt-4 mx-auto">
                             <h4 class="text-2xl text-secondcolor"> Available Offers </span>
                         </div>
@@ -328,10 +328,10 @@
                 </h2>
             </div>
             <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
                     {% assign colname = product.collections[0].handle %}
                     {% for product in collections[colname].products limit : 3 %}
-                        {% render 'productcardV3', product : product %}
+                        {% render 'productcardV4', product : product %}
                     {% endfor %}
                 </div>
     

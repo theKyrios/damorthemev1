@@ -5,7 +5,7 @@
             "type" : "heroSection"
 
         },
-        "featured_collection" :
+         "featured_collection" :
         {
             "type" : "featuredCollection",
             "settings" : {
