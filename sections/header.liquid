@@ -20,7 +20,7 @@
       ></div>
       
       
-
+<div x-data="{searchBarOpen: false}" >
     <nav class="flex justify-between bg-gradient-to-r from-white to-red-50 max-w-screen text-gray-900 w-screen">
       <div class="px-5 xl:px-12 py-4 flex w-full items-center">
         <a class="text-3xl font-bold font-heading" href="{{ shop.url }}">
@@ -64,12 +64,23 @@
         </div>
         
         <!-- Header Icons -->
-        <div class="hidden xl:flex items-center space-x-5 items-center">
-          <a class="hover:text-maincolor" href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
-          </a>
+        <div class="hidden md:flex items-center space-x-5 items-center">
+          <form action="{{ routes.search_url }}" method="get" class="flex-auto">
+          <div x-show="searchBarOpen" @click.away="searchBarOpen=false" class="my-auto flex">
+            <input type="search" name="q" class="text-sm p-2 h-[30px] w-[200px] xl:w-[500px] my-auto mr-1 focus:border-maincolor focus:ring-maincolor focus:outline-none focus:ring focus:ring-opacity-40" placeholder=" Search">
+            <button type="submit" class="hover:text-maincolor">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-maincolor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>            
+            </button>
+          </div>
+        </form>
+          <button x-on:click="searchBarOpen = true" x-show="!searchBarOpen" class="hover:text-maincolor">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-maincolor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>            
+          </button>
+          
           <a class="flex items-center hover:text-maincolor" href="{{ routes.cart_url }}">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -93,8 +104,25 @@
         </div>
       </div>
       <!-- Responsive navbar -->
-      <a class="xl:hidden flex mr-4 items-center" href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+       
+        <form action="{{ routes.search_url }}" method="get" class="flex-auto self-center md:hidden">
+          <div x-show="searchBarOpen" @click.away="searchBarOpen=false" class="my-auto flex self-center mr-2 md:hidden">
+            <input type="search" name="q" class="text-sm p-2 h-[30px] w-[120px] my-auto mr-1 focus:border-maincolor focus:ring-maincolor focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Search">
+            <button type="submit" class="hover:text-maincolor">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-maincolor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>            
+            </button>
+          </div>
+        </form>
+          <button x-on:click="searchBarOpen = true" x-show="!searchBarOpen" class="hover:text-maincolor mr-2 md:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-maincolor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>            
+          </button>
+
+      <a class="md:hidden flex mr-2 items-center" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-maincolor" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
         {% if cart.item_count > 0 %}
@@ -105,12 +133,18 @@
         </span>
       {% endif %}
       </a>
-      <a class="navbar-burger self-center mr-4 xl:hidden" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      
+      <a class="navbar-burger self-center mr-4 md:hidden" href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-maincolor" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
       </a>
     </nav>
+
+    <!-- search component -->
+    
+    <!-- search component ends -->
+</div>
   
   {% comment %}
 <script>

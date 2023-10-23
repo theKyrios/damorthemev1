@@ -7,16 +7,16 @@
   }
 </style>
 
-<div class="flex flex-col max-w-6xl mx-auto my-8">
-    <div class="mt-5 max-w-[510px] pl-2 md:ml-0 lg:mb-2">
+<div class="flex flex-col max-w-screen mx-auto my-8">
+    <div class="mt-5 max-w-[510px] pl-4 md:ml-0 lg:mb-2">
         <h2
           class="text-2xl text-dark"
         >
             {{ section.settings.title }}
         </h2>
     </div>
-    <div class="max-w-6xl mx-auto">
-       <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+    <div class="max-w-screen mx-auto">
+       <div class="grid grid-cols-2 w-screen px-4 md:grid-cols-4 gap-2">
            {% for product in section.settings.featuredCollection.products limit : section.settings.numberOfProducts %}
                {% render 'productcardV4', product : product %}
            {% endfor %}

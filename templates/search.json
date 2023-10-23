@@ -1,0 +1,9 @@
+{
+    "name" : "Template Search",
+    "sections" : {
+        "main" : {
+            "type" : "templatesearch"
+        }
+    },
+    "order" : ["main"]
+}
