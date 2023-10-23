@@ -1078,6 +1078,10 @@ video {
   height: 40px;
 }
 
+.h-4\/5 {
+  height: 80%;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
