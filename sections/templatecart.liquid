@@ -1,23 +1,23 @@
 {% if cart.item_count > 0 %}
-    <body class="bg-gray-100">
-        <div class="container mx-auto mt-10 px-8">
+    
+        <div class="container max-w-scree mx-auto mt-10">
           <form action="{{ routes.cart_url }}" method="POST" novalidate>
           <div class="flex flex-col lg:flex-row shadow-md my-10">
-            <div class="w-full lg:w-3/4 bg-white px-4 lg:px-10 py-10">
-              <div class="flex justify-between border-b pb-8">
+            <div class="w-full lg:w-3/4 bg-white lg:px-10 py-10">
+              <div class="flex justify-between border-b pb-8 px-2">
                 <h1 class="font-semibold text-2xl">Shopping Cart</h1>
                 <h2 class="font-semibold text-2xl">{{ cart.item_count }} Items</h2>
               </div>
-              <div class="hidden lg:flex mt-10 mb-5">
+              <div class="hidden md:flex mt-10 mb-5">
                 <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product Details</h3>
                 <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Quantity</h3>
                 <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Price</h3>
-                <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
+                
               </div>
               <div class="flex flex-col">
               {% for item in cart.items %}
-              <div class="flex flex-col lg:flex-row items-center hover:bg-gray-100 -mx-4 px-6 py-5">
-                <div class="flex w-full lg:w-2/5"> <!-- product -->
+              <div class="flex lg:flex-row items-center w-screen -mx-4 px-6 py-5">
+                <div class="flex w-fit lg:w-2/5"> <!-- product -->
                 
                   <div class="w-20">
                     <img class="h-24" src="{{ item.image | image_url }}" alt="">
@@ -45,26 +45,24 @@
                   </svg>
                 </a>
                 </div>
-                <span class="text-center w-1/5 lg:w-1/4 font-semibold text-sm">{{ item.line_price | money }}</span>
-                <span class="text-center w-1/5 lg:w-1/4 font-semibold text-sm">{{ item.line_price | money }}</span>
+                <span class="text-center w-fit lg:w-1/4 font-semibold text-sm pl-4 md:pl-0">{{ item.line_price | money }}</span>
+                
               </div>
              {% endfor %}
              </div>
             </div>
       
-            <div id="summary" class="w-full lg:w-1/4 px-4 lg:px-8 py-10">
+            <div id="summary" class="w-full bg-gray-100 lg:w-1/4 px-4 lg:px-8 py-10">
               <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
               <div class="flex justify-between mt-10 mb-5">
                 <span class="font-semibold text-sm uppercase">Items {{ cart.item_count }}</span>
                 <span class="font-semibold text-sm">{{ cart.total_price | money }}</span>
               </div>
-              {% comment %}
+              
               <div>
-                <label class="font-medium inline-block mb-3 text-sm uppercase">Shipping</label>
-                <select class="block p-2 text-gray-600 w-full text-sm">
-                  <option>Standard shipping - $10.00</option>
-                </select>
+                <label class="font-medium inline-block mb-3 text-sm uppercase">note: shipping and tax will be calculated at checkout</label>
               </div>
+              {% comment %}
               <div class="py-10">
                 <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
                 <input type="text" id="promo" placeholder="Enter your code" class="p-2 text-sm w-full">
@@ -76,9 +74,9 @@
                   <span>Total cost</span>
                   <span>{{ cart.total_price | money }}</span>
                 </div>
-                <button type="submit" name="checkout" class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
-                <a href="{{ routes.all_products_collection_url }}" class="flex font-semibold text-indigo-600 text-sm mt-10">
-                    <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512">
+                <button type="submit" name="checkout" class="bg-maincolor font-semibold hover:bg-gray-100 hover:border hover:border-maincolor py-3 text-sm text-white hover:text-maincolor uppercase w-full">Checkout</button>
+                <a href="{{ routes.all_products_collection_url }}" class="flex font-semibold text-maincolor text-sm mt-10">
+                    <svg class="fill-current mr-2 text-maincolor w-4" viewBox="0 0 448 512">
                       <path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/>
                     </svg>
                     Continue Shopping
@@ -89,34 +87,19 @@
           </div>
         </form>
         </div>
-      </body>
+      
 
 {% else %}
 <div class="my-40 mx-auto flex flex-col items-center justify-center">
     <div class="p-6">
         <div class="min-h flex items-center justify-center">
-        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_12_2)">
-            <path d="M26.4805 21.9582C27.0914 19.9054 28.049 20.2613 29.7822 20.2603L36.1295 20.2644C36.6146 20.2636 37.1893 20.1547 37.6381 20.3816L37.6949 20.4089C38.2861 20.7015 38.8754 21.3365 38.9084 22.0273C38.0535 23.8095 37.3061 23.4152 35.6023 23.4162L29.3131 23.4181C28.3217 23.4183 26.5234 23.4349 26.4805 21.9582Z" fill="#3D405B"/>
-            <path d="M85.91 56.2131L88.1813 47.674C88.5457 46.3709 88.6553 45.258 90.1779 44.9863C90.8158 45.1863 91.4268 45.5775 91.7412 46.1914L91.8621 46.4887C91.9205 46.6654 91.8607 46.8145 91.8156 46.9869L88.5256 59.3506C87.4441 63.0127 86.6941 63.3215 82.7883 63.8674L75.8104 64.873C74.4461 65.0648 73.2752 65.3357 72.8639 63.4744L72.8398 63.3313L72.9455 62.9883C73.5025 61.4918 75.6732 61.4988 76.9824 61.284L82.2422 60.5187C82.9254 60.4379 84.0883 60.4566 84.6914 60.0869C85.1373 59.8135 85.6973 56.8824 85.8818 56.2998L85.91 56.2131Z" fill="#3D405B"/>
-            <path d="M43.5609 22.0233C43.4308 21.4403 44.2338 20.3979 44.7758 20.2868C45.0652 20.2274 45.4093 20.2642 45.7066 20.2642L96.325 20.2624C98.2793 20.2569 99.3631 20.7063 98.9123 22.7837L98.0408 26.0325C97.6285 27.6804 97.5511 30.1356 95.9677 31.1284C95.1683 31.6298 95.1689 31.938 94.9832 32.8476L93.6043 38.477C93.2193 39.8839 93.166 41.2972 91.257 40.6458C90.9404 40.4579 90.6898 40.2722 90.466 39.9765C90.1646 38.5776 91.5377 33.4583 91.9851 31.9794C92.4982 30.597 92.4902 29.7942 93.833 28.9702C94.7549 28.4046 94.681 28.379 94.8847 27.3276L95.4978 24.2786C95.5623 23.9968 95.5779 23.703 95.683 23.4327L45.6074 23.4173C44.1316 23.4185 44.4015 23.2519 43.5609 22.0233Z" fill="#3D405B"/>
-            <path d="M75.0314 78.487L82.8877 78.4807C83.6984 78.5048 84.5652 79.5626 84.5222 80.3464C84.4408 81.8259 83.0701 82.0034 81.9539 81.9569L77.2564 81.9462C76.6224 81.9507 75.9545 81.9989 75.3242 81.9323L75.0218 81.8995C75.4462 82.0688 75.8914 82.213 76.2959 82.4272C79.6461 84.2016 80.8966 88.6706 80.0705 92.1671C79.5035 94.5665 77.6724 96.4003 75.6275 97.6491C74.4505 98.3331 72.9406 98.9653 71.5595 98.962C66.6738 98.9507 62.0236 94.9626 61.9963 89.9255C61.9699 85.0581 65.2562 81.1649 70.0593 80.6223L70.7656 80.569C71.0759 80.5542 70.9798 80.3694 71.0259 80.087C71.3775 77.9321 73.3781 78.4891 75.0314 78.487Z" fill="#3D405B"/>
-            <path d="M71.3008 87.8026C74.159 87.5199 74.8203 91.7633 71.7883 92.3705C70.6887 92.4336 69.7158 91.894 69.3494 90.8016L69.2586 90.4945C69.0088 89.209 70.1006 88.0412 71.3008 87.8026Z" fill="#B0C0CF"/>
-            <path d="M83.2754 56.1973L85.9115 56.2L85.8834 56.2998C85.6988 56.8824 85.1389 59.8135 84.693 60.0869C84.0898 60.4566 82.927 60.4379 82.2438 60.5187L76.984 61.284C75.6748 61.4988 73.5041 61.4918 72.9471 62.9883L72.8414 63.3313C72.2027 63.8438 70.8375 63.6279 70.0543 63.6729C69.4109 63.7098 68.7512 63.8229 68.109 63.8178C67.7344 63.4059 67.5201 62.9521 66.974 62.7057L66.9094 62.6779C66.6037 62.5439 66.2494 62.5834 65.9258 62.6242L35.3289 67.55C33.3975 67.8701 31.4283 68.1482 29.5244 68.6041L26.7656 56.3459L83.2754 56.1973Z" fill="#E07A5F"/>
-            <path d="M18.9297 22.0889L26.4786 21.9746C26.5215 23.435 28.3198 23.4184 29.3112 23.4182L35.6005 23.4162C37.3042 23.4152 38.0516 23.8096 38.9065 22.0273C39.0745 22.1355 39.6415 22.043 39.8692 22.0414L42.3946 22.0395C42.7555 22.04 43.1872 22.0869 43.5417 22.0332L43.5594 22.0285C44.4001 23.251 44.1301 23.4176 45.6059 23.4164L95.6815 23.4318C95.5764 23.7021 95.5608 23.9959 95.4964 24.2777L94.8833 27.3268C94.6796 28.3781 94.7534 28.4037 93.8315 28.9693C92.4887 29.7934 92.4967 30.5961 91.9837 31.9785C91.5786 31.8451 89.11 31.9508 88.6618 31.9855L86.4674 31.7773L21.1192 31.7555L18.9297 22.0889Z" fill="#E07A5F"/>
-            <path d="M33.7854 81.9136L28.7948 81.9373C27.7639 81.9375 26.6508 82.0367 25.635 81.8734C21.5715 81.2199 19.279 76.4351 21.2237 72.8445C22.1985 71.0445 24.0912 69.8377 26.0112 69.2619L26.0201 69.2031C26.0033 68.8425 25.8713 68.4207 25.8039 68.0607L20.3491 43.3879L15.0082 19.8535C14.4569 17.1998 13.919 13.0298 12.1539 10.8932L11.8319 10.5302C11.4556 10.1487 10.0502 8.98735 9.46386 9.02444L9.32308 8.95954L9.32425 8.55129L7.79386 9.20368C7.06015 9.4677 6.2497 9.42305 5.48194 9.42217C3.43864 9.41985 1.31115 9.42719 0.512063 7.13825C0.29921 6.52854 0.390391 5.71979 0.391138 5.0769C0.395014 1.73813 3.08591 1.53009 5.81432 1.53525C7.67616 1.53876 9.25247 1.54101 10.5182 3.17922C11.2031 4.06557 11.3249 4.95389 11.1814 6.03114L11.5772 6.23327C12.4579 6.7744 13.2131 7.51682 13.9368 8.247C16.1619 10.4921 16.6023 11.7923 17.2818 14.834L18.1499 18.8498C18.3759 19.9234 18.5936 21.0459 18.9289 22.0888L21.1184 31.7507L26.7619 56.3455L29.5207 68.6037C31.4246 68.1478 33.3938 67.8697 35.3252 67.5496L65.9221 62.6238C66.2457 62.583 66.6 62.5435 66.9057 62.6775L66.9703 62.7052C67.5164 62.9517 67.7307 63.4054 68.1053 63.8201C68.3797 64.7478 67.5328 65.7496 66.6848 65.992C66.2682 66.1109 65.8188 66.1298 65.3897 66.1822L29.5635 72.0646C28.3875 72.2464 27.0459 72.2599 25.9621 72.7881L25.8721 72.8306C25.2676 73.1265 24.7358 73.6222 24.3877 74.1959L24.3401 74.272C24.1866 74.5199 24.1088 74.7687 24.0352 75.0484L24.0158 75.1189C23.6366 76.6308 24.8709 78.39 26.4412 78.4947C27.4795 78.5638 28.5637 78.4824 29.608 78.4816L65.0221 78.4968C66.6684 78.5203 67.2098 80.0459 66.7785 81.4972C65.9553 82.1037 65.0782 81.9295 64.1055 81.9306L42.0303 81.9302C41.6035 81.9296 41.1262 81.8363 40.7114 81.8773C45.1912 83.197 47.4229 88.0232 46.1155 92.4068C44.934 96.3677 40.2563 99.6248 36.0821 98.6927C34.9528 98.4404 33.4969 98.0054 32.7373 97.0793L32.6844 97.0166C32.4022 96.6744 32.0901 96.0683 32.0901 95.613L32.0469 95.5091C30.4633 95.0341 30.2944 93.4447 29.8729 93.1517C26.759 93.4589 27.2334 84.0644 33.7854 81.9136Z" fill="#3D405B"/>
-            <path d="M5.215 4.22094C6.39385 4.23937 7.71678 3.98904 8.33749 5.24012L8.21221 5.56684C8.04778 5.95682 7.54866 6.23467 7.17506 6.3849L7.09762 6.41523C6.82393 6.52412 6.55069 6.57887 6.26289 6.63469C5.67778 6.72977 4.79516 6.82318 4.22832 6.66082L4.17674 6.64504C3.2629 6.37543 2.99577 5.30555 3.50598 4.71447C3.90864 4.24803 4.65247 4.24611 5.215 4.22094Z" fill="#56619B"/>
-            <path d="M37.1677 87.8012C40.2796 87.4877 40.9716 91.6043 37.9333 92.3275C34.8091 92.6229 34.2503 88.485 37.1677 87.8012Z" fill="#B0C0CF"/>
-            </g>
-            <defs>
-            <clipPath id="clip0_12_2">
-            <rect width="100" height="100" fill="white"/>
-            </clipPath>
-            </defs>
-            </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="100">
+            <path fill="#5C3A3A" transform="scale(0.195312 0.195312)" d="M260.926 381.507L432.25 381.505C433.103 381.518 433.998 381.567 434.765 381.975L435.035 382.125C441.025 385.321 439.985 392.586 433.967 394.775L433.625 394.894C432.319 395.36 430.954 395.254 429.586 395.254L336.938 395.242L172.417 395.293C170.086 395.338 166.994 395.746 164.814 394.875L164.5 394.741C156.393 391.436 158.794 382.237 165.375 381.571C168.63 381.241 172.163 381.499 175.44 381.498L260.926 381.507Z"/>
+            <path fill="#5C3A3A" transform="scale(0.195312 0.195312)" d="M22.6529 68.6045L71.5861 68.5195C91.3056 68.5386 109.327 75.2969 116.55 95.4733C118.659 101.364 119.575 107.703 120.613 113.851L124.745 136.25C125.314 139.039 125.727 142.042 126.512 144.768L484.546 144.839C489.644 144.864 497.988 145.006 495.841 153.17L442.131 346.671C439.857 354.684 440.357 356.901 431.006 356.776L168.307 356.835C167.412 357.602 167.25 358.967 166.626 359.963C163.952 364.225 158.234 363.935 153.779 364.915C119.642 372.426 119.451 421.358 150.75 429.685C154.146 430.589 157.85 430.906 161.339 431.34C163.34 426.792 165.293 422.514 168.446 418.609C182.144 401.649 205.347 400.511 221.835 413.993L226.358 418.596C227.678 420.208 229.007 421.916 229.989 423.76L230.16 424.087C231.14 425.929 231.75 427.952 232.084 430.008L334.573 430.39C337.259 430.392 340.724 430.807 343.33 430.294L346.496 424.013C360.676 398.454 396.307 398.965 411.007 422.942C411.927 424.443 412.98 426.199 413.42 427.921L413.576 428.541C414.319 431.01 415.04 430.242 417.53 430.294L436.117 430.384C441.501 430.401 447.023 429.437 447.462 436.756C447.98 445.403 437.263 444.149 432.159 444.144L415.524 444.25C415.603 450.403 413.176 456.361 409.958 461.5C391.248 491.371 343.228 478.464 342.141 444.191L233.971 444.213C232.571 458.427 225.684 469.867 211.827 475.334C205.815 477.706 199.094 479.149 192.66 478.079L188.07 477.143C173.165 473.026 161.738 460.244 159.918 444.777C105.589 444.668 94.7477 363.637 152.93 351.184L105.932 106.317C103.099 94.2664 94.8136 84.4606 82.1242 82.4203C75.6061 81.3723 68.3501 81.9676 61.7505 81.9721L23.9023 81.9943C22.5641 81.9927 21.1552 82.1656 19.9769 81.4208L19.75 81.2742C13.3014 77.5902 15.6599 69.1578 22.6529 68.6045Z"/>
+          </svg>
         </div>
         <div class="min-h flex items-center justify-center">
-      <h5 class="mb-2 block w-200 font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+      <h5 class="mb-2 block w-200 font-sans text-2xl leading-snug tracking-normal text-blue-gray-900 antialiased">
         Your cart is empty
       </h5>
     </div> 
@@ -127,7 +110,7 @@
         href="{{ routes.all_products_collection_url }}"
       >
         <button
-            class="rounded-lg bg-gradient-to-tr from-pink-600 to-pink-400 py-2 px-4 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
+            class="bg-maincolor py-4 px-6 text-xs uppercase text-white hover:bg-white hover:border hover:border-maincolor hover:text-maincolor transition-all hover:shadow-maincolor active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
             type="button"
             data-ripple-light="true"
           >
