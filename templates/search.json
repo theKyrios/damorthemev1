@@ -1,9 +1,12 @@
 {
-    "name" : "Template Search",
-    "sections" : {
-        "main" : {
-            "type" : "templatesearch"
-        }
-    },
-    "order" : ["main"]
+  "sections": {
+    "main": {
+      "type": "templatesearch",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
 }

@@ -1,35 +1,54 @@
 {
-    "name" : "Index",
-    "sections" : {
-        "hero" : {
-            "type" : "heroSection"
-
-        },
-         "featured_collection" :
-        {
-            "type" : "featuredCollection",
-            "settings" : {
-                "featuredCollection" : "all"
-            }
-        },
-        "collections" : {
-            "type" : "collectionsSection"
-        },
-        "Product_Crousel1" : {
-            "type" : "productcrousel1",
-            "settings" : {
-                "featuredCollection" : "all"
-            }
-        },
-        "Product_Banner" : {
-            "type" : "productbanner"
-        },
-        "Shop_Category" : {
-            "type" : "category"
-        },
-        "Featured_Product" : {
-            "type" : "featuredProduct"
-        }
+  "sections": {
+    "hero": {
+      "type": "heroSection",
+      "settings": {
+      }
     },
-    "order" : ["hero","Shop_Category","collections","Featured_Product","Product_Crousel1","Product_Banner","featured_collection"]
+    "Shop_Category": {
+      "type": "category",
+      "settings": {
+      }
+    },
+    "collections": {
+      "type": "collectionsSection",
+      "settings": {
+      }
+    },
+    "Featured_Product": {
+      "type": "featuredProduct",
+      "settings": {
+      }
+    },
+    "Product_Crousel1": {
+      "type": "productcrousel1",
+      "settings": {
+        "title": "Trending Now",
+        "featuredCollection": "casual-classics",
+        "numberOfProducts": 4
+      }
+    },
+    "Product_Banner": {
+      "type": "productbanner",
+      "settings": {
+      }
+    },
+    "featured_collection": {
+      "type": "featuredCollection",
+      "settings": {
+        "title": "Featured",
+        "featuredCollection": "all",
+        "numberOfProducts": 8
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "Shop_Category",
+    "collections",
+    "Featured_Product",
+    "Product_Crousel1",
+    "Product_Banner",
+    "featured_collection"
+  ]
 }
