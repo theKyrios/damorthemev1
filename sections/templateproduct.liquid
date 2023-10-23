@@ -230,20 +230,22 @@
 
 <!-- Middle Div-->
 <div class="product-description-wizHades w-screen mt-10">
-    <section class="bg-gray-50 mx-auto mt-20 pb-12 lg:mt-[120px] lg:pb-[90px]">
+    <section class="bg-stone-200 mx-auto mt-20 pb-12 lg:mt-[120px] lg:pb-[90px]">
         <div class="container mx-auto pt-10 lg:pt-[120px] max-w-6xl">
-            <div class="grid mx-auto grid-cols-1 md:grid-cols-3 gap-x-5">
-                <div class="mx-auto w-full text-center">
-                    <h2 class="text-xl text-slate-600 m-5"> Description </h2>
-                    <span class="text-gray-600 p-5 text-left">{{ product.description }}</span>
+            <div class="grid mx-auto grid-cols-1 md:grid-cols-2 gap-x-32">
+                <div class="mx-auto px-10 md:px-0 w-full text-center">
+                    <h2 class="text-lg text-maincolor m-5"> Description </h2>
+                    <span class="text-gray-600 p-5 w-full text-sm text-left">{{ product.description }}</span>
                 </div>
-                <div class="mx-auto w-full text-center">
-                    <h2 class="text-xl text-slate-600 m-5"> Properties </h2>
-                    <span class="text-gray-600 p-5 text-left">{{ product.description }}</span>
-                </div>
-                <div class="mx-auto w-full text-center">
-                    <h2 class="text-xl text-slate-600 m-5"> About Vendor </h2>
-                    <span class="text-gray-600 p-5 text-left">{{ product.description }}</span>
+                <div class="mx-auto w-full text-center md:justify-center">
+                    <h2 class="text-lg text-maincolor m-5"> Properties </h2>
+                    <span class="text-gray-600 p-5 text-left">
+                    <ul class="px-10 md:px-0">
+                    {% for list in product.metafields.custom.properties.value -%}
+                        <li class="text-sm"> {{ list.first | capitalize }} : {{ list.last }}</li>
+                    {% endfor %}
+                    </ul>
+                    </span>
                 </div>
             </div>
         </div>
@@ -252,26 +254,26 @@
 <!-- Middle Div End-->
 <!-- Bottom Div Start-->
 <div class="related-product wizHades w-screen mx-auto">
-    <div class="mx-auto mt-10 max-w-6xl">
+    <div class="mx-auto mt-10 max-w-screen">
         <!-- Rendering recommended products -->
         <div class="flex flex-col items-center my-8 mx-auto">
-            <div class="mx-auto mt-5 mb-[60px] max-w-[510px] text-center lg:mb-20">
+            <div class="mt-5 max-w-[510px]">
                 <h2
-                  class="mb-4 text-xl text-dark sm:text-4xl md:text-[40px]"
+                  class="mb-1 text-2xl text-dark"
                 >
                     Recommended Products
                 </h2>
             </div>
-            <div class="max-w-6xl mx-auto">
+            <div class="max-w-screen mx-auto">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
                     {% assign colname = product.collections[0].handle %}
-                    {% for product in collections[colname].products limit : 3 %}
+                    {% for product in collections[colname].products limit : 10 %}
                         {% render 'productcardV4', product : product %}
                     {% endfor %}
                 </div>
     
             </div>
-            <a href="{{ product.collections[0].url }}" class="m-2 inline-flex items-center justify-center rounded-xl border border-transparent bg-gray-300 px-5 py-3 font-medium text-black hover:text-white hover:bg-black"> View More </a>
+            <a href="{{ product.collections[0].url }}" class="mb-2 inline-flex items-center justify-center px-5 transform font-medium text-maincolor hover:text-black hover:underline"> View More </a>
         </div>
         <!-- End -->
     </div>
