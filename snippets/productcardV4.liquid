@@ -5,10 +5,10 @@
   }
 </style>
 
-<div class="group my-2 md:my-10 flex w-full max-w-xs flex-col overflow-hidden bg-white p-2">
-  <a class="relative flex h-[250px] w-[200px] md:h-80 md:w-72 overflow-hidden" href="{{ product.url }}">
+<div class="group my-2 md:my-10 flex w-full flex-col overflow-hidden bg-white py-2">
+  <a class="relative flex h-[250px] w-full md:h-80 overflow-hidden" href="{{ product.url }}">
     <img class="absolute top-0 right-0 h-full w-full object-cover" src="{{ product.featured_image | image_url }}" alt="product image" />
-    <div class="absolute -right-16 bottom-0 mr-2 mb-4 space-y-2 transition-all duration-300 group-hover:right-0">
+    <div class="absolute -right-16 bottom-0 mb-4 transition-all duration-300 group-hover:right-0">
       {% comment %}
       <button class="flex h-10 w-10 items-center justify-center bg-gray-900 text-white transition hover:bg-gray-700">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
