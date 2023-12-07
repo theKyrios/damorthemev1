@@ -1,1 +1,1 @@
-# HadesThemeV1
+# DamorThemeV1
