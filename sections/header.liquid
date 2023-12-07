@@ -1,239 +1,136 @@
-    <!-- navbar -->
-      <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,600&display=swap" rel="stylesheet" />
-      <style>
-        * { 
-        font-family: 'Source Sans Pro';
-        }
-      </style>
-      <div class="w-screen h-[40px] max-w-screen bg-maincolor">
-        <div class="grid grid-cols-3">
-          <div class="col-span-2 mt-2 w-fit">
-            <span class="text-sm text-white w-fit pl-4"> Free Delivery, use code "GETFREE" </span>
-          </div>
-          <div></div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<style>
+  h4,
+  h5,
+  h6,
+  button,
+  marquee,
+  label {
+    font-family: 'Heebo', sans-serif;
+  }
+</style>
+
+
+    <section class="w-screen h-[30px] flex items-center bg-[#ecebe9]">
+      <div class="flex flex-grow">
+        <div class="offercode flex items-center h-[30px] w-fit px-6 py-2 bg-white border border-dotted border-black">
+          <h5 class="text-xs font-light">GETFREE</h5>
+        </div>
+        <div class="flex items-center">
+          <h6 class="text-black sm:text-xs text-[0.55rem] ml-2 sm:w-[40vw] font-extralight">
+            SHIPPING IS ON US, YOUR JOY, OUR TREAT!
+          </h6>
         </div>
       </div>
-
-      <div
-        id="menu-overlay"
-        class="w-screen h-screen fixed inset-0 z-10 bg-black opacity-0 md:hidden hidden"
-      ></div>
-      
-      
-<div x-data="{searchBarOpen: false}" >
-    <nav class="flex justify-between bg-gradient-to-r from-white to-red-50 max-w-screen text-gray-900 w-screen">
-      <div class="px-5 xl:px-12 py-4 flex w-full items-center">
-        <a class="text-3xl font-bold font-heading" href="{{ shop.url }}">
-          {% comment %}
-          <img class="h-9" src="{{ 'logo.png' | asset_img_url : large }}" loading='lazy' alt="logo">
-          {% endcomment %}
-          <svg width="100" height="35" viewBox="0 0 100 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100" height="35" fill="white"/>
-            <path d="M27.456 15.0866H22.1293C22.0582 14.5398 21.9126 14.0462 21.6925 13.6058C21.4723 13.1655 21.1811 12.7891 20.8189 12.4766C20.4567 12.1641 20.027 11.9261 19.5298 11.7628C19.0398 11.5923 18.4964 11.5071 17.8999 11.5071C16.8416 11.5071 15.929 11.7663 15.1619 12.2848C14.402 12.8033 13.8161 13.5526 13.4041 14.5327C12.9993 15.5128 12.7969 16.6989 12.7969 18.0909C12.7969 19.5398 13.0028 20.7543 13.4148 21.7344C13.8338 22.7074 14.4197 23.4425 15.1726 23.9396C15.9325 24.4297 16.831 24.6747 17.8679 24.6747C18.4503 24.6747 18.9794 24.6001 19.4553 24.451C19.9382 24.3018 20.3608 24.0852 20.723 23.8011C21.0923 23.5099 21.3942 23.1584 21.6286 22.7464C21.87 22.3274 22.0369 21.8551 22.1293 21.3295L27.456 21.3615C27.3636 22.3274 27.0831 23.2791 26.6143 24.2166C26.1527 25.1541 25.517 26.0099 24.7074 26.7841C23.8977 27.5511 22.9105 28.1619 21.7457 28.6165C20.5881 29.071 19.2599 29.2983 17.7614 29.2983C15.7869 29.2983 14.0185 28.8651 12.456 27.9986C10.9006 27.125 9.67188 25.8537 8.76989 24.1847C7.8679 22.5156 7.4169 20.4844 7.4169 18.0909C7.4169 15.6903 7.875 13.6555 8.79119 11.9865C9.70739 10.3175 10.9467 9.04972 12.5092 8.18324C14.0717 7.31676 15.8224 6.88352 17.7614 6.88352C19.0824 6.88352 20.304 7.06818 21.4261 7.4375C22.5483 7.79972 23.5355 8.33239 24.3878 9.03551C25.2401 9.73153 25.9325 10.5874 26.4652 11.603C26.9979 12.6186 27.3281 13.7798 27.456 15.0866ZM54.1454 29V7.18182H59.4189V24.7173H68.4956V29H54.1454ZM71.2255 29V7.18182H86.4386V11.4645H76.4989V15.9389H85.6609V20.2322H76.4989V24.7173H86.4386V29H71.2255Z" fill="black"/>
-            <path d="M51.0666 18.0909C51.0666 20.4915 50.6049 22.5263 49.6816 24.1953C48.7583 25.8643 47.5083 27.1321 45.9316 27.9986C44.362 28.8651 42.6007 29.2983 40.6476 29.2983C38.6873 29.2983 36.9224 28.8615 35.3528 27.9879C33.7832 27.1143 32.5368 25.8466 31.6135 24.1847C30.6973 22.5156 30.2392 20.4844 30.2392 18.0909C30.2392 15.6903 30.6973 13.6555 31.6135 11.9865C32.5368 10.3175 33.7832 9.04972 35.3528 8.18324C36.9224 7.31676 38.6873 6.88352 40.6476 6.88352C42.6007 6.88352 44.362 7.31676 45.9316 8.18324C47.5083 9.04972 48.7583 10.3175 49.6816 11.9865C50.6049 13.6555 51.0666 15.6903 51.0666 18.0909ZM45.676 18.0909C45.676 16.6705 45.4735 15.4702 45.0687 14.4901C44.671 13.5099 44.0957 12.7678 43.3429 12.2635C42.5971 11.7592 41.6987 11.5071 40.6476 11.5071C39.6035 11.5071 38.7051 11.7592 37.9522 12.2635C37.1994 12.7678 36.6206 13.5099 36.2157 14.4901C35.818 15.4702 35.6191 16.6705 35.6191 18.0909C35.6191 19.5114 35.818 20.7116 36.2157 21.6918C36.6206 22.6719 37.1994 23.4141 37.9522 23.9183C38.7051 24.4226 39.6035 24.6747 40.6476 24.6747C41.6987 24.6747 42.5971 24.4226 43.3429 23.9183C44.0957 23.4141 44.671 22.6719 45.0687 21.6918C45.4735 20.7116 45.676 19.5114 45.676 18.0909Z" fill="#5C3A3A"/>
+      <div class="flex justify-end items-center px-2">
+        <div class="callicon h-[18px] w-[18px] flex items-center mr-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6 text-black"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
           </svg>
-            
-          
-        </a>
-        <!-- Nav Links -->
-        <ul class="menulist hidden md:flex px-2 mx-auto font-heading space-x-5">
-          {% for link in linklists[section.settings.menu].links %}
-            <li>
-              <a
-                href="{{ link.url }}"
-                class="hover:text-maincolor"
-              >
-                {{ link.title }}
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-        <div id="mobile-menu" class="hidden fixed z-20 inset-y-0 right-0 w-64 bg-white md:hidden transition-transform duration-300 ease-in-out">
-          <ul class="px-4 py-2 space-y-2">
-            {% for link in linklists[section.settings.menu].links %}
-              <li>
-                <a
-                  href="{{ link.url }}"
-                  class="hover:text-maincolor"
-                >
-                  {{ link.title }}
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
         </div>
-        
-        <!-- Header Icons -->
-        <div class="hidden md:flex items-center space-x-5 items-center">
-          <form action="{{ routes.search_url }}" method="get" class="flex-auto">
-          <div x-show="searchBarOpen" @click.away="searchBarOpen=false" class="my-auto flex">
-            <input type="search" name="q" class="text-sm p-2 h-[30px] w-[200px] xl:w-[500px] my-auto mr-1 focus:border-maincolor focus:ring-maincolor focus:outline-none focus:ring focus:ring-opacity-40" placeholder=" Search">
-            <button type="submit" class="hover:text-maincolor">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-maincolor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-              </svg>            
-            </button>
-          </div>
-        </form>
-          <button x-on:click="searchBarOpen = true" x-show="!searchBarOpen" class="hover:text-maincolor">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-maincolor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-            </svg>            
-          </button>
-          
-          <a class="flex items-center hover:text-maincolor" href="{{ routes.cart_url }}">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-            {% if cart.item_count > 0 %}
-            <span class="flex absolute -mt-5 ml-4">
-              <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-maincolor opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-3 w-3 bg-maincolor">
-                </span>
-              </span>
-            {% endif %}
-          </a>
-          {% comment %}
-          <!-- Sign In / Register      -->
-          <a class="flex items-center hover:text-gray-200" href="#">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-          </a>
-        {% endcomment %}
+        <div class="mailicon h-[20px] w-[20px] flex items-center mr-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6 text-black"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+          </svg>
         </div>
       </div>
-      <!-- Responsive navbar -->
-       
-        <form action="{{ routes.search_url }}" method="get" class="flex-auto self-center md:hidden">
-          <div x-show="searchBarOpen" @click.away="searchBarOpen=false" class="my-auto flex self-center mr-2 md:hidden">
-            <input type="search" name="q" class="text-sm p-2 h-[30px] w-[120px] my-auto mr-1 focus:border-maincolor focus:ring-maincolor focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Search">
-            <button type="submit" class="hover:text-maincolor">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-maincolor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-              </svg>            
-            </button>
-          </div>
-        </form>
-          <button x-on:click="searchBarOpen = true" x-show="!searchBarOpen" class="hover:text-maincolor mr-2 md:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-maincolor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-            </svg>            
-          </button>
-
-      <a class="md:hidden flex mr-2 items-center" href="{{ routes.cart_url }}">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-maincolor" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+    </section>
+    <nav class="w-screen h-[50px] flex items-center sticky top-0">
+      <div class="main_logo h-[40px] w-fit flex justify-center items-center px-4 border-r-[1px] border-black">
+        <svg width="40" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="3" width="95" height="95" fill="black"/>
+          <g clip-path="url(#clip0_69_33)">
+          <path d="M36.1408 11.6363C36.754 11.5732 37.1207 11.9251 37.5191 12.3393L43.354 17.5715C47.5118 21.0179 50.0116 23.637 51.839 29.0354C50.685 28.7018 49.1743 28.9365 48.054 29.3395C46.0015 30.0776 44.5786 31.5034 43.6596 33.4523C43.245 34.4025 42.8671 35.3636 42.8385 36.4104L42.7154 36.124C42.0086 34.197 39.2111 31.9181 37.58 30.8614C36.0586 29.8756 34.3069 29.0747 34.2191 26.9587C34.1936 26.3465 34.586 25.9891 34.9716 25.5706C34.3713 24.9381 33.5179 24.2061 33.3207 23.3237L33.3082 23.2662C33.0615 22.1557 33.7569 21.618 34.6172 21.0506L33.8355 19.993C33.5747 19.5679 33.3744 18.8899 33.5016 18.3926L33.5152 18.3443C33.6085 18.0044 33.8096 17.7465 34.0686 17.513C34.1215 17.4655 34.663 17.0343 34.663 17.0343C34.6866 16.8895 33.8404 15.8553 34.01 15.2006L34.021 15.1607C34.0897 14.8386 34.2891 14.5315 34.4649 14.2556C34.8747 13.6122 34.3325 11.9106 36.1408 11.6363Z" fill="white"/>
+          <path d="M87.8342 25.0312C88.3217 25.1101 88.7172 25.1692 89.0342 25.5879L89.0719 25.6394C90.295 27.2948 88.288 29.0618 87.1736 30.0598L85.877 31.1938C86.2587 31.5174 86.5987 31.8692 86.7878 32.341L86.8148 32.4106C87.4328 33.9552 85.3941 35.117 84.3159 35.7412L83.0853 36.4979C85.2558 39.1251 82.213 40.4377 80.1756 41.4787L80.6091 42.3298C81.535 44.6615 78.1055 45.9743 76.4841 46.6026C76.8772 47.7102 76.5097 48.1856 75.6878 49.0104C71.4348 53.2779 64.0611 51.6785 63.6758 52.0334C63.7361 52.0937 63.7944 52.1517 63.8269 52.232C64.2583 53.2998 67.1575 55.6771 68.0723 56.2853L70.2819 57.612L85.2261 65.5798L87.2411 66.826C88.2039 67.4546 89.3786 68.2234 89.1512 69.5638L89.1162 69.7732C88.5886 72.7565 82.7147 72.4209 80.5845 72.0406C78.1848 71.612 75.9908 70.4017 73.7455 69.5156C74.4952 70.4763 75.3152 70.864 75.6116 72.1323C75.1111 73.602 73.7689 72.4681 72.9477 71.9748L62.2955 65.6593C61.4761 65.1468 61.7331 65.4049 60.7734 65.7809C59.1998 66.3971 57.5297 66.8993 55.8587 67.1634C57.0478 71.9848 59.5355 73.9385 63.6581 76.6409L67.4203 79.0409C69.9259 80.5702 69.3005 81.3354 67.5145 82.9487C65.8717 84.4324 63.3009 86.4581 61.1005 87.0182C59.9158 87.3199 58.1872 84.6803 56.9377 83.9632C57.3966 85.5617 58.172 86.5093 58.7373 87.9224C57.9566 88.4873 57.0064 88.8143 56.1072 89.1406L53.2453 90.1571C53.033 90.2351 52.8103 90.3142 52.6083 90.4162C51.8867 90.7809 51.0356 90.8568 50.2412 90.6452C49.8272 90.5348 49.4127 90.3332 49.0173 90.1676L47.9636 89.7601C46.7811 89.3018 44.4695 88.6731 43.5806 87.7929C43.7241 87.3512 43.9955 87.006 44.2258 86.611C44.7086 85.7826 45.1292 84.8232 45.3105 83.8784C43.9486 84.8067 42.4966 87.5107 40.6345 86.8952C39.9064 86.6548 39.2375 86.2663 38.5986 85.8476C37.4267 85.0857 32.8191 81.8857 33.5295 80.1479L33.5492 80.1012C33.8256 79.4329 34.8845 79.0612 35.4613 78.7231L38.4214 76.8952C42.5831 74.1862 46.6569 71.147 46.678 65.7748L46.6739 64.884C46.6691 64.2296 46.6747 64.4338 46.1384 64.1181C41.8438 61.5892 38.8314 58.2596 36.7506 53.7002L36.0369 51.9121L32.6109 52.0176C29.3648 52.0142 25.8656 51.2501 23.7926 48.5149C23.3113 47.8799 23.2234 47.352 23.3473 46.5656L23.3543 46.5245C21.3389 45.6332 17.6697 44.241 19.6824 41.439C18.9267 40.9406 18.0905 40.6402 17.3422 40.1031L17.2328 40.0242C15.8134 38.9318 15.7862 37.7829 16.8513 36.4818C15.8694 35.7371 12.3355 34.2368 13.1396 32.3595L13.1625 32.3082C13.6788 31.0898 14.4317 31.6204 13.6508 30.8688L12.513 29.7578C11.6637 28.9407 10.2388 27.6021 10.7168 26.2517L10.7383 26.1949C10.8602 25.8468 11.0268 25.5047 11.3593 25.3103L11.4018 25.2866C11.8909 25.0103 12.4885 24.9757 12.9522 25.3342L13.896 26.0766C16.8356 28.1662 20.2047 28.5346 23.6898 29.0073L33.3811 30.5928C37.5569 31.4529 40.65 34.5878 42.4183 38.3199C42.5223 38.5398 42.7906 39.3768 43.0583 39.4176C44.0923 38.3807 44.5 35.074 45.2172 33.4756C46.4559 30.7143 49.945 29.5727 52.6437 30.8351C53.8136 31.3824 55.5164 32.8701 55.988 34.1051L56.0233 34.2006C56.4242 35.5476 54.9305 35.6613 54.9514 36.3579L54.9544 36.4621C54.997 37.1898 55.4247 39.5676 55.6253 40.2184C55.8131 40.8276 56.2505 40.6713 56.4673 40.1502L56.8677 39.1537C59.8592 32.3485 63.5897 31.0693 70.1937 30.014L76.5609 28.9528C79.9481 28.4528 83.4066 28.1973 86.205 25.9913C86.5733 25.701 87.0395 25.2113 87.5078 25.1014L87.8342 25.0312Z" fill="white"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_69_33">
+          <rect width="80" height="80" fill="white" transform="translate(10 11)"/>
+          </clipPath>
+          </defs>
         </svg>
-        {% if cart.item_count > 0 %}
-        <span class="flex absolute -mt-5 ml-4">
-          <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-maincolor opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-3 w-3 bg-maincolor">
-          </span>
-        </span>
-      {% endif %}
-      </a>
-      
-      <a class="navbar-burger self-center mr-4 md:hidden" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-maincolor" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <h6 class="font-light">DAMOR</h6>
+      </div>
+      <div class="md:flex flex-grow ml-4 my-auto hidden">
+        <a href="" class="pr-4"><h5 class="text-sm font-light">HOME</h5></a>
+        <a href="" class="pr-4"><h5 class="text-sm font-light">SHOP</h5></a>
+        <a href="" class="pr-4"><h5 class="text-sm font-light">NEW ARRIVALS</h5></a>
+        <a href="" class="pr-4"><h5 class="text-sm font-light">ETHNIC WEAR</h5></a>
+        <a href="" class="pr-4"><h5 class="text-sm font-light">TOPWEAR</h5></a>
+        <a href="" class="pr-4"><h5 class="text-sm font-light">BOTTOMWEAR</h5></a>
+        <a href="" class="pr-4"><h5 class="text-sm text-red-600 font-light">UPTO 40%</h5></a>
+      </div>
+      <div class="flex mr-2 flex-grow justify-end">
+        <div class="navicons flex items-center">
+          <a href="#" class="px-2 sm:flex h-[30px] hidden">
+            <div class="flex my-auto h-[25px] w-[100px] border-b-[1px] border-black items-center">
+              <div class="w-[20px] h-[20px]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-[20px] h-[20px] my-auto"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+              </div>
+              <h6 class="pl-2 text-gray-400 flex-grow font-light">search</h6>
+            </div>
+          </a>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="account_icon w-6 h-6 mr-2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
-      </a>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="cart_icon w-6 h-6 mr-2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="menu_icon w-6 h-6 mr-2 block md:hidden"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+          </svg>
+        </div>
+      </div>
     </nav>
 
-    <!-- search component -->
-    
-    <!-- search component ends -->
-</div>
-  
-  {% comment %}
-<script>
-  const menuToggle = document.querySelector('.navbar-burger');
-  const mobileMenu = document.querySelector('#mobile-menu');
-
-  menuToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    mobileMenu.classList.toggle('translate-x-0');
-  });
-
-  {% comment %}
-  const menu = document.querySelector('.menulist');
-  
-  menuToggle.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-  });
-{% endcomment %}
-</script>
-{% endcomment %}
-
-{% schema %}
-  {
-    "name": "Header",
-    "settings": [
-        {
-            "type": "text",
-            "id": "store_logo",
-            "label": "Logo",
-            "default": "WizHades",
-            "info": "Add logo to store header"
-        },
-        {
-            "type": "link_list",
-            "id": "menu",
-            "label": "Nav Menu",
-            "default": "main-menu",
-            "info": "Select menu for nav bar"
-        }
-
-    ]
-
-    }
-
-  {% endschema %}
-
-  <script>
-    const menuToggle = document.querySelector('.navbar-burger');
-    const mobileMenu = document.querySelector('#mobile-menu');
-    const menuOverlay = document.querySelector('#menu-overlay');
-  
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      menuOverlay.classList.toggle('hidden');
-      menuOverlay.classList.toggle('opacity-50');
-    });
-  
-    // Prevent clicks inside the mobile menu from closing it
-    mobileMenu.addEventListener('click', (e) => {
-      e.stopPropagation(); // Stop the click event from reaching the document
-    });
-  
-    // Close the mobile menu when the user clicks outside
-    menuOverlay.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
-      menuOverlay.classList.add('hidden');
-      menuOverlay.classList.remove('opacity-50');
-    });
-  </script>
-  
-  
-{% comment %}
-
-<script>
-  const menuToggle = document.querySelector('.navbar-burger');
-  const mobileMenu = document.querySelector('#mobile-menu');
-  const menuOverlay = document.querySelector('#menu-overlay');
-
-  menuToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    menuOverlay.classList.toggle('hidden');
-    menuOverlay.classList.toggle('opacity-50');
-  });
-
-  menuOverlay.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
-    menuOverlay.classList.add('hidden');
-    menuOverlay.classList.remove('opacity-50');
-  });
-</script>
-
-{% endcomment %}

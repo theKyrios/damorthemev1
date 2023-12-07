@@ -1,0 +1,28 @@
+<div x-data="{des:true, det:false, siz:false, shi:false}">
+<div class="flex mb-2">
+    <a x-on:click="des = true, det = false, siz = false, shi = false" href="#" class="inline-block mr-4 focus:border-b-[1px] focus:border-gray-500 font-light">Desription</a>
+    <a x-on:click="des = false, det = true, siz = false, shi = false" href="#" class="inline-block mr-4 focus:border-b-[1px] focus:border-gray-500 font-light">Details</a>
+    <a x-on:click="des = false, det = false, siz = true, shi = false" href="#" class="inline-block mr-4 focus:border-b-[1px] focus:border-gray-500 font-light">Sizing</a>
+    <a x-on:click="des = false, det = false, siz = false, shi = true" href="#" class="inline-block mr-4 focus:border-b-[1px] focus:border-gray-500 font-light">Shipping</a>
+</div>
+<div>
+    <div x-show="des" class="decriptiondata font-thin">
+        <p>The coat's lamb leather boasts rich texture with a shaggy finish. Designed to feel soft, dreamy and sophisticated.</P>
+    </div>
+    <div x-show="det" class="detailsdata font-thin">
+        <p>ID: 147024</p>
+
+        <p>Shell 100% Shearling.</p>
+    </div>
+    <div x-show="siz" class="Sizingdata font-thin">
+       <p> This piece fits true to size. We recommend you get your regular size. </p>
+
+        <p>Model is 178 cm and is wearing a size 34.</p>
+    </div>
+    <div x-show="shi" class="Shippingdata font-thin">
+        <p>Complimentary shipping on orders over 650 USD. For orders outside of the EU, duties will be calculated at checkout.
+
+        For more information, see shipping & returns</p>
+    </div>
+</div>
+</div>

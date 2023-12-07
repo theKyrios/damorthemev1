@@ -1,69 +1,147 @@
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,600&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+
 <style>
-  * { 
-  font-family: 'Source Sans Pro';
+  h4,
+  h5,
+  p,
+  button,a,
+  label {
+    font-family: 'Kanit', sans-serif;
   }
 </style>
 
-<div class="w-screen h-[400px] md:h-[600px] grid grid-cols-1 md:grid-cols-2 bg-black">
-  <div class="bg-cover relative w-full opacity-80 h-full md:h-[600px]" style="background-image: url('https://images.unsplash.com/photo-1520639888713-7851133b1ed0?auto=format&fit=crop&q=60&w=800&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fHw%3D')">
-    
+<section class="h-screen w-screen">
+  <div
+    class="hero_wrapper flex h-screen w-screen justify-center"
+    style="background-image : url('https://ik.imagekit.io/zemurqxma/Damor/pexels-nicolle-kreisch-2715288.jpg?updatedAt=1700132478435'); background-size : cover ; background-position : center"
+  >
+    <h4 class="mt-auto h-fit w-fit overflow-hidden font-extralight text-center text-[80px] text-[#fcfcfc] sm:text-[100px] md:text-[180px] lg:text-[300px]">
+      DAMOR
+    </h4>
   </div>
-  <div class="relative w-full h-full md:h-[600px]">
-    <div class="bg-cover opacity-20 w-full h-full md:h-[600px]" style="background-image: url('https://images.unsplash.com/photo-1605812860427-4024433a70fd?auto=format&fit=crop&q=80&w=2835&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
-    <div class="w-full absolute inset-0 flex pl-4 mt-20 md:pl-0 md:mt-0 md:items-center md:justify-center">
-      <div>
-          <h3>
-            <a
-              href="{{ collections['winter-vintage-collection'].url }}"
-              class="mb-3 block text-xl md:text-6xl text-white"
-            >
-              {{ collections['winter-vintage-collection'].title }}
-            </a>
-          </h3>
-          <a
-            href="{{ collections['winter-vintage-collection'].url }}"
-            class="text-base font-semibold text-black hover:text-primary"
-          >
-            <button class="bg-white text-maincolor hover:text-white hover:bg-maincolor py-2 px-10 md:mt-10">
-            Shop Now
-            </button>
-          </a>
-        </div>
-    </div>  
-  </div>
-</div>
+</section>
 
-{% comment %}
-<section class="w-screen">
-    <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:px-12 lg:px-24 lg:py-24">
-      <div class="flex flex-wrap items-center mx-auto max-w-7xl">
-        <div class="w-full lg:max-w-lg lg:w-1/2 rounded-xl">
-          <div>
-            <div class="relative w-full max-w-lg">
-              <div class="absolute top-0 rounded-full bg-violet-300 -left-4 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-  
-              <div class="absolute rounded-full -bottom-24 right-20 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-              <div class="relative">
-                <img class="object-cover object-center mx-auto rounded-lg shadow-2xl" alt="hero" src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTY2fHxmYXNoaW9uJTIwc2hvZXN8ZW58MHwwfDB8fHww&w=800">
-              </div>
-            </div>
-          </div>
+<!-- Product Grid -->
+<section id="ps01r" class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4 divide-x-[1px] divide-y-[1px] divide-gray-500 border border-gray-500">
+  <div id="tc02p" class="p-4 w-full h-fit">
+    <h4 id-"he01c" class="mb-5">New In</h4>
+    <a id="be02c" class="border border-gray-400 w-fit h-fit px-4 py-2 "><label class="">View All</label></a>
+  </div>
+  {% comment %}
+  <div class="p-1 h-fit w-full">
+    <img class="h-auto w-full flex justify-center mx-auto" src="https://ik.imagekit.io/zemurqxma/Damor/pexels-photo-5191436.jpeg_auto=compress&cs=tinysrgb&w=800&lazy=load?updatedAt=1699777876005">
+    <div class="flex">
+      <p class="flex flex-grow text-[0.7rem] font-extralight">DAMOR</p>
+      <p class="text-[0.7rem] font-extralight">INR 4,500</p>
+    </div>
+    <h4 class="text-[0.9rem] font-extralight pt-1">LIGHT OLIVE OXFORD SHIRT </h4>
+  </div>
+{% endcomment %}
+  {% for product in collections["new-arrivals"].products %}
+    <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+      <a href="{{ product.url }}">
+        <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
+        <div class="flex">
+          <p class="flex flex-grow text-[0.7rem] font-extralight">DAMOR</p>
+          <p class="text-[0.7rem] font-extralight">INR {{ product.price | money_without_currency }}</p>
         </div>
-        <div class="flex flex-col items-start mt-12 mb-16 text-left lg:flex-grow lg:w-1/2 lg:pl-6 xl:pl-24 md:mb-0 xl:mt-0">
-          <span class="mb-8 text-xs font-bold tracking-widest text-maincolor uppercase"> Crisp, Clean, and Classic </span>
-          <h1 class="mb-8 text-4xl font-bold leading-none tracking-tighter text-neutral-600 md:text-7xl lg:text-5xl">Pure White Elegance Sneakers</h1>
-          <p class="mb-8 text-base leading-relaxed text-left text-gray-500">Redefined versatility, seamlessly complementing any outfit with their crisp and clean design. Elevate your style effortlessly, from casual to chic, with every step.</p>
-          <div class="mt-0 lg:mt-6 max-w-7xl sm:flex">
-            <div class="mt-3 rounded-lg sm:mt-0">
-              <button class="items-center block px-10 py-4 text-base font-medium text-center text-black transition duration-500 ease-in-out transform bg-gray-300 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Shop Now</button>
-            </div>
-            <div class="mt-3 rounded-lg sm:mt-0 sm:ml-3">
-              <button class="items-center block px-10 py-3.5 text-base font-medium text-center text-secondcolor transition duration-500 ease-in-out transform border-2 border-white shadow-md rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Explore All Products</button>
-            </div>
-          </div>
+        <h4 class="text-[0.9rem] font-extralight pt-1">{{ product.title | upcase }}</h4>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+<!-- Product Grid End -->
+
+
+<!-- collections grid -->
+<div class="pt-4 bg-[#fcfcfc]">
+<div class='sectitle w-full h-fit py-1 bg-black flex items-center justify-center'>
+  <h4 class=" text-white font-extralight text-[1.4rem]"> SHOP THE COLLECTIONS </h4>
+</div>
+</div>
+<section id="ps01r" class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4 divide-x-[1px] divide-y-[1px] divide-gray-500 border border-b-0 border-gray-500">
+  <!-- Collection Card -->
+  <a href="/collections/damor-exclusives">
+  <div class="p-1 h-fit w-full p-5">
+    <img class="h-auto w-full flex justify-center mx-auto" src="https://ik.imagekit.io/zemurqxma/Damor/pexels-photo-2118483.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700131363683">
+    <h4 class="text-[0.9rem] font-extralight pt-1">DAMOR EXCLUSIVES </h4>
+    <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE </h4>
+  </div>
+</a>
+  <!-- Collection Card end -->
+  <a href="/collections/knitted-threads">
+  <div class="p-1 h-fit w-full p-5">
+    <img class="h-auto w-full flex justify-center mx-auto" src="https://ik.imagekit.io/zemurqxma/Damor/pexels-photo-13094146.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700130214590">
+    <h4 class="text-[0.9rem] font-extralight pt-1">KNITTED THREADS </h4>
+    <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE </h4>
+  </div>
+</a>
+<a href="/collections/woolen-drops">
+  <div class="p-1 h-fit w-full p-5">
+    <img class="h-auto w-full flex justify-center mx-auto" src="https://ik.imagekit.io/zemurqxma/Damor/free-photo-of-close-up-shot-of-a-blonde-man-in-white-knitted-sweater.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700130235093">
+    <h4 class="text-[0.9rem] font-extralight pt-1">WOOLEN DROPS</h4>
+    <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE </h4>
+  </div>
+</a>
+<a href="/collections/linen-lots">
+  <div class="p-1 h-fit w-full p-5">
+    <img class="h-auto w-full flex justify-center mx-auto" src="https://ik.imagekit.io/zemurqxma/Damor/pexels-photo-8967723.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700130259427">
+    <h4 class="text-[0.9rem] font-extralight pt-1">LINEN LOTS </h4>
+    <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE </h4>
+  </div>
+</a>
+<a href="/collections/oversized">
+  <div class="p-1 h-fit w-full p-5">
+    <img class="h-auto w-full flex justify-center mx-auto" src="https://ik.imagekit.io/zemurqxma/Damor/pexels-photo-9969430.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700130160274">
+    <h4 class="text-[0.9rem] font-extralight pt-1">OVERSIZED </h4>
+    <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE </h4>
+  </div>
+</a>
+<a href="/collections/moving-to-casuals">
+  <div class="p-1 h-fit w-full p-5">
+    <img class="h-auto w-full flex justify-center mx-auto" src="https://ik.imagekit.io/zemurqxma/Damor/pexels-photo-11051300.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700130296956">
+    <h4 class="text-[0.9rem] font-extralight pt-1">MOVING TO CASUALS</h4>
+    <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE </h4>
+  </div>
+</a>
+<a href="/collections/checkers">
+  <div class="p-1 h-fit w-full p-5">
+    <img class="h-auto w-full flex justify-center mx-auto" src="https://ik.imagekit.io/zemurqxma/Damor/pexels-photo-428328.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700131343277">
+    <h4 class="text-[0.9rem] font-extralight pt-1">CHECKERS</h4>
+    <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE </h4>
+  </div>
+</a>
+<a href="/collections/norm-tees">
+  <div class="p-1 h-fit w-full p-5">
+    <img class="h-auto w-full flex justify-center mx-auto" src="https://ik.imagekit.io/zemurqxma/Damor/pexels-photo-9716149.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700131658247">
+    <h4 class="text-[0.9rem] font-extralight pt-1">NORM TEES</h4>
+    <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE </h4>
+  </div>
+</a>
+</section>
+
+<!-- collections gird end -->
+
+<!-- Brand Line -->
+
+<section class="w-screen border border-t-0 border-gray-500 bg-[#ecebe9]">
+  <div class="divide grid grid-cols-1 divide-x-[1px] divide-y-[1px] divide-gray-500 sm:grid-cols-2">
+    <div class="w-full p-5 border-t-[1px] border-gray-500">
+      <img class="h-auto w-full p-4" src="https://ik.imagekit.io/zemurqxma/Damor/free-photo-of-man-in-trench-coat-and-necktie-touching-tiles.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700137551349" />
+    </div>
+    <div class="w-full p-5 h-auto flex items-center">
+      <div class="p-4">
+        <h4 class="text-[1.4rem] font-light">Our Style : Retro Classics</h4>
+        <h6 class="mt-4 text-[0.9rem] font-extralight md:w-[50%]">Old money, retro classics! Embrace the fashion. Damour your retro fashion hub.</h6>
+        <div class="mt-6">
+        <a href="#" class=""><h6 class="h-fit w-fit border border-gray-500 px-4 py-2 text-[0.9rem] font-extralight rounded-full">Read More</h6></a>
         </div>
       </div>
     </div>
-  </section>
-{% endcomment %}
+  </div>
+</section>
+
+
+<!-- Brand Line End-->

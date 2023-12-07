@@ -1,745 +1,377 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+{% comment %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@200;400&display=swap" rel="stylesheet">
+{% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,500&display=swap"
+  rel="stylesheet"
+>
 
 <style>
+  h4,
+  h5,
+  p,
+  button,
+  a,
+  label {
+    font-family: 'Kanit', sans-serif;
+  }
 
+  .product-form__error-message-wrapper:not([hidden]) {
+    display: flex;
+    align-items: flex-start;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  .product-form__error-message-wrapper svg {
+    flex-shrink: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0.7rem;
+    margin-top: 0.5rem;
+  }
+  .product-form__input {
+    flex: 0 0 100%;
+    padding: 0;
+    margin: 0 0 1.2rem;
+    max-width: 44rem;
+    min-width: fit-content;
+    border: none;
+  }
+  variant-radios,
+  variant-selects {
+    display: block;
+  }
 
-    .swiper {
-      width: 100%;
-      height: 100%;
+  .product-form__input .form__label {
+    padding-left: 0;
+  }
+  fieldset.product-form__input .form__label {
+    margin-bottom: 0.2rem;
+  }
+  .product-form__input input[type='radio'] {
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    position: absolute;
+    height: 1px;
+    width: 1px;
+  }
+  .product-form__input input[type='radio'] + label {
+    border: 0.05rem solid black;
+    color: black;
+
+    color: black;
+    display: inline-block;
+    padding: 0.2rem 0.4rem;
+    text-align: center;
+    transition: border 10s ease;
+    cursor: pointer;
+    position: relative;
+  }
+  .product-form__input input[type='radio'] + label:before {
+    content: '';
+    position: absolute;
+    top: calc(var(--variant-pills-border-width) * -1);
+    right: calc(var(--variant-pills-border-width) * -1);
+    bottom: calc(var(--variant-pills-border-width) * -1);
+    left: calc(var(--variant-pills-border-width) * -1);
+    z-index: -1;
+    border-radius: var(--variant-pills-radius);
+    box-shadow: var(--variant-pills-shadow-horizontal-offset) var(--variant-pills-shadow-vertical-offset)
+      var(--variant-pills-shadow-blur-radius) rgba(var(--color-shadow), var(--variant-pills-shadow-opacity));
+  }
+  .product-form__input input[type='radio'] + label:hover {
+    border-color: rgb(var(--color-foreground));
+  }
+  .product-form__input input[type='radio']:checked + label {
+    background-color: black;
+    color: white;
+  }
+  .product-form__input input[type='radio']:not(.disabled) + label > .visually-hidden {
+    display: none;
+  }
+  @media screen and (forced-colors: active) {
+    .product-form__input input[type='radio']:checked + label {
+      text-decoration: underline;
     }
+  }
+  .product-form__input input[type='radio']:checked + label::selection {
+    background-color: rgba(var(--color-background), 0.3);
+  }
+  .product-form__input input[type='radio']:disabled + label,
+  .product-form__input input[type='radio'].disabled + label {
+    border-color: rgba(var(--color-foreground), 0.1);
+    color: rgba(var(--color-foreground), 0.6);
+    text-decoration: line-through;
+  }
+  .product-form__input input[type='radio'].disabled:checked + label,
+  .product-form__input input[type='radio']:disabled:checked + label {
+    color: rgba(var(--color-background), 0.6);
+  }
+  .product-form__input input[type='radio']:focus-visible + label {
+    box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0 0.5rem rgba(var(--color-foreground), 0.55);
+  }
+  .product-form__input input[type='radio'].focused + label,
+  .no-js .shopify-payment-button__button [role='button']:focus + label {
+    box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0 0.5rem rgba(var(--color-foreground), 0.55);
+  }
+  .no-js .product-form__input input[type='radio']:focus:not(:focus-visible) + label {
+    box-shadow: none;
+  }
+  .product-form__input .select {
+    max-width: 25rem;
+  }
+  .product-form__submit {
+    margin-bottom: 1rem;
+  }
+  .no-js .product-form__submit.button--secondary {
+    --color-button: inherit;
+    --color-button-text: inherit;
+    --alpha-button-background: 1;
+  }
+  .product-form__submit[aria-disabled='true'] + .shopify-payment-button .shopify-payment-button__button[disabled],
+  .product-form__submit[disabled] + .shopify-payment-button .shopify-payment-button__button[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+  @media screen and (forced-colors: active) {
+    .product-form__submit[aria-disabled='true'] {
+      color: Window;
     }
+  }
+</style>
 
-    .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+{%- assign product_form_id = 'product-form-' | append: section.id -%}
+{%- assign p_form_id = 'product_form_' | append: product.id -%}
 
+{% form 'product', product %}
+  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
-    .swiper {
-      width: 100%;
-      height: 300px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+  <section class="w-screen sm:h-screen bg-[#fcfcfc]">
+    <div class="grid grid-cols-1 sm:grid-cols-2 w-screen sm:h-screen overflow-y-auto ">
+      <div class="hidden sm:flex sm:flex-col w-full sm:h-screen">
+        {% for media in product.media %}
+          {% render 'productmedia', media: media %}
+        {% endfor %}
+      </div>
+      <!-- Mobile Version Media Rendering -->
+      <div id="custom-scrollbar" class="flex sm:hidden w-full overflow-x-scroll">
+        {% for media in product.media %}
+          {% render 'productmedia', media: media %}
+        {% endfor %}
+      </div>
+      <!-- Mobile Version End -->
 
-    .swiper-slide {
-      background-size: cover;
-      background-position: center;
-    }
-
-    .mySwiper2 {
-      height: 80%;
-      width: 100%;
-    }
-
-    .mySwiper {
-      height: 20%;
-      box-sizing: border-box;
-      padding: 10px 0;
-    }
-
-    .mySwiper .swiper-slide {
-      width: 25%;
-      height: 100%;
-      opacity: 0.4;
-    }
-
-    .mySwiper .swiper-slide-thumb-active {
-      opacity: 1;
-    }
-
-    .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  </style>
-
-<!-- Top Div Start -->
-
-<div class="max-w-6xl w-screen mt-5">
-    <div class="md:flex w-screen gird grid-cols-1 md:grid-cols-2 gap-x-32">
-        <!-- Product Media -->
-        <div class="productMedia-wizHades md:ml-10 md:w-2/4">
-                <!-- Swiper -->
-                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
-                    <div class="swiper-wrapper">
-                        {% for media in product.media %}
-                            <div class="swiper-slide">
-                                {% render 'productmedia', media : media %}
-                            </div>
-                        {% endfor %}
-                    </div>
-                    
-                  </div>
-                  <div class="mt-2">
-                  <div thumbsSlider="" class="swiper mySwiper">
-                    <div class="swiper-wrapper">
-                        {% for media in product.media %}
-                            <div class="swiper-slide">
-                                {% render 'productmedia', media : media %}
-                            </div>
-                        {% endfor %}
-                    </div>
-                  </div>
-                </div>
-                <!-- Swiper End-->
+      <div class="overflow-y-auto sm:my-auto mt-3 ml-4 mr-4 mb-2 sm:mx-auto sm:sticky sm:top-[25vh]">
+        <h4 class="text-[0.9rem] sm:text-[1rem] md:text-[1.5rem] font-extralight">
+          {{ product.title | upcase }}
+        </h4>
+        <div id="price-{{ section.id }}">
+          <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight">
+            INR {{ product.selected_or_first_available_variant.price | money_without_currency }}
+          </h4>
         </div>
-        <!-- Product Media End-->
-        <!-- Product Info -->
-        <div class="productInfo-wizHades justify-center item-center flex flex-col md:w-2/4 px-4 md:px-0 mt-4 md:mt-0">
-            {% form 'product', product, id: 'product-form', novalidate : 'novalidate' %}
-                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                <div class="heading mx-auto my-auto info h-40 flex items-center justify-center">
-                   
-                    {% if  product.available %}
-                        <label>IN STOCK</label>
-                    {% else %}
-                        <label>OUT OF STOCK</label>
-                    {% endif %}
-                    
-                    
-                    
-                    
-                </div>
-                <div class="offers info flex-grow w-full">
-                    <!-- Offers Start -->
-                    <div class="mt-6 mb-20 gap-4 mx-auto w-full">
-                        <div class="h-40 mx-auto w-full px-4">
-                            <div class="mx-auto">
-                                <div class="flex justify-center">
-                                <span
-                                    class="text-2xl text-center item-center whitespace-nowrap my-auto overflow-ellipsis text-black"
-                                >
-                                {{ product.title }}
-                                </span>
-                                </div>
-                                <div class="flex justify-center">
-                                    <h3
-                                     class="text-base text-center font-bold text-secondcolor"
-                                    >
-                                    {{ product.vendor }}
-                                    </h3>
-                                
-                                </div>
-                                <div class="price-ticker mx-auto mt-6" id="price-{{ section.id }}">
-                                    <h2
-                                        class="text-4xl text-center whitespace-nowrap overflow-hidden overflow-ellipsis text-gray-black sm:text-3xl md:text-4xl"
-                                    >
-                                    {{ product.price | money }}
-                                    </h2>
-                                </div>
-                                <!-- sale badge -->
-                                <div class="mt-2 justify-center mx-auto flex">
-                                    {% assign product_price = product.selected_or_first_available_variant %} 
-                                    {% if  product_price.price < product_price.compare_at_price %}
-                                        <div class="my-auto">
-                                            <span class="text-sm text-center text-slate-900 line-through">{{ product_price.compare_at_price | money }}</span>
-                                            {% if product_price.price and product_price.compare_at_price %}
-                                                <span class="relative text-green-600 mx-2 rounded">&#x28 {{ product_price.compare_at_price | minus: product_price.price | times: 100.0 | divided_by: product_price.compare_at_price | money_without_currency | times: 100 | remove: '.0' }}% OFF &#x29</span>
-                                            {% endif %}
-                            
-                                        </div>
-                                    {% endif %}
-                                </div>
-                                <!-- Sale badge ends-->
-                            </div>
-                        </div>
-                            <!-- Offers End -->
-                    </div>
-                    <div class="variants info">
-                        <!-- Info Start -->
-                        <div class="my-3 col-span-2">
-                            <div class="grid grid-cols-1 px-3 md:grid-cols-1 border-b py-4">
-                                {% unless product.has_only_default_variant %}
-                                    <variant-selector class="variants my-auto" data-url="{{ product.url }}" data-section="{{ section.id }}">
-                            
-                                        
-                                
-                                            <div class="grid grid-cols-1 gap-3 md:grid-cols-1 my-auto px-8 border-t border-b border-gray-600 mx-auto">
-                                                {% for option in product.options_with_values %}
-                                                    <div class="rounded-md py-2 px-3 col-span-2 mx-auto width-fit">
-                                                        <label for="Option-{{ section.id }}-{{ forloop.index0 }}"> {{ option.name }} </label>
-                                                        <select name="options[{{ option.name | escape }}]" id="Option-{{ section.id }}-{{ forloop.index0 }}">
-                                                            {% for value in option.values %}
-                                                            <option value="{{ value | escape }}"> {{ value }}</option>
-                                            
-                                                            {% endfor %}
-                                        
-                                                        </select>
-                                                    </div>
-                                    
-                                                    <script type="application/json">
-                                                        {{ product.variants | json }}
-                                                    </script>
-                                                {% endfor %}
-                                            </div>
-                                        
-                                    </variant-selector>  
-                                {% endunless %}
-                                <div class="grid grid-cols-1 gap-3 mt-3 md:grid-cols-2 my-auto">
-                                    <div class="flex justify-center">
-                                        <div class="custom-number-input">
-                                            <div class="flex flex-row px-3 my-auto rounded-lg relative bg-transparent">
-                                                <label class="mt-2 mr-2" for="Quantity-{{ section.id }}"> Quantity </label>
-                                                <input type="number" id="Quantity-{{ section.id }}" class="outline-none focus:outline-none text-center w-8 border border-gray-300 rounded-md font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none h-10" name="quantity" value="1">
-                                            </div>
-                                        </div>
-                
-                                    </div>
-                                    <div>
-                                        <button type="submit" name ="add" class="flex items-center justify-center bg-maincolor px-5 w-full py-2.5 text-center text-sm font-medium text-white hover:bg-white hover:text-maincolor hover:border hover:border-maincolor focus:outline-none focus:ring-4 focus:ring-blue-300"
-                                            {% if product.selected_or_first_available_variant.available == false %}
-                                                disabled
-                                            {% endif %}
-                                        >
-                                            {% if product.selected_or_first_available_variant.available == false %}
-                                                Sold Out
-                                            {% else %}
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                                </svg>
-                            
-                                                Add Cart
-                                            {% endif %}
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Info End -->
-                    </div> 
-            {% endform %}
+        <div class="tabssec min-h-[70px] sm:min-h-[100px] mt-4 mb-2 sm:mt-10 sm:mb-14 w-full sm:w-[350px] mb-4 text-[0.5rem] sm:text-[0.7rem] md:text-[0.9rem] font-extralight text-black">
+          {% render 'info-tab', product %}
         </div>
-        <!-- Product Info End-->
+        <div clas=" h-[100px]">
+          <div class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight">
+            {% render 'product-variant-picker', product: product, product_form_id: product_form_id %}
+          </div>
+        </div>
+        <button
+          type="submit"
+          name="add"
+          class="add-item relative md:bg-transparent md:transition-colors md:before:absolute md:before:left-0 md:before:top-0 md:before:-z-10 md:before:h-full md:before:w-full md:before:origin-top-left md:before:scale-x-0 md:before:bg-black md:before:transition-transform md:before:duration-300 md:before:content-[''] md:hover:text-white md:before:hover:scale-x-100 w-full mt-5 py-2 border border-gray-500 text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight "
+        >
+          Add to bag
+        </button>
+      </div>
     </div>
-</div>
+  </section>
+{% endform %}
 
-<!-- Top Div End -->
+<div
+  class="product-recommendations"
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related"
+>
+  {%- if recommendations.performed? and recommendations.products_count > 0 -%}
+    {% if recommendations.intent == 'related' %}
+      <div class="h-[50px] border border-b-0 border-gray-500 flex items-center">
+        <h4 class="pl-4 text-[0.5rem] sm:text-[0.7rem] md:text-[0.9rem] font-extralight">You may also like</h4>
+      </div>
+    {% elsif recommendations.intent == 'complementary' %}
+      <div class="h-[30px] sm:h-[50px] border border-b-0 border-gray-500 flex items-center">
+        <h4 class="pl-4 text-[0.5rem] sm:text-[0.7rem] md:text-[0.9rem] font-extralight">Pair it with</h4>
+      </div>
+    {% endif %}
 
-<!-- Middle Div-->
-<div class="product-description-wizHades w-screen mt-10">
-    <section class="bg-stone-200 mx-auto mt-20 pb-12 lg:mt-[120px] lg:pb-[90px]">
-        <div class="container mx-auto pt-10 lg:pt-[120px] max-w-6xl">
-            <div class="grid mx-auto grid-cols-1 md:grid-cols-2 gap-x-32">
-                <div class="mx-auto px-10 md:px-0 w-full text-center">
-                    <h2 class="text-lg text-maincolor m-5"> Description </h2>
-                    <span class="text-gray-600 p-5 w-full text-sm text-left">{{ product.description }}</span>
-                </div>
-                <div class="mx-auto w-full text-center md:justify-center">
-                    <h2 class="text-lg text-maincolor m-5"> Properties </h2>
-                    <span class="text-gray-600 p-5 text-left">
-                    <ul class="px-10 md:px-0">
-                    {% for list in product.metafields.custom.properties.value -%}
-                        <li class="text-sm"> {{ list.first | capitalize }} : {{ list.last }}</li>
-                    {% endfor %}
-                    </ul>
-                    </span>
-                </div>
+    <section
+      id="ps01r"
+      class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4 border-y-[1px] border-gray-500"
+    >
+      {%- for product in recommendations.products -%}
+        <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+          <a href="{{ product.url }}">
+            <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
+            <div class="flex">
+              <p class="flex flex-grow text-[0.7rem] font-extralight">DAMOR</p>
+              <p class="text-[0.7rem] font-extralight">INR {{ product.price | money_without_currency }}</p>
             </div>
+            <h4 class="text-[0.9rem] font-extralight pt-1">{{ product.title | upcase }}</h4>
+          </a>
         </div>
+        {% comment %}
+          <div class="product">
+
+              <img
+                class="product__img"
+                src="{{ product.featured_image | image_url: width: 300, height: 300 }}"
+                alt="{{ product.featured_image.alt }}"
+              >
+
+              <p class="product__title">{{ product.title }}</p>
+              <p class="product__price">{{ product.price | money }}</p>
+
+          </div>
+        {% endcomment %}
+      {%- endfor -%}
     </section>
-</div>
-<!-- Middle Div End-->
-<!-- Bottom Div Start-->
-<div class="related-product wizHades w-screen mx-auto">
-    <div class="mx-auto mt-10 max-w-screen">
-        <!-- Rendering recommended products -->
-        <div class="flex flex-col items-center my-8 mx-auto">
-            <div class="mt-5 max-w-[510px]">
-                <h2
-                  class="mb-1 text-2xl text-dark"
-                >
-                    Recommended Products
-                </h2>
-            </div>
-            <div class="max-w-screen mx-auto">
-                <div class="grid grid-cols-2 w-screen px-4 md:grid-cols-4 gap-2">
-                    {% assign colname = product.collections[0].handle %}
-                    {% for product in collections[colname].products limit : 10 %}
-                        {% render 'productcardV4', product : product %}
-                    {% endfor %}
-                </div>
-    
-            </div>
-            <a href="{{ product.collections[0].url }}" class="mb-2 inline-flex items-center justify-center px-5 transform font-medium text-maincolor hover:text-black hover:underline"> View More </a>
-        </div>
-        <!-- End -->
-    </div>
-</div>
-<!-- Bottom Div End-->
-
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-
-  <!-- Initialize Swiper -->
-  <script>
-    var swiper = new Swiper(".mySwiper", {
-      spaceBetween: 10,
-      slidesPerView: 4,
-      freeMode: true,
-      watchSlidesProgress: true,
-    });
-    var swiper2 = new Swiper(".mySwiper2", {
-      spaceBetween: 10,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      thumbs: {
-        swiper: swiper,
-      },
-    });
-  </script>
-
-  <script>
-    class VariantSelector extends HTMLElement {
-        constructor() {
-            super();
-            this.addEventListener("change", this.onVariantChange);
-        }
-
-        onVariantChange() {
-            this.getSelectedOptions();
-            this.getSelectedVariant();
-
-            if(this.currentVariant){
-                this.updateURL();
-                this.updateFormID();
-                this.updatePrice();
-            }
-        }
-
-        getSelectedOptions() {
-            this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
-            console.log(this.options);
-        }
-
-        getVariantJSON() {
-            this.variantData = this.variantData ||JSON.parse(this.querySelector('[type="application/json"]').textContent);
-            return this.variantData;
-        }
-
-        getSelectedVariant() {
-            this.currentVariant = this.getVariantJSON().find(
-                (variant) => {
-                    const findings = !variant.options.map(
-                        (option,index) =>  {
-                            return this.options[index] === option;
-                        }
-                    ).includes(false);
-
-                    if(findings) return variant;
-                }
-            );
-
-            console.log(this.currentVariant);
-        }
-
-        updateURL() {
-            if(!this.currentVariant) return;
-            window.history.replaceState({},'',`${this.dataset.url}?variant=${this.currentVariant.id}`);
-        
-        }
-
-        updateFormID() {
-            const form_input = document.querySelector('#product-form').querySelector('input[name="id"]');
-            form_input.value = this.currentVariant.id;
-        }
-
-        updatePrice() {
-            fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
-            .then((response) => response.text())
-            .then((responseText) => {
-                const id = `price-${this.dataset.section}`;
-                const html = new DOMParser().parseFromString(responseText, 'text/html');
-
-                const oldPrice = document.getElementById(id);
-                const newPrice = html.getElementById(id);
-
-                if( oldPrice && newPrice ){
-                    oldPrice.innerHTML = newPrice.innerHTML;
-                };
-            });
-
-        }
-
-    }
-    customElements.define("variant-selector", VariantSelector);
-</script>
-
-
-{% comment %}
-<div class="max-w-6xl mx-auto mt-5">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-        <div class="product-media">
-            <div class="hidden md:block">
-                <div class="swiper">
-                    <div class="swiper-wrapper">
-                         {% for media in product.media %}
-                                <div class="swiper-slide">
-                                  {% comment %}
-                                  <div class="h-100 overflow-hidden py-2">
-                                 {% endcomment %}
-                                   {% render 'productmedia', media : media %}
-           
-                                </div>
-                         {% endfor %}
-                    </div>
-                    <div class="swiper-pagination"></div>
-
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
-            </div>
-            <div class="md:hidden">
-                <div class="swiper">
-                    <div class="swiper-wrapper">
-                        {% for media in product.media %}
-                            <div class="swiper-slide">
-                                
-                                    {% render 'productmedia', media : media %}
-                
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="swiper-pagination"></div>
-    
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Product Infor Div -->
-
-        <div class="product-information">
-            {% form 'product', product, id: 'product-form', novalidate : 'novalidate' %}
-                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                <div class="ml-2">
-                    {% assign product_price = product.selected_or_first_available_variant %}
-                    {% if  product_price.price < product_price.compare_at_price %}
-                        <div class="my-8">
-                    
-                            <span class="relative bg-yellow-500 text-blue-50 py-3 px-4 rounded">
-                                On Sale
-                                <span class="absolute -top-1 -right-1 bg-red-500 rounded-full h-3 w-3 animate-ping">
-                                </span>
-                            </span>
-                            {% if product_price.price and product_price.compare_at_price %}
-                                 <span class="relative bg-black text-blue-50 py-3 px-4 mx-2 rounded">{{ product_price.compare_at_price | minus: product_price.price | times: 100.0 | divided_by: product_price.compare_at_price | money_without_currency | times: 100 | remove: '.0' }}% OFF</span>
-                            {% endif %}
-                    
-                        </div>
-                    {% endif %}
-                    <div class="my-3">
-                        <div class="max-w-[510px]">
-                            <h2
-                              class="text-3xl font-bold text-secondcolor sm:text-4xl md:text-[40px]"
-                            >
-                                {{ product.title }}
-                            </h2>
-                        </div>
-                    </div>
-                    <div class="my-3">
-                        <span class="text-xs text-gray-500">{{ product.vendor }} </span>
-                    </div>
-                    <div class="my-3" id="price-{{ section.id }}">
-                        <p>
-                            <span class="text-2xl font-bold text-slate-900">{{ product_price.price | money }}</span>
-                            <span class="text-sm text-slate-900 line-through">{{ product_price.compare_at_price | money }}</span>
-                        </p>
-                    </div>
-                        <!-- grid space -->
-                
-                    <div class="mt-10 mb-20 grid grid-cols-2 gap-4">
-                        <div class="col-span-2">
-                             <h4 class="text-2xl text-secondcolor"> Available Offers </span>
-                        </div>
-                        <div class="col-span-2 h-40">
-                            <div class="flex mt-3">
-                                <div class="my-auto">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20">
-                                        <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M96.9928 187.414C94.6101 185.996 90.2101 181.775 89.353 179.125C87.9831 174.89 92.855 169.47 96.751 168.681C101.051 167.811 106.573 172.759 107.403 176.722C106.966 183.109 105.668 186.144 98.9422 187.098C98.424 187.172 97.4153 187.172 96.9928 187.414Z"/>
-                                        <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M302.762 447.92L302.633 447.693C301.519 445.544 299.933 442.049 300.941 439.602C302.929 434.774 309.559 430.278 314.782 432.331C327.348 440.242 315.852 457.959 303.216 448.299L302.762 447.92Z"/>
-                                        <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M290.313 208.573C294.917 208.928 300.619 213.08 298.331 218.266C297.255 220.704 294.297 223.015 292.379 224.867L222.133 290.954C216.462 296.234 205.27 308.864 198.681 311.71C193.517 312.164 188.437 306.469 190.582 301.404L190.709 301.125C191.68 298.944 193.571 297.417 195.313 295.859L279.018 217.337C282.209 214.221 285.699 209.464 290.313 208.573Z"/>
-                                        <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M389.332 50.5203C398.85 42.2961 409.722 38.6047 422.483 39.5512C450.864 41.6561 470.48 81.3841 450.347 105.214C449.465 106.257 448.476 107.581 447.393 108.411L446.748 108.804C444.827 108.327 440.882 106.064 439.365 105.992C438.949 105.973 434.566 108.387 433.527 108.705C421.746 112.314 409.327 109.505 402.115 98.9196L401.875 98.5631C400.216 96.1312 398.854 93.445 398.212 90.5555L392.411 97.875C390.487 100.122 387.615 103.157 384.508 103.329L384.217 103.342C383.303 102.523 382.193 102.164 381.307 101.236C372.513 92.0201 374.56 68.4664 381.749 58.5325C383.926 55.5234 386.607 53.0168 389.332 50.5203Z"/>
-                                        <path fill="#1E8CFF" transform="scale(0.0390625 0.0390625)" d="M422.457 72.5134C434.565 71.9188 435.924 92.0885 424.205 93.3552C412.856 93.1423 409.227 76.638 422.457 72.5134Z"/>
-                                        <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M206.249 175.099C258.101 171.619 263.273 249.873 213.443 253.32C191.046 254.958 173.528 239.909 170.898 217.734C168.342 196.186 185.193 177.454 206.249 175.099Z"/>
-                                        <path fill="#F4F1DE" transform="scale(0.0390625 0.0390625)" d="M206.643 189.584C239.521 186.373 244.601 234.082 213.06 238.913C181.972 242.319 172.94 194.733 206.643 189.584Z"/>
-                                        <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M125.505 159.154L125.356 159.077C122.775 157.8 119.308 153.411 118.385 150.637C116.481 144.915 125.407 139.128 128.861 135.86L245.442 22.4479C252.562 15.4474 259.685 5.58842 269.778 2.8795C273.393 1.90923 277.773 2.4146 281.524 2.42288L314.157 2.5016C323.183 2.5315 328.65 1.49781 331.015 12.7559C330.015 15.3891 328.415 20.4947 325.25 21.0859L324.958 21.1448C322.442 21.5951 319.07 21.016 316.481 20.9395L280.288 19.9972C272.222 20.0188 273.461 20.4968 268.156 25.9873L135.413 156.125C132.245 159.589 130.294 160.444 125.505 159.154Z"/>
-                                        <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M273.392 266.852C309.267 263.092 329.226 304.972 308.657 331.549C301.744 340.481 293.097 344.865 282.062 346.226C225.834 348.593 224.269 271.67 273.392 266.852Z"/>
-                                        <path fill="#F4F1DE" transform="scale(0.0390625 0.0390625)" d="M274.579 281.342L274.903 281.285C306.696 277.955 313.541 327.859 280.811 331.983C244.206 332.683 242.817 285.531 274.579 281.342Z"/>
-                                        <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M281.53 467.781C284.102 469.895 287.023 475.44 284.641 478.612C282.428 481.559 278.815 484.009 276.127 486.601C266.883 495.516 257.623 507.23 244.25 509.424C233.871 511.127 228.435 509 220.878 501.967L146.208 427.068L40.3024 320.226L8.94715 289.046C3.85866 283.554 2.0599 279.977 2.0199 272.542C1.94285 258.224 6.97363 255.724 17.6418 246.098L65.3131 199.398C70.129 195.113 71.9589 193.973 76.7575 198.01C78.8503 199.77 81.2924 201.588 82.2294 204.248L82.3122 204.495C82.35 208.354 82.0876 209.026 79.2181 211.949L28.6602 261.183C24.3377 265.455 17.5615 269.162 22.885 275.397L130.487 384.619L145.36 398.994L201.389 455.655L201.602 455.844C205.323 459.177 208.779 462.998 212.212 466.626L232.389 487.532C234.764 489.894 237.146 492.418 240.285 493.727C247.591 491.917 252.51 485.45 257.488 480.294L266.861 471.25C272.564 466.031 274.292 463.713 281.53 467.781Z"/>
-                                        <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M349.1 16.4481L348.988 16.0561C347.667 11.3729 350.668 4.74549 355.667 3.55438C357.426 3.13533 359.449 3.35435 361.245 3.41448L468.169 11.2456C481.008 11.9756 494.421 11.5539 501.509 24.75L501.719 25.1321C504.635 30.5433 504.625 36.1656 504.645 42.1224L504.7 210.934C504.721 213.469 505.156 216.01 505.202 218.568L505.245 263.991C504.983 271.085 497.379 277.044 492.698 281.499L350.375 418.443C346.901 421.566 343.404 422.213 339.449 419.386L334.81 415.26C332.523 405.908 341.512 401.997 347.103 396.736L478.095 270.27C488.116 260.805 487.146 264.483 487.143 252.237L487.089 55.4174C487.086 50.3269 487.289 45.1376 486.961 40.0614C486.383 31.1092 485.125 28.8852 476.732 28.7278L467.742 28.5254L399.89 24.2886L386.042 23.8608C383.133 23.1961 379.914 23.3691 376.959 23.2562L366.32 22.6059C357.961 22.2433 355.213 22.5941 349.302 16.6413L349.1 16.4481Z"/>
-                                        <path fill="#E07A5F" transform="scale(0.0390625 0.0390625)" d="M386.015 23.7695L399.89 24.2886L467.742 28.5254L476.732 28.7278C485.125 28.8852 486.383 31.1092 486.961 40.0614C487.289 45.1376 487.086 50.3269 487.089 55.4174L487.143 252.237C487.146 264.483 488.116 260.805 478.095 270.27L347.103 396.736C341.512 401.997 332.523 405.908 334.81 415.26C330.175 420.487 321.702 430.063 314.782 432.331C309.559 430.278 302.929 434.774 300.941 439.602C299.933 442.049 301.519 445.544 302.633 447.693L302.762 447.92C301.785 448.365 301.148 449.268 300.45 450.06L296.38 454.881C293.324 458.576 286.504 466.633 281.53 467.781C274.292 463.713 272.564 466.031 266.861 471.25L257.488 480.294C252.51 485.45 247.591 491.917 240.285 493.727C237.146 492.418 234.764 489.894 232.389 487.532L212.212 466.626C208.779 462.998 205.323 459.177 201.602 455.844L201.389 455.655C203.11 454.6 204.685 452.796 206.152 451.406L288.782 375.132L423.684 248.753C436.42 237.208 442.391 233.566 447.486 216.125C449.027 210.849 448.46 204.505 448.452 199.035L448.321 183.451C448.217 181.151 447.815 178.956 447.803 176.634L447.753 144.113C447.749 136.22 448.172 128.076 446.819 120.273C446.846 116.442 446.271 112.633 446.748 108.804L447.393 108.411C448.476 107.581 449.465 106.257 450.347 105.214C470.48 81.3841 450.864 41.6561 422.483 39.5512C409.722 38.6047 398.85 42.2961 389.332 50.5203C385.473 43.439 386.002 31.5551 386.015 23.7695Z"/>
-                                    </svg>
-                                </div>
-                                <div class="my-auto ml-2">
-                                    <span class="mt-6 text-sm ?leading-5 font-semibold text-center"> Free Delivery Available - Use code "FREE" to avail this offer </span>
-                                </div>
-                            </div>
-                            {% for tag in product.tags %}
-                                {% if tag == "50%OFF" %}
-                                    <div class="mt-3">
-                                        <div class="flex mt-3">
-                                             <div class="my-auto">
-                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20">
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M96.9928 187.414C94.6101 185.996 90.2101 181.775 89.353 179.125C87.9831 174.89 92.855 169.47 96.751 168.681C101.051 167.811 106.573 172.759 107.403 176.722C106.966 183.109 105.668 186.144 98.9422 187.098C98.424 187.172 97.4153 187.172 96.9928 187.414Z"/>
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M302.762 447.92L302.633 447.693C301.519 445.544 299.933 442.049 300.941 439.602C302.929 434.774 309.559 430.278 314.782 432.331C327.348 440.242 315.852 457.959 303.216 448.299L302.762 447.92Z"/>
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M290.313 208.573C294.917 208.928 300.619 213.08 298.331 218.266C297.255 220.704 294.297 223.015 292.379 224.867L222.133 290.954C216.462 296.234 205.27 308.864 198.681 311.71C193.517 312.164 188.437 306.469 190.582 301.404L190.709 301.125C191.68 298.944 193.571 297.417 195.313 295.859L279.018 217.337C282.209 214.221 285.699 209.464 290.313 208.573Z"/>
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M389.332 50.5203C398.85 42.2961 409.722 38.6047 422.483 39.5512C450.864 41.6561 470.48 81.3841 450.347 105.214C449.465 106.257 448.476 107.581 447.393 108.411L446.748 108.804C444.827 108.327 440.882 106.064 439.365 105.992C438.949 105.973 434.566 108.387 433.527 108.705C421.746 112.314 409.327 109.505 402.115 98.9196L401.875 98.5631C400.216 96.1312 398.854 93.445 398.212 90.5555L392.411 97.875C390.487 100.122 387.615 103.157 384.508 103.329L384.217 103.342C383.303 102.523 382.193 102.164 381.307 101.236C372.513 92.0201 374.56 68.4664 381.749 58.5325C383.926 55.5234 386.607 53.0168 389.332 50.5203Z"/>
-                                                    <path fill="#1E8CFF" transform="scale(0.0390625 0.0390625)" d="M422.457 72.5134C434.565 71.9188 435.924 92.0885 424.205 93.3552C412.856 93.1423 409.227 76.638 422.457 72.5134Z"/>
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M206.249 175.099C258.101 171.619 263.273 249.873 213.443 253.32C191.046 254.958 173.528 239.909 170.898 217.734C168.342 196.186 185.193 177.454 206.249 175.099Z"/>
-                                                    <path fill="#F4F1DE" transform="scale(0.0390625 0.0390625)" d="M206.643 189.584C239.521 186.373 244.601 234.082 213.06 238.913C181.972 242.319 172.94 194.733 206.643 189.584Z"/>
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M125.505 159.154L125.356 159.077C122.775 157.8 119.308 153.411 118.385 150.637C116.481 144.915 125.407 139.128 128.861 135.86L245.442 22.4479C252.562 15.4474 259.685 5.58842 269.778 2.8795C273.393 1.90923 277.773 2.4146 281.524 2.42288L314.157 2.5016C323.183 2.5315 328.65 1.49781 331.015 12.7559C330.015 15.3891 328.415 20.4947 325.25 21.0859L324.958 21.1448C322.442 21.5951 319.07 21.016 316.481 20.9395L280.288 19.9972C272.222 20.0188 273.461 20.4968 268.156 25.9873L135.413 156.125C132.245 159.589 130.294 160.444 125.505 159.154Z"/>
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M273.392 266.852C309.267 263.092 329.226 304.972 308.657 331.549C301.744 340.481 293.097 344.865 282.062 346.226C225.834 348.593 224.269 271.67 273.392 266.852Z"/>
-                                                    <path fill="#F4F1DE" transform="scale(0.0390625 0.0390625)" d="M274.579 281.342L274.903 281.285C306.696 277.955 313.541 327.859 280.811 331.983C244.206 332.683 242.817 285.531 274.579 281.342Z"/>
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M281.53 467.781C284.102 469.895 287.023 475.44 284.641 478.612C282.428 481.559 278.815 484.009 276.127 486.601C266.883 495.516 257.623 507.23 244.25 509.424C233.871 511.127 228.435 509 220.878 501.967L146.208 427.068L40.3024 320.226L8.94715 289.046C3.85866 283.554 2.0599 279.977 2.0199 272.542C1.94285 258.224 6.97363 255.724 17.6418 246.098L65.3131 199.398C70.129 195.113 71.9589 193.973 76.7575 198.01C78.8503 199.77 81.2924 201.588 82.2294 204.248L82.3122 204.495C82.35 208.354 82.0876 209.026 79.2181 211.949L28.6602 261.183C24.3377 265.455 17.5615 269.162 22.885 275.397L130.487 384.619L145.36 398.994L201.389 455.655L201.602 455.844C205.323 459.177 208.779 462.998 212.212 466.626L232.389 487.532C234.764 489.894 237.146 492.418 240.285 493.727C247.591 491.917 252.51 485.45 257.488 480.294L266.861 471.25C272.564 466.031 274.292 463.713 281.53 467.781Z"/>
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M349.1 16.4481L348.988 16.0561C347.667 11.3729 350.668 4.74549 355.667 3.55438C357.426 3.13533 359.449 3.35435 361.245 3.41448L468.169 11.2456C481.008 11.9756 494.421 11.5539 501.509 24.75L501.719 25.1321C504.635 30.5433 504.625 36.1656 504.645 42.1224L504.7 210.934C504.721 213.469 505.156 216.01 505.202 218.568L505.245 263.991C504.983 271.085 497.379 277.044 492.698 281.499L350.375 418.443C346.901 421.566 343.404 422.213 339.449 419.386L334.81 415.26C332.523 405.908 341.512 401.997 347.103 396.736L478.095 270.27C488.116 260.805 487.146 264.483 487.143 252.237L487.089 55.4174C487.086 50.3269 487.289 45.1376 486.961 40.0614C486.383 31.1092 485.125 28.8852 476.732 28.7278L467.742 28.5254L399.89 24.2886L386.042 23.8608C383.133 23.1961 379.914 23.3691 376.959 23.2562L366.32 22.6059C357.961 22.2433 355.213 22.5941 349.302 16.6413L349.1 16.4481Z"/>
-                                                    <path fill="#E07A5F" transform="scale(0.0390625 0.0390625)" d="M386.015 23.7695L399.89 24.2886L467.742 28.5254L476.732 28.7278C485.125 28.8852 486.383 31.1092 486.961 40.0614C487.289 45.1376 487.086 50.3269 487.089 55.4174L487.143 252.237C487.146 264.483 488.116 260.805 478.095 270.27L347.103 396.736C341.512 401.997 332.523 405.908 334.81 415.26C330.175 420.487 321.702 430.063 314.782 432.331C309.559 430.278 302.929 434.774 300.941 439.602C299.933 442.049 301.519 445.544 302.633 447.693L302.762 447.92C301.785 448.365 301.148 449.268 300.45 450.06L296.38 454.881C293.324 458.576 286.504 466.633 281.53 467.781C274.292 463.713 272.564 466.031 266.861 471.25L257.488 480.294C252.51 485.45 247.591 491.917 240.285 493.727C237.146 492.418 234.764 489.894 232.389 487.532L212.212 466.626C208.779 462.998 205.323 459.177 201.602 455.844L201.389 455.655C203.11 454.6 204.685 452.796 206.152 451.406L288.782 375.132L423.684 248.753C436.42 237.208 442.391 233.566 447.486 216.125C449.027 210.849 448.46 204.505 448.452 199.035L448.321 183.451C448.217 181.151 447.815 178.956 447.803 176.634L447.753 144.113C447.749 136.22 448.172 128.076 446.819 120.273C446.846 116.442 446.271 112.633 446.748 108.804L447.393 108.411C448.476 107.581 449.465 106.257 450.347 105.214C470.48 81.3841 450.864 41.6561 422.483 39.5512C409.722 38.6047 398.85 42.2961 389.332 50.5203C385.473 43.439 386.002 31.5551 386.015 23.7695Z"/>
-                                                </svg>
-                                            </div>
-                                            <div class="my-auto ml-2">
-                                                <span class="mt-6 text-sm ?leading-5 font-semibold text-center"> FLAT 50% OFF - Use code "FLAT50" during checkout to avail this offer </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <!-- another condition -->
-                                {% elsif tag == "BUY1GET1" %}
-                                    <div class="mt-3">
-                                        <div class="flex mt-3">
-                                            <div class="my-auto">
-                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20">
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M96.9928 187.414C94.6101 185.996 90.2101 181.775 89.353 179.125C87.9831 174.89 92.855 169.47 96.751 168.681C101.051 167.811 106.573 172.759 107.403 176.722C106.966 183.109 105.668 186.144 98.9422 187.098C98.424 187.172 97.4153 187.172 96.9928 187.414Z"/>
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M302.762 447.92L302.633 447.693C301.519 445.544 299.933 442.049 300.941 439.602C302.929 434.774 309.559 430.278 314.782 432.331C327.348 440.242 315.852 457.959 303.216 448.299L302.762 447.92Z"/>
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M290.313 208.573C294.917 208.928 300.619 213.08 298.331 218.266C297.255 220.704 294.297 223.015 292.379 224.867L222.133 290.954C216.462 296.234 205.27 308.864 198.681 311.71C193.517 312.164 188.437 306.469 190.582 301.404L190.709 301.125C191.68 298.944 193.571 297.417 195.313 295.859L279.018 217.337C282.209 214.221 285.699 209.464 290.313 208.573Z"/>
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M389.332 50.5203C398.85 42.2961 409.722 38.6047 422.483 39.5512C450.864 41.6561 470.48 81.3841 450.347 105.214C449.465 106.257 448.476 107.581 447.393 108.411L446.748 108.804C444.827 108.327 440.882 106.064 439.365 105.992C438.949 105.973 434.566 108.387 433.527 108.705C421.746 112.314 409.327 109.505 402.115 98.9196L401.875 98.5631C400.216 96.1312 398.854 93.445 398.212 90.5555L392.411 97.875C390.487 100.122 387.615 103.157 384.508 103.329L384.217 103.342C383.303 102.523 382.193 102.164 381.307 101.236C372.513 92.0201 374.56 68.4664 381.749 58.5325C383.926 55.5234 386.607 53.0168 389.332 50.5203Z"/>
-                                                    <path fill="#1E8CFF" transform="scale(0.0390625 0.0390625)" d="M422.457 72.5134C434.565 71.9188 435.924 92.0885 424.205 93.3552C412.856 93.1423 409.227 76.638 422.457 72.5134Z"/>
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M206.249 175.099C258.101 171.619 263.273 249.873 213.443 253.32C191.046 254.958 173.528 239.909 170.898 217.734C168.342 196.186 185.193 177.454 206.249 175.099Z"/>
-                                                    <path fill="#F4F1DE" transform="scale(0.0390625 0.0390625)" d="M206.643 189.584C239.521 186.373 244.601 234.082 213.06 238.913C181.972 242.319 172.94 194.733 206.643 189.584Z"/>
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M125.505 159.154L125.356 159.077C122.775 157.8 119.308 153.411 118.385 150.637C116.481 144.915 125.407 139.128 128.861 135.86L245.442 22.4479C252.562 15.4474 259.685 5.58842 269.778 2.8795C273.393 1.90923 277.773 2.4146 281.524 2.42288L314.157 2.5016C323.183 2.5315 328.65 1.49781 331.015 12.7559C330.015 15.3891 328.415 20.4947 325.25 21.0859L324.958 21.1448C322.442 21.5951 319.07 21.016 316.481 20.9395L280.288 19.9972C272.222 20.0188 273.461 20.4968 268.156 25.9873L135.413 156.125C132.245 159.589 130.294 160.444 125.505 159.154Z"/>
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M273.392 266.852C309.267 263.092 329.226 304.972 308.657 331.549C301.744 340.481 293.097 344.865 282.062 346.226C225.834 348.593 224.269 271.67 273.392 266.852Z"/>
-                                                    <path fill="#F4F1DE" transform="scale(0.0390625 0.0390625)" d="M274.579 281.342L274.903 281.285C306.696 277.955 313.541 327.859 280.811 331.983C244.206 332.683 242.817 285.531 274.579 281.342Z"/>
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M281.53 467.781C284.102 469.895 287.023 475.44 284.641 478.612C282.428 481.559 278.815 484.009 276.127 486.601C266.883 495.516 257.623 507.23 244.25 509.424C233.871 511.127 228.435 509 220.878 501.967L146.208 427.068L40.3024 320.226L8.94715 289.046C3.85866 283.554 2.0599 279.977 2.0199 272.542C1.94285 258.224 6.97363 255.724 17.6418 246.098L65.3131 199.398C70.129 195.113 71.9589 193.973 76.7575 198.01C78.8503 199.77 81.2924 201.588 82.2294 204.248L82.3122 204.495C82.35 208.354 82.0876 209.026 79.2181 211.949L28.6602 261.183C24.3377 265.455 17.5615 269.162 22.885 275.397L130.487 384.619L145.36 398.994L201.389 455.655L201.602 455.844C205.323 459.177 208.779 462.998 212.212 466.626L232.389 487.532C234.764 489.894 237.146 492.418 240.285 493.727C247.591 491.917 252.51 485.45 257.488 480.294L266.861 471.25C272.564 466.031 274.292 463.713 281.53 467.781Z"/>
-                                                    <path fill="#3D405B" transform="scale(0.0390625 0.0390625)" d="M349.1 16.4481L348.988 16.0561C347.667 11.3729 350.668 4.74549 355.667 3.55438C357.426 3.13533 359.449 3.35435 361.245 3.41448L468.169 11.2456C481.008 11.9756 494.421 11.5539 501.509 24.75L501.719 25.1321C504.635 30.5433 504.625 36.1656 504.645 42.1224L504.7 210.934C504.721 213.469 505.156 216.01 505.202 218.568L505.245 263.991C504.983 271.085 497.379 277.044 492.698 281.499L350.375 418.443C346.901 421.566 343.404 422.213 339.449 419.386L334.81 415.26C332.523 405.908 341.512 401.997 347.103 396.736L478.095 270.27C488.116 260.805 487.146 264.483 487.143 252.237L487.089 55.4174C487.086 50.3269 487.289 45.1376 486.961 40.0614C486.383 31.1092 485.125 28.8852 476.732 28.7278L467.742 28.5254L399.89 24.2886L386.042 23.8608C383.133 23.1961 379.914 23.3691 376.959 23.2562L366.32 22.6059C357.961 22.2433 355.213 22.5941 349.302 16.6413L349.1 16.4481Z"/>
-                                                    <path fill="#E07A5F" transform="scale(0.0390625 0.0390625)" d="M386.015 23.7695L399.89 24.2886L467.742 28.5254L476.732 28.7278C485.125 28.8852 486.383 31.1092 486.961 40.0614C487.289 45.1376 487.086 50.3269 487.089 55.4174L487.143 252.237C487.146 264.483 488.116 260.805 478.095 270.27L347.103 396.736C341.512 401.997 332.523 405.908 334.81 415.26C330.175 420.487 321.702 430.063 314.782 432.331C309.559 430.278 302.929 434.774 300.941 439.602C299.933 442.049 301.519 445.544 302.633 447.693L302.762 447.92C301.785 448.365 301.148 449.268 300.45 450.06L296.38 454.881C293.324 458.576 286.504 466.633 281.53 467.781C274.292 463.713 272.564 466.031 266.861 471.25L257.488 480.294C252.51 485.45 247.591 491.917 240.285 493.727C237.146 492.418 234.764 489.894 232.389 487.532L212.212 466.626C208.779 462.998 205.323 459.177 201.602 455.844L201.389 455.655C203.11 454.6 204.685 452.796 206.152 451.406L288.782 375.132L423.684 248.753C436.42 237.208 442.391 233.566 447.486 216.125C449.027 210.849 448.46 204.505 448.452 199.035L448.321 183.451C448.217 181.151 447.815 178.956 447.803 176.634L447.753 144.113C447.749 136.22 448.172 128.076 446.819 120.273C446.846 116.442 446.271 112.633 446.748 108.804L447.393 108.411C448.476 107.581 449.465 106.257 450.347 105.214C470.48 81.3841 450.864 41.6561 422.483 39.5512C409.722 38.6047 398.85 42.2961 389.332 50.5203C385.473 43.439 386.002 31.5551 386.015 23.7695Z"/>
-                                                </svg>
-                                            </div>
-                                            <div class="my-auto ml-2">
-                                                <span class="mt-6 text-sm ?leading-5 font-semibold text-center"> BUY 1 Get 1 - Use code "BOGO" during checkout to avail this offer </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                
-                    
-                
-                     <!-- Variant Options -->
-                        <div class="my-3 col-span-2">
-                            <div class="flex grid grid-cols-1 px-3 md:grid-cols-2 border-t border-b py-4">
-                                {% unless product.has_only_default_variant %}
-                                    <variant-selector class="variants my-auto" data-url="{{ product.url }}" data-section="{{ section.id }}">
-                            
-                                        
-                                
-                                            <div class="grid grid-cols-1 gap-3 md:grid-cols-2 my-auto">
-                                                {% for option in product.options_with_values %}
-                                                    <div class="rounded-md py-2 px-3 border border-gray-300">
-                                                        <label for="Option-{{ section.id }}-{{ forloop.index0 }}"> {{ option.name }} </label>
-                                                        <select name="options[{{ option.name | escape }}]" id="Option-{{ section.id }}-{{ forloop.index0 }}">
-                                                            {% for value in option.values %}
-                                                            <option value="{{ value | escape }}"> {{ value }}</option>
-                                            
-                                                            {% endfor %}
-                                        
-                                                        </select>
-                                                    </div>
-                                    
-                                                    <script type="application/json">
-                                                        {{ product.variants | json }}
-                                                    </script>
-                                                {% endfor %}
-                                            </div>
-                                        
-                                    </variant-selector>  
-                                {% endunless %}
-                                <div class="grid grid-cols-1 gap-3 mt-3 md:grid-cols-2 my-auto">
-                                    <div class="flex justify-center">
-                                        <div class="custom-number-input">
-                                            <div class="flex flex-row px-3 my-auto rounded-lg relative bg-transparent">
-                                                <label class="mt-2 mr-2" for="Quantity-{{ section.id }}"> Quantity </label>
-                                                <input type="number" id="Quantity-{{ section.id }}" class="outline-none focus:outline-none text-center w-8 border border-gray-300 rounded-md font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none h-10" name="quantity" value="1">
-                                            </div>
-                                        </div>
-                
-                                    </div>
-                                    <div>
-                                        <button type="submit" name ="add" class="flex items-center justify-center rounded-md bg-slate-900 px-5 w-full py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
-                                            {% if product.selected_or_first_available_variant.available == false %}
-                                                disabled
-                                            {% endif %}
-                                        >
-                                            {% if product.selected_or_first_available_variant.available == false %}
-                                                Sold Out
-                                            {% else %}
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                                </svg>
-                            
-                                                Add Cart
-                                            {% endif %}
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-            {% endform %}
-        </div>
-    </div>
-</div>
-<!-- Product Description and other tabs -->
-<div class="description mt-2 h-96">
-   <!-- component -->
-    <div class='flex min-h-screen'>
-        <ul class="grid max-w-full grid-cols-3 gap-x-5 px-8">
-            <li class="">
-                <input class="peer sr-only" type="radio" value="yes" name="answer" id="yes" checked />
-                <label class="flex justify-center cursor-pointer rounded-full bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:text-white peer-checked:bg-secondcolor transition-all duration-500 ease-in-out" for="yes"> Description </label>
-            
-                <div class="absolute bg-white left-0 p-6 mt-2 rounded-lg w-[97vw] mx-auto transition-all duration-500 ease-in-out translate-x-40 opacity-0 invisible peer-checked:opacity-100 peer-checked:visible peer-checked:translate-x-1">
-                {{ product.description }}
-                </div>
-            </li>
-            
-            <li class="">
-                <input class="peer sr-only" type="radio" value="yesno" name="answer" id="yesno" />
-                <label class="flex justify-center cursor-pointer rounded-full bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:text-white peer-checked:bg-secondcolor transition-all duration-500 ease-in-out " for="yesno">Product Info</label>
-            
-                <div class="absolute left-0 p-6 mt-2 rounded-lg w-[97vw] mx-auto transition-all duration-500 ease-in-out translate-x-40 opacity-0 invisible peer-checked:opacity-100 peer-checked:visible peer-checked:translate-x-1">
-                 <!-- list start -->
-                    
-                    <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400">
-                        <li class="flex items-center space-x-3">
-                            <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
-                            </svg>
-                            <span>Individual configuration</span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
-                            </svg>
-                            <span>{{ product.metafields.custom.test }}</span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
-                            </svg>
-                            <span>Team size: <span class="font-semibold text-gray-900 dark:text-white">1 developer</span></span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
-                            </svg>
-                            <span>Premium support: <span class="font-semibold text-gray-900 dark:text-white">6 months</span></span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
-                            </svg>
-                            <span>Free updates: <span class="font-semibold text-gray-900 dark:text-white">6 months</span></span>
-                        </li>
-                    </ul>
-
-                 <!-- list end -->
-                </div>
-              </li>
-        </ul>
-        
-    </div>
+  {%- endif -%}
 </div>
 
-<!-- Featured Product -->
-  
-<div class="bg-gray-100">
-    <!-- Icon Render -->
-    <div class="justify-center items-center mx-auto">
-        <svg class="mx-auto" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="80" height="80" fill="white"/>
-            <path d="M21.0862 45.4311C20.8275 46.3313 19.7982 46.7898 19.1967 45.8639C18.6789 45.0668 19.4334 44.1154 20.31 44.3537C20.6207 44.5629 20.9945 44.9037 21.0723 45.2877L21.0862 45.4311Z" fill="#3D405B"/>
-            <path d="M23.0939 46.1297L23.3717 45.958C25.1249 46.8333 26.5606 48.6887 27.1782 50.5529C27.3971 51.2139 27.3714 52.3403 28.0489 52.6859C28.9233 53.1318 29.5715 52.5084 29.9581 52.9621C30.1182 53.1498 30.2855 53.3868 30.479 53.5395L30.5023 53.5813C30.4363 53.7408 30.4901 54.0154 30.5078 54.1867C29.969 55.0549 28.5024 55.0305 27.6469 54.7812C26.764 54.5238 25.9475 53.8147 25.6233 52.9466C25.5459 52.7392 25.533 52.4321 25.4284 52.2551L25.4002 52.2095C25.4593 50.7159 24.2118 48.8502 23.0698 48.0312C22.9115 47.9176 22.7041 47.7878 22.5848 47.6325L22.534 47.5641C22.1492 47.0275 22.6622 46.419 23.0939 46.1297Z" fill="#3D405B"/>
-            <path d="M20.1573 41.8025C19.8138 41.9461 19.2722 41.7773 19.0005 42.0076C18.9529 42.048 18.9888 42.0337 18.9218 42.0431L18.9412 41.9945C19.1326 41.5495 17.9418 39.0029 17.6761 38.6099C16.7425 37.2291 15.0282 36.3892 14.9928 34.5306C14.931 31.2836 19.5339 31.7694 18.468 25.8206C18.3437 25.127 18.1548 24.2904 18.3113 23.59C18.8361 21.241 21.1761 21.3165 22.7411 20.01C23.8807 19.0587 24.0251 18.4807 24.679 17.3514C24.9074 16.9571 24.787 16.3647 24.8417 15.916C25.0056 14.5728 25.9356 13.4341 27.3028 13.2504C28.437 13.098 29.5555 13.5417 30.6652 13.7134C32.7743 14.0398 34.6608 13.3387 36.3793 12.1395C37.393 11.4322 38.2189 10.4532 39.5175 10.2781C41.2071 10.0503 42.1395 11.008 43.4073 11.9729C44.7143 12.9676 46.2773 13.7578 47.9455 13.8331C49.2129 13.8903 50.4068 13.426 51.6411 13.2336C53.534 12.9385 55.0054 14.1662 55.2452 16.0854C55.2828 16.386 55.2651 16.6906 55.3502 16.9839C56.5376 21.0771 59.9852 20.4976 61.2794 22.5018C61.9574 23.5516 61.7194 24.6803 61.4961 25.8206C60.915 28.7896 61.7011 29.7843 63.6899 31.8777C65.5038 33.7872 65.4293 35.5444 63.4235 37.1532C63.2225 37.3143 62.9837 37.4685 62.809 37.6581C62.5356 37.955 62.3741 38.6292 61.8483 38.4331L61.8124 38.4192C61.6799 38.3694 61.5705 38.2886 61.4549 38.2086C59.559 36.4495 62.5894 36.1794 62.9912 34.2665C62.8674 33.9398 62.6243 33.7201 62.3835 33.4794L61.5429 32.6272C60.1146 31.0578 58.9104 28.7067 59.3136 26.5216L59.582 24.891L59.6801 23.9563C59.6778 23.4349 58.4594 23.0581 58.0649 22.8561C56.996 22.3089 55.9747 21.6538 55.1287 20.7967C54.1538 19.5161 53.3292 18.1369 53.0795 16.5135C53.0651 16.1716 53.121 15.7048 52.8476 15.4568C52.2972 14.9577 51.3221 15.3902 50.6942 15.5311C47.526 16.2422 44.9419 15.7758 42.3028 13.7488C40.2935 12.2055 40.3998 11.6475 38.2971 13.2669L37.4128 13.9161C34.9169 15.6513 32.1622 16.2629 29.189 15.5781L28.2528 15.3596C27.017 15.0743 26.9055 15.6297 26.8039 16.8349C26.587 17.7381 26.3921 18.5521 25.9554 19.3739C24.7929 21.1418 23.5277 22.2309 21.5959 23.0545C19.7931 23.8229 20.1542 23.5243 20.5029 25.651C20.6921 27.2616 20.7617 28.5152 20.2137 30.1195L20.0411 30.5726C19.571 31.4626 18.8306 32.2761 18.1135 32.9766C17.0954 33.9712 16.4491 34.3143 17.7366 35.596C17.8766 35.7353 18.0133 35.8865 18.1682 36.009C18.7963 36.6665 21.1669 40.2556 20.6754 41.1814L20.6517 41.2269C20.52 41.4715 20.3404 41.6069 20.1573 41.8025Z" fill="#3D405B"/>
-            <path d="M39.8161 22.5811C41.5358 22.4412 42.2086 24.1894 42.8019 25.4843L43.6048 27.0806C44.1975 28.1262 44.5817 28.2772 45.7665 28.4625L48.314 28.7949C48.7873 28.862 49.3151 28.9076 49.7568 29.1C50.947 29.6185 51.401 31.0745 50.7755 32.1929C50.4838 32.7143 49.9472 33.1406 49.514 33.5452C48.9735 34.05 46.8975 35.7434 46.9371 36.4864C46.9815 37.3217 47.1702 38.1654 47.3072 38.9897L47.5062 40.372C47.6381 41.5458 47.4458 42.7336 46.2456 43.3036C45.1947 43.8027 44.2267 43.1695 43.3238 42.6728L41.7925 41.8547C41.2874 41.5845 40.7852 41.3055 40.2431 41.1153C39.887 40.9982 39.2214 41.3693 38.9049 41.5271L36.8433 42.6175C36.3234 42.8993 35.7924 43.2831 35.2144 43.4238L34.9805 43.4733C33.8779 43.6174 32.7735 42.869 32.5284 41.7715C32.3058 40.7745 32.9386 38.2043 33.0106 36.9549C33.0475 36.3135 33.1508 36.2443 32.7499 35.7418C32.5068 35.4368 32.2236 35.1654 31.9468 34.8912L30.6485 33.6542C29.6422 32.7319 28.3924 31.6042 29.2006 30.1058C29.8381 28.9237 31.1564 28.869 32.3295 28.7168L34.4244 28.4295C35.8111 28.2141 35.9752 27.9308 36.589 26.6959L37.4213 24.9868C37.9779 23.8183 38.3407 22.7167 39.8161 22.5811Z" fill="#3D405B"/>
-            <path d="M48.2376 31.9077C47.6122 32.4454 47.0195 33.0096 46.4522 33.6089C45.0489 35.0911 44.8236 35.9518 45.0609 37.8882L45.4842 40.6567C45.7104 42.0999 45.1682 41.3809 44.2385 40.8639L42.257 39.8227C40.3573 38.8987 39.4146 39.0184 37.4834 39.9794L35.942 40.7789C35.4867 41.0252 35.0567 41.3069 34.5652 41.476C34.427 40.9205 34.5439 40.4399 34.6402 39.8882L34.8472 38.6472C35.2522 36.0593 35.3028 35.2302 33.2797 33.3415L31.6987 31.8829C31.4357 31.6438 31.1443 31.4127 30.9336 31.1239C31.1922 30.7922 32.5271 30.7598 32.913 30.7239C36.0791 30.4304 37.1292 30.1623 38.5736 27.2255L39.3473 25.6323C39.5375 25.2346 39.685 24.8005 40.0375 24.5166C40.4552 25.0463 40.6827 25.7402 40.9706 26.348C41.3094 27.0634 41.6795 27.7773 42.097 28.4501C43.343 30.4581 44.9661 30.3229 46.9643 30.7868L48.1138 30.9082C49.4632 31.0837 49.1186 31.2566 48.2376 31.9077Z" fill="#E07A5F"/>
-            <path d="M60.1236 42.0303C61.0775 42.0329 61.3236 42.6537 61.3041 43.4875C61.2708 44.9099 60.7943 46.1443 59.4117 46.7239C59.0768 46.8643 58.7224 46.9605 58.3894 47.1074C56.1393 48.0994 55.042 49.9498 54.7284 52.3851L58.5431 62.4713C59.0185 62.9876 59.3455 63.3557 59.3126 64.0953C59.2757 64.9221 58.5578 65.5328 57.8108 65.7536L57.7596 65.7692C57.5299 65.8359 57.2819 65.8251 57.0491 65.7802L53.5569 64.935C53.1244 64.8207 52.6324 64.7441 52.2251 64.5582C51.5721 65.3822 51.0423 66.3795 50.5434 67.3042C50.0106 68.2921 49.5948 69.5222 48.3186 69.6682C47.9437 69.7111 47.5071 69.7789 47.1437 69.6559L47.1008 69.6416C45.8766 69.2192 44.993 66.7204 44.4354 65.6632L40.701 58.7356C40.4835 58.3212 40.2783 57.8747 39.9846 57.5085C39.6487 57.8832 39.459 58.339 39.2305 58.7825L34.444 67.8436C33.7753 69.0933 33.0453 70.0251 31.5169 69.6845L31.47 69.6747C30.8557 69.5429 30.3868 68.9611 30.0668 68.4578L27.8117 64.4998C27.3494 64.6029 26.8925 64.7744 26.4339 64.9002L23.9846 65.5015C23.5022 65.6172 23.0156 65.7849 22.5143 65.7779C21.4404 65.7629 20.601 64.7709 20.747 63.7007L20.7511 63.6671C20.8126 63.2065 21.1163 62.8797 21.4738 62.615L21.5279 62.5756L23.6889 57.1281C24.316 55.5129 25.0735 53.9199 25.3992 52.2094L25.4275 52.255C25.532 52.4321 25.5449 52.7391 25.6223 52.9465C25.9465 53.8146 26.763 54.5237 27.6459 54.7811C28.5014 55.0305 29.968 55.0548 30.5068 54.1866C30.4891 54.0153 30.4353 53.7407 30.5013 53.5812L30.478 53.5394C30.6738 53.5463 30.8684 53.4996 31.0601 53.4648C31.6692 53.2615 31.7505 52.6646 32.2164 52.3659L32.3011 52.3146C32.4138 52.2624 32.6026 52.274 32.7268 52.2727L33.5744 52.2712C35.5186 52.2812 37.1864 53.1416 38.623 54.4032C39.2457 54.9501 39.8546 55.8336 40.628 55.1331L41.3684 54.4718C43.1289 53.0096 45.5051 51.9339 47.8379 52.1369C48.9114 52.2302 51.3238 53.091 52.2581 52.6416C52.6773 52.44 52.7696 51.4914 52.8648 51.0804C53.4163 48.6977 54.7837 46.7527 56.9395 45.5814C57.5116 45.2706 58.1157 45.0522 58.6986 44.768C59.91 44.1774 58.7462 42.6811 60.0971 42.0426L60.1236 42.0303Z" fill="#3D405B"/>
-            <path d="M54.7302 52.3857L58.5448 62.472C58.0583 62.6291 57.5772 63.2306 57.3009 63.6252L52.2984 62.4636C51.0695 62.175 50.8592 62.8378 50.2618 63.8048L48.7585 66.4541C48.4869 66.933 48.2062 67.4024 47.8711 67.8397C47.5971 67.4466 47.3979 67.0063 47.1847 66.5786L43.2605 59.0528C42.8272 58.2634 42.4616 57.4446 41.9492 56.7012C43.5804 55.0609 45.8005 53.9803 48.1573 54.2675C49.855 54.4745 51.6964 55.3924 53.3434 54.4695C54.1548 54.0148 54.4855 53.2386 54.7302 52.3857Z" fill="#E07A5F"/>
-            <path d="M21.5312 62.5761L23.6922 57.1287C24.3194 55.5135 25.0769 53.9204 25.4026 52.21L25.4308 52.2555C25.5353 52.4326 25.5482 52.7396 25.6257 52.9471C25.9498 53.8152 26.7664 54.5243 27.6493 54.7816C28.5048 55.031 29.9714 55.0554 30.5102 54.1871C30.4925 54.0158 30.4387 53.7412 30.5047 53.5818L30.4814 53.5399C30.6772 53.5468 30.8717 53.5002 31.0634 53.4654L31.0911 53.4714C31.527 53.5589 31.6936 53.379 31.8816 54.0769C31.9602 54.3681 32.2803 54.2658 32.5821 54.2685C34.1395 54.2822 35.7198 54.5768 36.9215 55.6507C37.3133 56.0009 37.6651 56.3848 38.0886 56.6988L33.0982 66.0373C32.7994 66.5866 32.5166 67.2063 32.1207 67.6903C31.7044 67.3568 31.4462 66.8148 31.1855 66.3602L29.4944 63.3691C28.7536 62.1432 28.7838 62.1727 27.5813 62.5114L22.5863 63.72C22.3707 63.2998 22.059 62.6439 21.5312 62.5761Z" fill="#E07A5F"/>
-        </svg>
-    </div>
-    <!-- End Render -->
-    {% render 'productcardsection', product : collections['featured-product'].products[0] %}
-</div>
-<!-- End -->
+{% javascript %}
+  const handleIntersection = (entries, observer) => {
+    if (!entries[0].isIntersecting) return;
 
-<!-- Recommended Products -->
+    observer.unobserve(productRecommendationsSection);
 
-        <div class="flex flex-col items-center my-8">
-            <div class="mx-auto mt-5 mb-[60px] max-w-[510px] text-center lg:mb-20">
-                <h2
-                  class="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px]"
-                >
-                    Recommended Products
-                </h2>
-            </div>
-            <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {% assign colname = product.collections[0].handle %}
-                    {% for product in collections[colname].products limit : 3 %}
-                        {% render 'productcardV3', product : product %}
-                    {% endfor %}
-                </div>
-    
-            </div>
-            <a href="{{ product.collections[0].url }}" class="m-2 inline-flex items-center justify-center rounded-xl border border-transparent bg-secondcolor px-5 py-3 font-medium text-white hover:bg-black"> View More </a>
-        </div>
-        
-<!-- End -->
+    const url = productRecommendationsSection.dataset.url;
 
+    fetch(url)
+      .then((response) => response.text())
+      .then((text) => {
+        const html = document.createElement('div');
+        html.innerHTML = text;
+        const recommendations = html.querySelector('.product-recommendations');
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+        if (recommendations && recommendations.innerHTML.trim().length) {
+          productRecommendationsSection.innerHTML = recommendations.innerHTML;
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  };
 
+  const productRecommendationsSection = document.querySelector('.product-recommendations');
+  const observer = new IntersectionObserver(handleIntersection, { rootMargin: '0px 0px 200px 0px' });
 
+  observer.observe(productRecommendationsSection);
+{% endjavascript %}
 
 <script>
-    const swiper = new Swiper('.swiper', {
-        direction : 'horizontal',
-        pagination : {
-            el: '.swiper-pagination',
-            
-        },
-        navigation : {
-            prevEl : '.swiper-button-prev',
-            nextEl : '.swiper-button-next'
-        }
-    })
+  class VariantSelector extends HTMLElement {
+    constructor() {
+      super();
+      this.addEventListener('change', this.onVariantChange);
+    }
 
+    onVariantChange() {
+      this.getSelectedOptions();
+      this.getSelectedVariant();
+
+      if (this.currentVariant) {
+        this.updateURL();
+        this.updateFormID();
+        this.updatePrice();
+      }
+    }
+
+    getSelectedOptions() {
+      const selectedRadioButtons = document.querySelectorAll('input[type="radio"]:checked');
+
+      // Use Array.from to convert the NodeList to an array and map the values
+      this.options = Array.from(selectedRadioButtons).map((radio) => radio.value);
+
+      // Log the array of selected values
+      console.log(this.options);
+    }
+
+    getVariantJSON() {
+      this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
+      return this.variantData;
+    }
+
+    getSelectedVariant() {
+      this.currentVariant = this.getVariantJSON().find((variant) => {
+        const findings = !variant.options
+          .map((option, index) => {
+            return this.options[index] === option;
+          })
+          .includes(false);
+
+        if (findings) return variant;
+      });
+
+      console.log(this.currentVariant);
+    }
+
+    updateURL() {
+      if (!this.currentVariant) return;
+      window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
+    }
+
+    updateFormID() {
+      const form_input = document.querySelector('#{{ p_form_id }}').querySelector('input[name="id"]');
+      form_input.value = this.currentVariant.id;
+    }
+
+    updatePrice() {
+      fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
+        .then((response) => response.text())
+        .then((responseText) => {
+          const id = `price-${this.dataset.section}`;
+          const html = new DOMParser().parseFromString(responseText, 'text/html');
+
+          const oldPrice = document.getElementById(id);
+          const newPrice = html.getElementById(id);
+
+          if (oldPrice && newPrice) {
+            oldPrice.innerHTML = newPrice.innerHTML;
+          }
+        });
+    }
+  }
+  customElements.define('variant-radios', VariantSelector);
 </script>
 
-{% endcomment %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      const msie = ua.indexOf('MSIE ');
+      const trident = ua.indexOf('Trident/');
+
+      return msie > 0 || trident > 0;
+    }
+
+    if (!isIE()) return;
+    const hiddenInput = document.querySelector('#{{ product_form_id }} input[name="id"]');
+    const noScriptInputWrapper = document.createElement('div');
+    const variantSwitcher = document.querySelector('variant-radios[data-section="{{ section.id }}"]');
+    noScriptInputWrapper.innerHTML = document.querySelector(
+      '.product-form__noscript-wrapper-{{ section.id }}'
+    ).textContent;
+    variantSwitcher.outerHTML = noScriptInputWrapper.outerHTML;
+
+    document.querySelector('#Variants-{{ section.id }}').addEventListener('change', function (event) {
+      hiddenInput.value = event.currentTarget.value;
+    });
+  });
+</script>

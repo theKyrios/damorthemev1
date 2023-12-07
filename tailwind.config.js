@@ -9,16 +9,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+
       height : {
-        '94' : '22rem',
-        '200' : '54rem'
+        "screen-90" : "90vh"
       },
-      colors: {
-        'maincolor' : '#5C3A3A',
-        'secondcolor' : '#3d405b',
-        'thirdcolor' : '#a22b34'
-  
+      width : {
+        "screen-1/2" : "40vw"
       }
+
+     
     },
   },
   plugins: [],
