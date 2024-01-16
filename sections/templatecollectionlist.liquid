@@ -1,55 +1,34 @@
-<div class="py-5 px-5">
-    <h2 class="block font-sans text-4xl font-semibold leading-[1.3] tracking-normal text-inherit antialiased ">
-        All Collections
-      </h2>
-      <div className="w-1/2 text-left">
-        <nav aria-label="breadcrumb" class="w-max">
-          <ol class="flex w-full flex-wrap items-center rounded-md bg-blue-gray-50 bg-opacity-60 py-2 ">
-            <li class="flex cursor-pointer items-center font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased transition-colors duration-300 hover:text-maincolor">
-              <a class="opacity-60" href="{{ shop.url }}">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
-                </svg>
-              </a>
-              <span class="pointer-events-none mx-2 select-none font-sans text-sm font-normal leading-normal text-blue-gray-500 antialiased">
-                /
-              </span>
-            </li>
-            <li class="flex cursor-pointer items-center font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased transition-colors duration-300 hover:text-maincolor">
-              <a class="opacity-60" href="{{ routes.collections_url }}">
-                <span>All Collections</span>
-              </a>
-            </li>
-          </ol>
-        </nav>
-        <div class= "max-w-screen md:max-w-6xl mx-auto" >
-            <div class="grid grid-cols-1 mx-auto md:grid-cols-3 gap-2">
-                {% for collection in collections %}
-                    {% if collection.all_products_count > 0 %}
-                        <main class="my-10 w-full md:w-[400px] h-[400px] flex items-center justify-center flex-wrap">
-                            <!--  card -->
-                            <a href="{{ collection.url }}">
-                            <div class="bg-white w-full md:w-full h-[400px] shadow-md rounded my-3 md:m-3">
-                              <div class="h-[300px] w-full">
-                                <img class="object-cover rounded-t transition duration-1000 ease-in-out hover:scale-105 transform" src="{{ collection.featured_image | image_url }}" alt="piña">
-                              </div>
-                              <div class="w-full h-1/4 p-3">
-                                <a href="#" class=" hover:text-maincolor text-gray-700">
-                                  <span class="text-lg font-semibold uppercase tracking-wide ">{{ collection.title }}</span>
-                                </a>
-                                <p class="text-gray-600 text-sm leading-5 mt-1">Products : {{ collection.all_products_count }}</p>
-                              </div>
-                            </div>
-                        </a>
-                          </main>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
+<section class="collectionPage">
+ <div class="collection_title_wrapper">
+    <div class="w-screen grid grid-cols-1 md:grid-cols-3 divide-x-[1px] divide-y-[1px] md:divide-y-0 divide-gray-500">
+      <div class="wrapper_title col-span-2 p-4">
+        <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-light">Collections</h4>
+      </div>
+      <div class="filters_wrapper flex p-4">
+        
+      </div>
+    </div>
+  </div>
+  <div class="collectionItems_wrapper">
+    <section
+      id="ps01r"
+      class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-3 border-y-[1px] border-gray-500"
+    >
+      {% for product in collection.products %}
+      <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+        <a href="{{ collection.url }}">
+    <div class="p-1 h-fit w-full p-5">
+      <img
+        class="h-auto w-full flex justify-center mx-auto"
+        src="{{ collection.featured_image | image_url }}"
+      >
+      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collection.title | upcase }}</h4>
+      <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
+    </div>
+  </a>
+      </div>
+    {% endfor %}
+    </section>
+  </div>
+</section>
 
-</div>
