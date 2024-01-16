@@ -76,84 +76,84 @@
   class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4 divide-x-[1px] divide-y-[1px] divide-gray-500 border border-b-0 border-gray-500"
 >
   <!-- Collection Card -->
-  <a href="/collections/damor-exclusives">
+   <a href="{{ collections['boxed-collection'].url }}">
     <div class="p-1 h-fit w-full p-5">
       <img
         class="h-auto w-full flex justify-center mx-auto"
-        src="https://ik.imagekit.io/zemurqxma/Damor/pexels-photo-2118483.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700131363683"
+        src="{{ collections['boxed-collection'].featured_image | image_url }}"
       >
-      <h4 class="text-[0.9rem] font-extralight pt-1">DAMOR EXCLUSIVES</h4>
+      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['boxed-collection'].title | upcase }}</h4>
       <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
     </div>
   </a>
   <!-- Collection Card end -->
-  <a href="/collections/knitted-threads">
+   <a href="{{ collections['lost-in-thoughts'].url }}">
     <div class="p-1 h-fit w-full p-5">
       <img
         class="h-auto w-full flex justify-center mx-auto"
-        src="https://ik.imagekit.io/zemurqxma/Damor/pexels-photo-13094146.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700130214590"
+        src="{{ collections['lost-in-thoughts'].featured_image | image_url }}"
       >
-      <h4 class="text-[0.9rem] font-extralight pt-1">KNITTED THREADS</h4>
+      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['lost-in-thoughts'].title | upcase }} COLLECTION</h4>
       <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
     </div>
   </a>
-  <a href="/collections/woolen-drops">
+   <a href="{{ collections['ninja-clan'].url }}">
     <div class="p-1 h-fit w-full p-5">
       <img
         class="h-auto w-full flex justify-center mx-auto"
-        src="https://ik.imagekit.io/zemurqxma/Damor/free-photo-of-close-up-shot-of-a-blonde-man-in-white-knitted-sweater.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700130235093"
+        src="{{ collections['ninja-clan'].featured_image | image_url }}"
       >
-      <h4 class="text-[0.9rem] font-extralight pt-1">WOOLEN DROPS</h4>
+      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['ninja-clan'].title | upcase }} COLLECTION</h4>
       <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
     </div>
   </a>
-  <a href="/collections/linen-lots">
+   <a href="{{ collections['regular-comforts'].url }}">
     <div class="p-1 h-fit w-full p-5">
       <img
         class="h-auto w-full flex justify-center mx-auto"
-        src="https://ik.imagekit.io/zemurqxma/Damor/pexels-photo-8967723.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700130259427"
+        src="{{ collections['regular-comforts'].featured_image | image_url }}"
       >
-      <h4 class="text-[0.9rem] font-extralight pt-1">LINEN LOTS</h4>
+      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['regular-comforts'].title | upcase }}</h4>
       <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
     </div>
   </a>
-  <a href="/collections/oversized">
+   <a href="{{ collections['premiums-bucket'].url }}">
     <div class="p-1 h-fit w-full p-5">
       <img
         class="h-auto w-full flex justify-center mx-auto"
-        src="https://ik.imagekit.io/zemurqxma/Damor/pexels-photo-9969430.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700130160274"
+        src="{{ collections['premiums-bucket'].featured_image | image_url }}"
       >
-      <h4 class="text-[0.9rem] font-extralight pt-1">OVERSIZED</h4>
+      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['premiums-bucket'].title | upcase }}</h4>
       <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
     </div>
   </a>
-  <a href="/collections/moving-to-casuals">
+   <a href="{{ collections['movie-feast'].url }}">
     <div class="p-1 h-fit w-full p-5">
       <img
         class="h-auto w-full flex justify-center mx-auto"
-        src="https://ik.imagekit.io/zemurqxma/Damor/pexels-photo-11051300.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700130296956"
+        src="{{ collections['movie-feast'].featured_image | image_url }}"
       >
-      <h4 class="text-[0.9rem] font-extralight pt-1">MOVING TO CASUALS</h4>
+      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['movie-feast'].title | upcase }}</h4>
       <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
     </div>
   </a>
-  <a href="/collections/checkers">
+   <a href="{{ collections['potter-head'].url }}">
     <div class="p-1 h-fit w-full p-5">
       <img
         class="h-auto w-full flex justify-center mx-auto"
-        src="https://ik.imagekit.io/zemurqxma/Damor/pexels-photo-428328.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700131343277"
+        src="{{ collections['potter-head'].featured_image | image_url }}"
       >
-      <h4 class="text-[0.9rem] font-extralight pt-1">CHECKERS</h4>
+      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['potter-head'].title | upcase }}</h4>
       <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
     </div>
   </a>
-  <a href="/collections/norm-tees">
+   <a href="{{ collections['desi-tees-regular-fit'].url }}">
     <div class="p-1 h-fit w-full p-5">
       <img
         class="h-auto w-full flex justify-center mx-auto"
-        src="https://ik.imagekit.io/zemurqxma/Damor/pexels-photo-9716149.jpeg_auto=compress&cs=tinysrgb&w=800?updatedAt=1700131658247"
+        src="{{ collections['desi-tees-regular-fit'].featured_image | image_url }}"
       >
-      <h4 class="text-[0.9rem] font-extralight pt-1">NORM TEES</h4>
+      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['desi-tees-regular-fit'].title | upcase }}</h4>
       <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
     </div>
   </a>
