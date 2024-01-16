@@ -189,7 +189,7 @@
         <div class="flex">
           <div class="price-wrapper">
             <div class="price-slash"></div>
-          <div class="w-fit h-fit"><h6 class="price text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight"> INR 2400</h6></div>
+          <div class="w-fit h-fit"><h6 class="price text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight"> INR {{ product.compare_at_price | money_without_currency }}</h6></div>
      
           </div>
         <div id="price-{{ section.id }}" class="ml-2">
