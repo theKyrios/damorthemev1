@@ -88,26 +88,23 @@
       <div class="flex mr-2 flex-grow justify-end">
         <div class="navicons flex items-center">
           <a href="#" class="search_trigger px-2 sm:flex h-[30px] ">
-            <div class="flex my-auto h-[25px] w-[100px] border-b-[1px] border-black items-center">
-              <div class="w-[20px] h-[20px]">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-[20px] h-[20px] my-auto"
-                >
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                </svg>
-              </div>
-              <h6 class="pl-2 text-gray-400 flex-grow font-light">search</h6>
+            <div class="w-[20px] h-[20px]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-[20px] h-[20px] my-auto"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>
             </div>
           </a>
 
           {% if customer %}
             <a href="{{ routes.account_url }}">
-              <div clas="">
+              <div clas="hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -122,7 +119,7 @@
             </a>
           {% else %}
             <a href="{{ routes.account_login_url }}">
-              <div clas="">
+              <div clas="hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
