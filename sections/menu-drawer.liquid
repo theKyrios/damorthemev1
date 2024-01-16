@@ -86,9 +86,11 @@
     
         <div class="drawer__content1 text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight overflow-y-auto">
             <div class="md:flex ml-4 my-auto">
-                <a href="{{ shop.url }}" class="pr-4"><h5 class="text-sm font-light">HOME</h5></a>
-                <a href="/collections/new-arrivals" class="pr-4"><h5 class="text-sm font-light">NEW ARRIVALS</h5></a>
-                <a href="/collections/40-off" class="pr-4"><h5 class="text-sm text-red-600 font-light">UPTO 40%</h5></a>
+               {% for link in linklists['main-menu'].links %}
+          <a href="{{ link.url }}" class="pr-4">
+            <h5 class="text-sm font-light">{{ link.title | upcase }}</h5>
+          </a>
+        {% endfor %}
               </div>
         </div>
         <div class="cart-bottom border-t-[1px] w-full bg-[#fcfcfc] border-gray-500 mt-auto fixed bottom-0 p-4 text-[0.6rem] sm:text-[0.8rem] md:text-[1rem]">
