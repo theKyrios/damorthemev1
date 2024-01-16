@@ -21,7 +21,7 @@
   
     <div class="w-screen md:w-[50vw] h-[90vh] flex justify-center items-center px-8">
   <div class="w-full">
-      <h5 class=""> Create Account </h5>
+      <h5 class="text-[1rem]"> Create Account </h5>
       {% form 'create_customer' %}
         {% if form.errors %}
             <p class=""> {{ form_errors | default_errors }}</p>
