@@ -21,6 +21,21 @@
     font-family: 'Kanit', sans-serif;
   }
 
+  .price-wrapper{
+    position: relative; 
+    display: inline-block;
+  }
+  
+  .price-slash{
+    position: relative;
+    width: 100%;
+    height: 0;
+    border-top: 2px solid red;
+    transform: rotate(-16deg);
+    top: 10px;
+  }
+  
+
   .product-form__error-message-wrapper:not([hidden]) {
     display: flex;
     align-items: flex-start;
@@ -171,11 +186,26 @@
         <h4 class="text-[0.9rem] sm:text-[1rem] md:text-[1.5rem] font-extralight">
           {{ product.title | upcase }}
         </h4>
-        <div id="price-{{ section.id }}">
-          <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight">
+        <div class="flex">
+          <div class="price-wrapper">
+            <div class="price-slash"></div>
+          <div class="w-fit h-fit"><h6 class="price text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight"> INR 2400</h6></div>
+     
+          </div>
+        <div id="price-{{ section.id }}" class="ml-2">
+          <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight ">
             INR {{ product.selected_or_first_available_variant.price | money_without_currency }}
           </h4>
         </div>
+      </div>
+      <div class="">
+        <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit px-2 py-1">
+          Sale Price : <b> INR 989 </b>
+        </h4>
+        <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
+          &#8226; Celebrations Sale - Use Code "GET50"
+        </h6>
+      </div>
         <div class="tabssec min-h-[70px] sm:min-h-[100px] mt-4 mb-2 sm:mt-10 sm:mb-14 w-full sm:w-[350px] mb-4 text-[0.5rem] sm:text-[0.7rem] md:text-[0.9rem] font-extralight text-black">
           {% render 'info-tab', product %}
         </div>
@@ -220,10 +250,13 @@
           <a href="{{ product.url }}">
             <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
             <div class="flex">
-              <p class="flex flex-grow text-[0.7rem] font-extralight">DAMOR</p>
+              <p class="flex flex-grow text-[0.7rem] font-extralight">JUGAAD</p>
               <p class="text-[0.7rem] font-extralight">INR {{ product.price | money_without_currency }}</p>
             </div>
             <h4 class="text-[0.9rem] font-extralight pt-1">{{ product.title | upcase }}</h4>
+            <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit my-2 px-2 py-1">
+              Sale Price : <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}} </b>
+            </h4>
           </a>
         </div>
         {% comment %}
