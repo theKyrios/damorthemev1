@@ -2,7 +2,7 @@
     <div class="w-screen md:w-[50vw] h-[90vh] md:border-r-[1px] border-b-[1px] border-gray-500 flex flex-col justify-center items-center px-8">
      
      <div class="w-full">
-      <h5 class=""> Login </h5>
+      <h5 class="text-[1rem]"> Login </h5>
       {% form 'customer_login' %}
         {% if form.errors %}
             <p class=""> {{ form_errors | default_errors }}</p>
