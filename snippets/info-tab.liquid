@@ -1,28 +1,64 @@
-<div x-data="{des:true, det:false, siz:false, shi:false}">
-<div class="flex mb-2">
-    <a x-on:click="des = true, det = false, siz = false, shi = false" href="#" class="inline-block mr-4 focus:border-b-[1px] focus:border-gray-500 font-light">Desription</a>
-    <a x-on:click="des = false, det = true, siz = false, shi = false" href="#" class="inline-block mr-4 focus:border-b-[1px] focus:border-gray-500 font-light">Details</a>
-    <a x-on:click="des = false, det = false, siz = true, shi = false" href="#" class="inline-block mr-4 focus:border-b-[1px] focus:border-gray-500 font-light">Sizing</a>
-    <a x-on:click="des = false, det = false, siz = false, shi = true" href="#" class="inline-block mr-4 focus:border-b-[1px] focus:border-gray-500 font-light">Shipping</a>
+
+
+<style>
+    .tabs_header .tab_btn.active {
+        border-style : solid;
+        border-bottom-width : 1px;
+        border-color : black;
+    }
+</style>
+
+
+
+<div class="flex mb-2 tabs_header">
+    <a class="tab_btn inline-block mr-4 cursor-pointer font-light active">Desription</a>
+    <a class="tab_btn inline-block mr-4 cursor-pointer font-light">Details</a>
+    <a class="tab_btn inline-block mr-4 cursor-pointer  font-light">Sizing</a>
+    <a class="tab_btn inline-block mr-4 cursor-pointer  font-light">Shipping</a>
 </div>
-<div>
-    <div x-show="des" class="decriptiondata font-thin">
+
+
+<div class="tab_content_wrapper w-fit">
+    <div class="tab_content font-thin">
         <p>The coat's lamb leather boasts rich texture with a shaggy finish. Designed to feel soft, dreamy and sophisticated.</P>
     </div>
-    <div x-show="det" class="detailsdata font-thin">
+    <div class="tab_content font-thin hidden">
         <p>ID: 147024</p>
 
         <p>Shell 100% Shearling.</p>
     </div>
-    <div x-show="siz" class="Sizingdata font-thin">
+    <div class="tab_content font-thin hidden">
        <p> This piece fits true to size. We recommend you get your regular size. </p>
 
         <p>Model is 178 cm and is wearing a size 34.</p>
     </div>
-    <div x-show="shi" class="Shippingdata font-thin">
+    <div class="tab_content font-thin hidden">
         <p>Complimentary shipping on orders over 650 USD. For orders outside of the EU, duties will be calculated at checkout.
 
         For more information, see shipping & returns</p>
     </div>
 </div>
-</div>
+
+
+
+
+
+<script>
+    const tabs = document.querySelectorAll('.tab_btn');
+    const all_content = document.querySelectorAll('.tab_content');
+
+    tabs.forEach((tab,index) => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            tab.classList.add('active');
+
+            all_content.forEach(content => {
+                content.classList.add('hidden')
+            });
+            all_content[index].classList.remove('hidden')
+        })
+    })
+</script>
+
