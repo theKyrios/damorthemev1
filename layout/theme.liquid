@@ -84,9 +84,11 @@
         </a>
       </div>
       <div class="md:flex flex-grow ml-4 my-auto hidden">
-        <a href="{{ shop.url }}" class="pr-4"><h5 class="text-sm font-light">HOME</h5></a>
-        <a href="/collections/new-arrivals" class="pr-4"><h5 class="text-sm font-light">NEW ARRIVALS</h5></a>
-        <a href="/collections/40-off" class="pr-4"><h5 class="text-sm text-red-600 font-light">UPTO 40%</h5></a>
+        {% for link in linklists['main-menu'].links %}
+          <a href="{{ link.url }}" class="pr-4">
+            <h5 class="text-sm font-light">{{ link.title | upcase }}</h5>
+          </a>
+        {% endfor %}
       </div>
       <div class="flex mr-2 flex-grow justify-end">
         <div class="navicons flex items-center">
