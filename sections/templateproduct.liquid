@@ -200,7 +200,7 @@
       </div>
       <div class="">
         <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit px-2 py-1">
-          Sale Price : <b> INR 989 </b>
+          Sale Price : <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}} </b>
         </h4>
         <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
           &#8226; Celebrations Sale - Use Code "GET50"
