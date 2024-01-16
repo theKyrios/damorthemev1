@@ -14,7 +14,7 @@
       id="ps01r"
       class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-3 border-y-[1px] border-gray-500"
     >
-      
+      {% comment %}  collection card {%  endcomment %}
       <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
         <a href="{{ collections['thegogh'].url }}">
     <div class="p-1 h-fit w-full p-5">
@@ -23,6 +23,32 @@
         src="{{ collections['thegogh'].featured_image | image_url }}"
       >
       <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['thegogh'].title | upcase }}</h4>
+      <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
+    </div>
+  </a>
+      </div>
+      {% comment %} collection card {% endcomment %}
+      <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+        <a href="{{ collections['boxed'].url }}">
+    <div class="p-1 h-fit w-full p-5">
+      <img
+        class="h-auto w-full flex justify-center mx-auto"
+        src="{{ collections['boxed'].featured_image | image_url }}"
+      >
+      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['boxed'].title | upcase }}</h4>
+      <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
+    </div>
+  </a>
+      </div>
+      {% comment %}  collection card {%  endcomment %}
+      <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+        <a href="{{ collections['ninja-clan'].url }}">
+    <div class="p-1 h-fit w-full p-5">
+      <img
+        class="h-auto w-full flex justify-center mx-auto"
+        src="{{ collections['ninja-clan'].featured_image | image_url }}"
+      >
+      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['ninja-clan'].title | upcase }}</h4>
       <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
     </div>
   </a>
