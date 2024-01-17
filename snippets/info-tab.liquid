@@ -8,7 +8,9 @@
 
 <div class="flex mb-2 tabs_header">
   <a class="tab_btn inline-block mr-4 cursor-pointer font-light active">Desription</a>
-  <a class="tab_btn inline-block mr-4 cursor-pointer font-light">Quality</a>
+  <a class="tab_btn inline-block mr-4 cursor-pointer font-light {% if product.title contains "Regular Fit" %} hidden {% endif %}"
+    >Quality</a
+  >
   <a class="tab_btn inline-block mr-4 cursor-pointer  font-light">7 Days Return/Exchange</a>
 </div>
 
