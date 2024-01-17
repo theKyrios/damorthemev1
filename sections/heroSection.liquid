@@ -35,7 +35,9 @@
 >
   <div id="tc02p" class="p-4 w-full h-fit">
     <h4 id="he01c" class="mb-5">New In</h4>
-    <a id="be02c" class="border border-gray-400 w-fit h-fit px-4 py-2 "><label class="">View All</label></a>
+    <a id="be02c" class="border border-gray-400 w-fit h-fit px-4 py-2 " href="{{ collections["thegogh"].url }}"
+      ><label class="">View All</label></a
+    >
   </div>
   {% comment %}
     <div class="p-1 h-fit w-full">
@@ -57,7 +59,8 @@
         </div>
         <h4 class="text-[0.9rem] font-extralight pt-1">{{ product.title | upcase }}</h4>
         <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit my-2 px-2 py-1">
-          Sale Price : <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}} </b>
+          Sale Price :
+          <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}}</b>
         </h4>
       </a>
     </div>
@@ -76,7 +79,7 @@
   class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4 divide-x-[1px] divide-y-[1px] divide-gray-500 border border-b-0 border-gray-500"
 >
   <!-- Collection Card -->
-   <a href="{{ collections['boxed-collection'].url }}">
+  <a href="{{ collections['boxed-collection'].url }}">
     <div class="p-1 h-fit w-full p-5">
       <img
         class="h-auto w-full flex justify-center mx-auto"
@@ -87,17 +90,19 @@
     </div>
   </a>
   <!-- Collection Card end -->
-   <a href="{{ collections['lost-in-thoughts'].url }}">
+  <a href="{{ collections['lost-in-thoughts'].url }}">
     <div class="p-1 h-fit w-full p-5">
       <img
         class="h-auto w-full flex justify-center mx-auto"
         src="{{ collections['lost-in-thoughts'].featured_image | image_url }}"
       >
-      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['lost-in-thoughts'].title | upcase }} COLLECTION</h4>
+      <h4 class="text-[0.9rem] font-extralight pt-1">
+        {{ collections['lost-in-thoughts'].title | upcase }} COLLECTION
+      </h4>
       <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
     </div>
   </a>
-   <a href="{{ collections['ninja-clan'].url }}">
+  <a href="{{ collections['ninja-clan'].url }}">
     <div class="p-1 h-fit w-full p-5">
       <img
         class="h-auto w-full flex justify-center mx-auto"
@@ -107,7 +112,7 @@
       <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
     </div>
   </a>
-   <a href="{{ collections['regular-comforts'].url }}">
+  <a href="{{ collections['regular-comforts'].url }}">
     <div class="p-1 h-fit w-full p-5">
       <img
         class="h-auto w-full flex justify-center mx-auto"
@@ -117,7 +122,7 @@
       <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
     </div>
   </a>
-   <a href="{{ collections['premiums-bucket'].url }}">
+  <a href="{{ collections['premiums-bucket'].url }}">
     <div class="p-1 h-fit w-full p-5">
       <img
         class="h-auto w-full flex justify-center mx-auto"
@@ -127,7 +132,7 @@
       <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
     </div>
   </a>
-   <a href="{{ collections['movie-feast'].url }}">
+  <a href="{{ collections['movie-feast'].url }}">
     <div class="p-1 h-fit w-full p-5">
       <img
         class="h-auto w-full flex justify-center mx-auto"
@@ -137,7 +142,7 @@
       <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
     </div>
   </a>
-   <a href="{{ collections['potter-head'].url }}">
+  <a href="{{ collections['potter-head'].url }}">
     <div class="p-1 h-fit w-full p-5">
       <img
         class="h-auto w-full flex justify-center mx-auto"
@@ -147,7 +152,7 @@
       <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
     </div>
   </a>
-   <a href="{{ collections['desi-tees-regular-fit'].url }}">
+  <a href="{{ collections['desi-tees-regular-fit'].url }}">
     <div class="p-1 h-fit w-full p-5">
       <img
         class="h-auto w-full flex justify-center mx-auto"
@@ -175,11 +180,12 @@
       <div class="p-4">
         <h4 class="text-[1.4rem] font-light">Our Story :</h4>
         <h6 class="mt-4 text-[0.9rem] font-extralight md:w-[50%]">
-         Born from a passion for emotional expression, our tees speak volumes without uttering a word. Committed to quality comfort and trendsetting style, we're the playful pioneers of wearable emotions.
+          Born from a passion for emotional expression, our tees speak volumes without uttering a word. Committed to
+          quality comfort and trendsetting style, we're the playful pioneers of wearable emotions.
 
- Join the Jugaad family and let your wardrobe tell stories that resonate with your heart. 
+          Join the Jugaad family and let your wardrobe tell stories that resonate with your heart.
 
-Life's too short for bland attire—embrace the joy of self-expression with us!
+          Life's too short for bland attire—embrace the joy of self-expression with us!
         </h6>
         <div class="mt-6">
           <a href="/pages/about-us" class="">
