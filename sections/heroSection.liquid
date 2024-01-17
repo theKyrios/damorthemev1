@@ -144,26 +144,28 @@
     <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">LAUNCHING SOON</h4>
   </div>
 
-  <a href="{{ collections['premiums-bucket'].url }}">
-    <div class="p-1 h-fit w-full p-5">
-      <img
-        class="h-auto w-full flex justify-center mx-auto"
-        src="{{ collections['premiums-bucket'].featured_image | image_url }}"
-      >
-      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['premiums-bucket'].title | upcase }}</h4>
-      <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
-    </div>
-  </a>
-  <a href="{{ collections['movie-feast'].url }}">
-    <div class="p-1 h-fit w-full p-5">
-      <img
-        class="h-auto w-full flex justify-center mx-auto"
-        src="{{ collections['movie-feast'].featured_image | image_url }}"
-      >
-      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['movie-feast'].title | upcase }}</h4>
-      <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
-    </div>
-  </a>
+  {% comment %}
+    <a href="{{ collections['premiums-bucket'].url }}">
+      <div class="p-1 h-fit w-full p-5">
+        <img
+          class="h-auto w-full flex justify-center mx-auto"
+          src="{{ collections['premiums-bucket'].featured_image | image_url }}"
+        >
+        <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['premiums-bucket'].title | upcase }}</h4>
+        <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
+      </div>
+    </a>
+    <a href="{{ collections['movie-feast'].url }}">
+      <div class="p-1 h-fit w-full p-5">
+        <img
+          class="h-auto w-full flex justify-center mx-auto"
+          src="{{ collections['movie-feast'].featured_image | image_url }}"
+        >
+        <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['movie-feast'].title | upcase }}</h4>
+        <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
+      </div>
+    </a>
+  {% endcomment %}
 </section>
 
 <!-- collections gird end -->
