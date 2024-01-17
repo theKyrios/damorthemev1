@@ -22,10 +22,10 @@
   }
 
   .price-wrapper{
-    position: relative; 
+    position: relative;
     display: inline-block;
   }
-  
+
   .price-slash{
     position: relative;
     width: 100%;
@@ -34,7 +34,7 @@
     transform: rotate(-16deg);
     top: 10px;
   }
-  
+
 
   .product-form__error-message-wrapper:not([hidden]) {
     display: flex;
@@ -167,45 +167,49 @@
 {% form 'product', product %}
   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
-  <section class="w-screen sm:h-screen bg-[#fcfcfc]">
-    <div class="grid grid-cols-1 sm:grid-cols-2 w-screen sm:h-screen overflow-y-auto ">
-      <div class="hidden sm:flex sm:flex-col w-full sm:h-screen">
+  <section class="w-screen lg:h-screen bg-[#fcfcfc]">
+    <div class="grid grid-cols-1 lg:grid-cols-2 w-screen lg:h-screen overflow-y-auto ">
+      <div class="hidden lg:flex lg:flex-col w-full lg:h-screen">
         {% for media in product.media %}
           {% render 'productmedia', media: media %}
         {% endfor %}
       </div>
       <!-- Mobile Version Media Rendering -->
-      <div id="custom-scrollbar" class="flex sm:hidden w-full overflow-x-scroll">
+      <div id="custom-scrollbar" class="flex lg:hidden w-full overflow-x-scroll">
         {% for media in product.media %}
           {% render 'productmedia', media: media %}
         {% endfor %}
       </div>
       <!-- Mobile Version End -->
 
-      <div class="overflow-y-auto sm:my-auto mt-3 ml-4 mr-4 mb-2 sm:mx-auto sm:sticky sm:top-[25vh]">
+      <div class="overflow-y-auto lg:my-auto mt-3 ml-4 mr-4 mb-2 lg:mx-auto lg:sticky lg:top-[25vh]">
         <h4 class="text-[0.9rem] sm:text-[1rem] md:text-[1.5rem] font-extralight">
           {{ product.title | upcase }}
         </h4>
         <div class="flex">
           <div class="price-wrapper">
             <div class="price-slash"></div>
-          <div class="w-fit h-fit"><h6 class="price text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight"> INR {{ product.compare_at_price | money_without_currency }}</h6></div>
-     
+            <div class="w-fit h-fit">
+              <h6 class="price text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight">
+                INR {{ product.compare_at_price | money_without_currency }}
+              </h6>
+            </div>
           </div>
-        <div id="price-{{ section.id }}" class="ml-2">
-          <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight ">
-            INR {{ product.selected_or_first_available_variant.price | money_without_currency }}
-          </h4>
+          <div id="price-{{ section.id }}" class="ml-2">
+            <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight ">
+              INR {{ product.selected_or_first_available_variant.price | money_without_currency }}
+            </h4>
+          </div>
         </div>
-      </div>
-      <div class="">
-        <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit px-2 py-1">
-          Sale Price : <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}} </b>
-        </h4>
-        <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
-          &#8226; Celebrations Sale - Use Code "GET50"
-        </h6>
-      </div>
+        <div class="">
+          <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit px-2 py-1">
+            Sale Price :
+            <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}}</b>
+          </h4>
+          <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
+            &#8226; Celebrations Sale - Use Code "GET50"
+          </h6>
+        </div>
         <div class="tabssec min-h-[70px] sm:min-h-[100px] mt-4 mb-20 sm:mt-10 sm:mb-14 w-full sm:w-[350px] mb-4 text-[0.5rem] sm:text-[0.7rem] md:text-[0.9rem] font-extralight text-black">
           {% render 'info-tab', product: product %}
         </div>
@@ -255,7 +259,8 @@
             </div>
             <h4 class="text-[0.9rem] font-extralight pt-1">{{ product.title | upcase }}</h4>
             <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit my-2 px-2 py-1">
-              Sale Price : <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}} </b>
+              Sale Price :
+              <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}}</b>
             </h4>
           </a>
         </div>
