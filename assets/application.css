@@ -1723,6 +1723,10 @@ video {
   padding-bottom: 1.5rem;
 }
 
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
 .pb-12 {
   padding-bottom: 3rem;
 }
@@ -1781,10 +1785,6 @@ video {
 
 .pt-4 {
   padding-top: 1rem;
-}
-
-.pb-10 {
-  padding-bottom: 2.5rem;
 }
 
 .text-left {
@@ -2528,6 +2528,10 @@ video {
     line-height: 1rem;
   }
 
+  .sm\:text-\[1\.2rem\] {
+    font-size: 1.2rem;
+  }
+
   .sm\:shadow-lg {
     --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
@@ -2753,6 +2757,10 @@ video {
     line-height: 1.75rem;
   }
 
+  .md\:text-\[1\.4rem\] {
+    font-size: 1.4rem;
+  }
+
   .md\:transition-colors {
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -2838,10 +2846,6 @@ video {
 @media (min-width: 1024px) {
   .lg\:sticky {
     position: sticky;
-  }
-
-  .lg\:top-\[25vh\] {
-    top: 25vh;
   }
 
   .lg\:top-\[20vh\] {
