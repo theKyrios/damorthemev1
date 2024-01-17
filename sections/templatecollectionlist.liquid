@@ -1,12 +1,10 @@
 <section class="collectionPage">
- <div class="collection_title_wrapper">
+  <div class="collection_title_wrapper">
     <div class="w-screen grid grid-cols-1 md:grid-cols-3 divide-x-[1px] divide-y-[1px] md:divide-y-0 divide-gray-500">
       <div class="wrapper_title col-span-2 p-4">
-        <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-light">Collections</h4>
+        <h4 class="text-[0.8rem] sm:text-[1rem] md:text-[1.2rem] font-light">Collections</h4>
       </div>
-      <div class="filters_wrapper flex p-4">
-        
-      </div>
+      <div class="filters_wrapper flex p-4"></div>
     </div>
   </div>
   <div class="collectionItems_wrapper">
@@ -14,60 +12,58 @@
       id="ps01r"
       class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-3 border-y-[1px] border-gray-500"
     >
-      {% comment %}  collection card {%  endcomment %}
+      {% comment %}  collection card {% endcomment %}
       <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
         <a href="{{ collections['thegogh'].url }}">
-    <div class="p-1 h-fit w-full p-5">
-      <img
-        class="h-auto w-full flex justify-center mx-auto"
-        src="{{ collections['thegogh'].featured_image | image_url }}"
-      >
-      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['thegogh'].title | upcase }}</h4>
-      <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
-    </div>
-  </a>
+          <div class="p-1 h-fit w-full p-5">
+            <img
+              class="h-auto w-full flex justify-center mx-auto"
+              src="{{ collections['thegogh'].featured_image | image_url }}"
+            >
+            <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections.thegogh.title | upcase }}</h4>
+            <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
+          </div>
+        </a>
       </div>
       {% comment %} collection card {% endcomment %}
       <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
         <a href="{{ collections['boxed-collection'].url }}">
-    <div class="p-1 h-fit w-full p-5">
-      <img
-        class="h-auto w-full flex justify-center mx-auto"
-        src="{{ collections['boxed-collection'].featured_image | image_url }}"
-      >
-      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['boxed-collection'].title | upcase }}</h4>
-      <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
-    </div>
-  </a>
+          <div class="p-1 h-fit w-full p-5">
+            <img
+              class="h-auto w-full flex justify-center mx-auto"
+              src="{{ collections['boxed-collection'].featured_image | image_url }}"
+            >
+            <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['boxed-collection'].title | upcase }}</h4>
+            <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
+          </div>
+        </a>
       </div>
       {% comment %}  collection card {% endcomment %}
       <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
         <a href="{{ collections['ninja-clan'].url }}">
-    <div class="p-1 h-fit w-full p-5">
-      <img
-        class="h-auto w-full flex justify-center mx-auto"
-        src="{{ collections['ninja-clan'].featured_image | image_url }}"
-      >
-      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['ninja-clan'].title | upcase }}</h4>
-      <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
-    </div>
-  </a>
+          <div class="p-1 h-fit w-full p-5">
+            <img
+              class="h-auto w-full flex justify-center mx-auto"
+              src="{{ collections['ninja-clan'].featured_image | image_url }}"
+            >
+            <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['ninja-clan'].title | upcase }}</h4>
+            <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
+          </div>
+        </a>
       </div>
-       {% comment %}  collection card {% endcomment %}
+      {% comment %}  collection card {% endcomment %}
       <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
         <a href="{{ collections['lost-in-thoughts'].url }}">
-    <div class="p-1 h-fit w-full p-5">
-      <img
-        class="h-auto w-full flex justify-center mx-auto"
-        src="{{ collections['lost-in-thoughts'].featured_image | image_url }}"
-      >
-      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['lost-in-thoughts'].title | upcase }}</h4>
-      <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
-    </div>
-  </a>
+          <div class="p-1 h-fit w-full p-5">
+            <img
+              class="h-auto w-full flex justify-center mx-auto"
+              src="{{ collections['lost-in-thoughts'].featured_image | image_url }}"
+            >
+            <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['lost-in-thoughts'].title | upcase }}</h4>
+            <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
+          </div>
+        </a>
       </div>
-   
     </section>
   </div>
 </section>
-
