@@ -184,48 +184,59 @@ od
       <!-- Mobile Version End -->
 
       <div class="overflow-y-auto lg:my-auto mt-3 ml-4 mr-4 mb-2 lg:mx-auto lg:sticky lg:top-[25vh]">
-        <h4 class="text-[0.9rem] sm:text-[1rem] md:text-[1.5rem] font-extralight">
-          {{ product.title | upcase }}
-        </h4>
-        <div class="flex">
-          <div class="price-wrapper">
-            <div class="price-slash"></div>
-            <div class="w-fit h-fit">
-              <h6 class="price text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight">
-                INR {{ product.compare_at_price | money_without_currency }}
-              </h6>
-            </div>
-          </div>
-          <div id="price-{{ section.id }}" class="ml-2">
-            <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight ">
-              INR {{ product.selected_or_first_available_variant.price | money_without_currency }}
-            </h4>
-          </div>
-        </div>
-        <div class="">
-          <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit px-2 py-1">
-            Sale Price :
-            <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}}</b>
-          </h4>
-          <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
-            &#8226; Celebrations Sale - Use Code "GET50"
-          </h6>
-        </div>
-        <div class="tabssec min-h-[70px] sm:min-h-[100px] mt-4 mb-20 sm:mt-10 sm:mb-14 w-full sm:w-[350px] mb-4 text-[0.5rem] sm:text-[0.7rem] md:text-[0.9rem] font-extralight text-black">
-          {% render 'info-tab', product: product %}
-        </div>
-        <div clas=" h-[100px] mt-20">
-          <div class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight">
-            {% render 'product-variant-picker', product: product, product_form_id: product_form_id %}
-          </div>
-        </div>
-        <button
-          type="submit"
-          name="add"
-          class="add-item relative md:bg-transparent md:transition-colors md:before:absolute md:before:left-0 md:before:top-0 md:before:-z-10 md:before:h-full md:before:w-full md:before:origin-top-left md:before:scale-x-0 md:before:bg-black md:before:transition-transform md:before:duration-300 md:before:content-[''] md:hover:text-white md:before:hover:scale-x-100 w-full mt-5 py-2 border border-gray-500 text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight "
-        >
-          Add to bag
-        </button>
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'title' %}
+              <h4 class="text-[0.9rem] sm:text-[1rem] md:text-[1.5rem] font-extralight">
+                {{ product.title | upcase }}
+              </h4>
+            {% when 'price' %}
+              <div class="flex">
+                <div class="price-wrapper">
+                  <div class="price-slash"></div>
+                  <div class="w-fit h-fit">
+                    <h6 class="price text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight">
+                      INR {{ product.compare_at_price | money_without_currency }}
+                    </h6>
+                  </div>
+                </div>
+                <div id="price-{{ section.id }}" class="ml-2">
+                  <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight ">
+                    INR {{ product.selected_or_first_available_variant.price | money_without_currency }}
+                  </h4>
+                </div>
+              </div>
+              <div class="">
+                <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit px-2 py-1">
+                  Sale Price :
+                  <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}}</b>
+                </h4>
+                <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
+                  &#8226; Celebrations Sale - Use Code "GET50"
+                </h6>
+              </div>
+            {% when 'description' %}
+              <div class="tabssec min-h-[70px] sm:min-h-[100px] mt-4 mb-20 sm:mt-10 sm:mb-14 w-full sm:w-[350px] mb-4 text-[0.5rem] sm:text-[0.7rem] md:text-[0.9rem] font-extralight text-black">
+                {% render 'info-tab', product: product %}
+              </div>
+            {% when 'variant_selector' %}
+              <div clas=" h-[100px] mt-20">
+                <div class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight">
+                  {% render 'product-variant-picker', product: product, product_form_id: product_form_id %}
+                </div>
+              </div>
+            {% when 'checkout_buttons' %}
+              <button
+                type="submit"
+                name="add"
+                class="add-item relative md:bg-transparent md:transition-colors md:before:absolute md:before:left-0 md:before:top-0 md:before:-z-10 md:before:h-full md:before:w-full md:before:origin-top-left md:before:scale-x-0 md:before:bg-black md:before:transition-transform md:before:duration-300 md:before:content-[''] md:hover:text-white md:before:hover:scale-x-100 w-full mt-5 py-2 border border-gray-500 text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight "
+              >
+                Add to bag
+              </button>
+            {% else %}
+
+          {% endcase %}
+        {% endfor %}
       </div>
     </div>
   </section>
