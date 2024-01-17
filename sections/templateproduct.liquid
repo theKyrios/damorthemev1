@@ -184,8 +184,6 @@
       <div class="overflow-y-auto lg:my-auto mt-3 ml-4 mr-4 mb-2 lg:mx-auto lg:sticky lg:top-[20vh]">
         {% for block in section.blocks %}
           {% case block.type %}
-            {%- when '@app' -%}
-              {% render block %}
             {% when 'title' %}
               <h4 class="text-[0.9rem] sm:text-[1rem] md:text-[1.5rem] font-extralight">
                 {{ product.title | upcase }}
@@ -225,6 +223,8 @@
                   {% render 'product-variant-picker', product: product, product_form_id: product_form_id %}
                 </div>
               </div>
+            {%- when '@app' -%}
+              {% render block %}
             {% when 'checkout_buttons' %}
               <button
                 type="submit"
