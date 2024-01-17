@@ -92,56 +92,54 @@
           </a>
         {% else %}
           <div class="form_wrapper">
-              {% for item in cart.items %}
-                <div
-                  data-key="{{ item.key }}"
-                  class="item_wrapper flex text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight border-b-[1px] border-gray-500 pb-2 mb-2"
-                >
-                  <div class="w-20">
-                    <img class="h-24" src="{{ item.image | image_url }}" alt="">
-                  </div>
-                  <div class="h-fit overflow-hidden flex flex-col px-4">
-                    <p>{{ item.title }}</p>
-                    <div class="h-4 cart-quantity flex flex-grow items-center text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] mt-4">
-                      <!-- plus sign -->
-                      <button type="button" class="plus text-[0.8rem] sm:text-[1rem] md:text-[1.2rem] mr-2">
-                        &#x002B
-                      </button>
-                      <!-- sign end -->
-                      <input
-                        type="text"
-                        name="updates[]"
-                        value="{{ item.quantity }}"
-                        class="w-4 h-4 text-center font-normal"
-                      >
-                      <!-- minus sign -->
-                      <button type="button" class="minus text-[0.8rem] sm:text-[1rem] md:text-[1.2rem] ml-2">
-                        &#x2212
-                      </button>
-                      <!-- sign end -->
-                    </div>
-                    <a class="item-remove hover:text-red-500 mt-auto" href="{{ item.url_to_remove }}"><p>Remove</p></a>
-                  </div>
-                  <div class="w-fit ">
-                    <p class="line-item-price">{{ item.final_line_price | money_with_currency }}</p>
-                  </div>
+            {% for item in cart.items %}
+              <div
+                data-key="{{ item.key }}"
+                class="item_wrapper flex text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight border-b-[1px] border-gray-500 pb-2 mb-2"
+              >
+                <div class="w-20">
+                  <img class="h-24" src="{{ item.image | image_url }}" alt="">
                 </div>
-              {% endfor %}
-            </div> 
+                <div class="h-fit overflow-hidden flex flex-col px-4">
+                  <p>{{ item.title }}</p>
+                  <div class="h-4 cart-quantity flex flex-grow items-center text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] mt-4">
+                    <!-- minus sign -->
+                    <button type="button" class="minus text-[0.8rem] sm:text-[1rem] md:text-[1.2rem] ml-2">
+                      &#x2212
+                    </button>
+                    <!-- sign end -->
+
+                    <input
+                      type="text"
+                      name="updates[]"
+                      value="{{ item.quantity }}"
+                      class="w-4 h-4 text-center font-normal"
+                    >
+                    <!-- plus sign -->
+                    <button type="button" class="plus text-[0.8rem] sm:text-[1rem] md:text-[1.2rem] mr-2">
+                      &#x002B
+                    </button>
+                    <!-- sign end -->
+                  </div>
+                  <a class="item-remove hover:text-red-500 mt-auto" href="{{ item.url_to_remove }}"><p>Remove</p></a>
+                </div>
+                <div class="w-fit ">
+                  <p class="line-item-price">{{ item.final_line_price | money_with_currency }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
         {% endif %}
       </div>
       <div class="cart-bottom border-t-[1px] w-full bg-[#fcfcfc] border-gray-500 mt-auto fixed bottom-0 p-4 text-[0.6rem] sm:text-[0.8rem] md:text-[1rem]">
-       
         <div class="w-full flex">
-            <h6 class="w-[80%]">Apply discounts at checkout</h6>
-     
+          <h6 class="w-[80%]">Apply discounts at checkout</h6>
         </div>
         <div class="w-full flex">
           <h6 class="w-[80%]">Subtotal</h6>
-     
+
           <h6 class="totals-label">INR {{ cart.original_total_price | money_without_currency }}</h6>
-   
-      </div>
+        </div>
         <div class="w-full mt-2 mx-auto">
           <button type="submit" name="checkout" class="w-full px-10 py-1 border border-gray-500">Checkout</button>
         </div>
