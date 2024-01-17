@@ -3,11 +3,6 @@
     <div class="w-full">
       <h5 class="text-[1rem]">Login</h5>
       {% form 'customer_login' %}
-        {% if form.errors %}
-          <div class="reltive" role="alert">
-            <p class="">{{ form.errors | default_errors }}</p>
-          </div>
-        {% endif %}
         <p class="mt-20 mb-6" for="email_address">Email</p>
         <input
           type="email"
@@ -28,6 +23,11 @@
         <button type="submit" class="mt-6 h-fit py-2 rounded-3xl border border-gray-600 w-full md:w-4/5">
           Sign In
         </button>
+        {% if form.errors %}
+          <div class="reltive" role="alert">
+            <p class="">{{ form.errors | default_errors }}</p>
+          </div>
+        {% endif %}
       {% endform %}
       <a class="mt-4"><p class="mt-4">Forgot Passowrd?</p></a>
     </div>
