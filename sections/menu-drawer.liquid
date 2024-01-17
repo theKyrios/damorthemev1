@@ -88,7 +88,14 @@
       <div class=" ml-4 my-auto">
         {% for link in linklists['main-menu'].links %}
           <a href="{{ link.url }}" class="pr-4">
-            <h5 class="text-sm font-light">{{ link.title | upcase }}</h5>
+            <h5
+              class="text-sm font-light"
+              {% if link.title == 'Shop' %}
+                style="color:red"
+              {% endif %}
+            >
+              {{ link.title | upcase }}
+            </h5>
           </a>
         {% endfor %}
       </div>
