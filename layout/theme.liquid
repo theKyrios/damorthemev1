@@ -225,6 +225,13 @@
       </script>
     {% endcomment %}
 
+    <script>
+      document.querySelector(".search_trigger").addEventListener("click", (e) => {
+        e.preventDefault();
+
+      });
+    </script>
+
     <main role="main">
       {{ content_for_layout }}
       {% section 'cart-drawer' %}
