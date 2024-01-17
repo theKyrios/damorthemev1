@@ -1,3 +1,4 @@
+od
 {% comment %}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -413,3 +414,36 @@
     });
   });
 </script>
+
+{% schema %}
+{
+  "name" : "product",
+  "blocks" : [
+    {
+      "type" : "title",
+      "name" : "Title",
+      "limit" : 1
+    },
+    {
+      "type" : "price",
+      "name" : "Price",
+      "limit" : 1
+    },
+    {
+      "type" : "description",
+      "name" : "Description",
+      "limit" : 1
+    },
+    {
+      "type" : "variant_selector",
+      "name" : "Variant Picker",
+      "limit" : 1
+    },
+    {
+      "type" : "checkout_buttons",
+      "name" : "Cart Button",
+      "limit" : 1
+    }
+  ]
+}
+{% endschema %}
