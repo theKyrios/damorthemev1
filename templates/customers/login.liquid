@@ -1,49 +1,79 @@
 <section class="md:flex w-screen text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight">
-    <div class="w-screen md:w-[50vw] h-[90vh] md:border-r-[1px] border-b-[1px] border-gray-500 flex flex-col justify-center items-center px-8">
-     
-     <div class="w-full">
-      <h5 class="text-[1rem]"> Login </h5>
+  <div class="w-screen md:w-[50vw] h-[90vh] md:border-r-[1px] border-b-[1px] border-gray-500 flex flex-col justify-center items-center px-8">
+    <div class="w-full">
+      <h5 class="text-[1rem]">Login</h5>
       {% form 'customer_login' %}
         {% if form.errors %}
           <div class="reltive" role="alert">
-            <p class=""> {{ form.errors | default_errors }}</p>
+            <p class="">{{ form.errors | default_errors }}</p>
           </div>
         {% endif %}
-      <p class="mt-20 mb-6" for="email_address"> Email </p>
-      <input type="email" name = "customer[email]" id="email_address" autocomplete="email" class="border-b-[1px] border-gray-600 outline-none focus:ring-0 w-full md:w-4/5">
-      {% if form.password_needed %}
-      <p class="my-6" for="password"> Password </p>
-      <input type="password" name= "customer[password]" id="password" class="border-b-[1px] border-gray-600 outline-none focus:ring-0 w-full md:w-4/5">
-      {% endif %}
-      <button type="submit" class="mt-6 h-fit py-2 rounded-3xl border border-gray-600 w-full md:w-4/5">Sign In</button>
-    {% endform %}
-      <a class="mt-4"><p class="mt-4">Forgot Passowrd?</p><a/>
-      </div>
+        <p class="mt-20 mb-6" for="email_address">Email</p>
+        <input
+          type="email"
+          name="customer[email]"
+          id="email_address"
+          autocomplete="email"
+          class="border-b-[1px] border-gray-600 outline-none focus:ring-0 w-full md:w-4/5"
+        >
+        {% if form.password_needed %}
+          <p class="my-6" for="password">Password</p>
+          <input
+            type="password"
+            name="customer[password]"
+            id="password"
+            class="border-b-[1px] border-gray-600 outline-none focus:ring-0 w-full md:w-4/5"
+          >
+        {% endif %}
+        <button type="submit" class="mt-6 h-fit py-2 rounded-3xl border border-gray-600 w-full md:w-4/5">
+          Sign In
+        </button>
+      {% endform %}
+      <a class="mt-4"><p class="mt-4">Forgot Passowrd?</p></a>
     </div>
-  
-    <div class="w-screen md:w-[50vw] h-[90vh] flex justify-center items-center px-8">
-  <div class="w-full">
-      <h5 class="text-[1rem]"> Create Account </h5>
+  </div>
+
+  <div class="w-screen md:w-[50vw] h-[90vh] flex justify-center items-center px-8">
+    <div class="w-full">
+      <h5 class="text-[1rem]">Create Account</h5>
       {% form 'create_customer' %}
         {% if form.errors %}
-            <p class=""> {{ form_errors | default_errors }}</p>
+          <p class="">{{ form_errors | default_errors }}</p>
         {% endif %}
         <div class="mt-20 mb-6 flex">
-            <div>
-              <p class="mb-6"> First Name </p>
-             <input type="text" name="customer[first_name]" class="border-b-[1px] border-gray-600 outline-none focus:ring-0 w-[40vw] md:w-[80%]">
-            </div>
-            <div class="ml-2">
-              <p class="mb-6"> Last Name </p>
-              <input type="text" name="customer[last_name]" class="border-b-[1px] border-gray-600 outline-none focus:ring-0 w-[40vw] md:w-[80%]">
-            </div>
+          <div>
+            <p class="mb-6">First Name</p>
+            <input
+              type="text"
+              name="customer[first_name]"
+              class="border-b-[1px] border-gray-600 outline-none focus:ring-0 w-[40vw] md:w-[80%]"
+            >
           </div>
-      <p class="mt-6 mb-6"> Email </p>
-      <input type="email" name="customer[email]" class="border-b-[1px] border-gray-600 outline-none focus:ring-0 w-full md:w-4/5">
-      <p class="my-6"> New Password </p>
-      <input type="password" name="customer[password]" class="border-b-[1px] border-gray-600 outline-none focus:ring-0 w-full md:w-4/5">
-      <button type="submit" class="mt-6 h-fit py-2 rounded-3xl border border-gray-600 w-full md:w-4/5">Sign up</button>
-        {% endform %}
-      </div>
+          <div class="ml-2">
+            <p class="mb-6">Last Name</p>
+            <input
+              type="text"
+              name="customer[last_name]"
+              class="border-b-[1px] border-gray-600 outline-none focus:ring-0 w-[40vw] md:w-[80%]"
+            >
+          </div>
+        </div>
+        <p class="mt-6 mb-6">Email</p>
+        <input
+          type="email"
+          name="customer[email]"
+          class="border-b-[1px] border-gray-600 outline-none focus:ring-0 w-full md:w-4/5"
+        >
+        <p class="my-6">New Password</p>
+        <input
+          type="password"
+          name="customer[password]"
+          class="border-b-[1px] border-gray-600 outline-none focus:ring-0 w-full md:w-4/5"
+        >
+        <button type="submit" class="mt-6 h-fit py-2 rounded-3xl border border-gray-600 w-full md:w-4/5">
+          Sign up
+        </button>
+      {% endform %}
     </div>
-  </section>
+  </div>
+</section>
