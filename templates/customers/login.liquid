@@ -1,7 +1,7 @@
-<section class="md:flex w-screen text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight">
-  <div class="w-screen md:w-[50vw] h-[90vh] md:border-r-[1px] border-b-[1px] border-gray-500 flex flex-col justify-center items-center px-8">
-    <div class="w-full">
-      <h5 class="text-[1rem]">Login</h5>
+<section class="md:flex w-screen text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-light">
+  <div class="w-screen lg:w-[50vw] lg:h-[90vh] lg:border-r-[1px] border-b-[1px] border-gray-500 flex flex-col justify-center items-center px-8">
+    <div class="w-full mb-20">
+      <h5 class="">Login</h5>
       {% form 'customer_login' %}
         <p class="mt-20 mb-6" for="email_address">Email</p>
         <input
@@ -24,7 +24,7 @@
           Sign In
         </button>
         {% if form.errors %}
-          <div class="reltive" role="alert">
+          <div class="reltive mt-2" role="alert">
             <p class="" style="color:red">{{ form.errors | default_errors }}</p>
           </div>
         {% endif %}
@@ -33,15 +33,15 @@
     </div>
   </div>
 
-  <div class="w-screen md:w-[50vw] h-[90vh] flex justify-center items-center px-8">
-    <div class="w-full">
-      <h5 class="text-[1rem]">Create Account</h5>
+  <div class="w-screen md:w-[50vw] lg:h-[90vh] border-gray-500 border-b-[1px] flex justify-center items-center px-8">
+    <div class="w-full mb-8">
+      <h5 class="">Create Account</h5>
       {% form 'create_customer' %}
         <div class="mt-20 mb-6 flex">
           <div>
             <p class="mb-6">First Name</p>
             <input
-              type="text"
+              type="email"
               name="customer[first_name]"
               class="border-b-[1px] border-gray-600 outline-none focus:ring-0 w-[40vw] md:w-[80%]"
             >
@@ -49,7 +49,7 @@
           <div class="ml-2">
             <p class="mb-6">Last Name</p>
             <input
-              type="text"
+              type="email"
               name="customer[last_name]"
               class="border-b-[1px] border-gray-600 outline-none focus:ring-0 w-[40vw] md:w-[80%]"
             >
@@ -71,7 +71,7 @@
           Sign up
         </button>
         {% if form.errors %}
-          <div class="reltive" role="alert">
+          <div class="reltive mt-2" role="alert">
             <p class="" style="color:red">{{ form.errors | default_errors }}</p>
           </div>
         {% endif %}
