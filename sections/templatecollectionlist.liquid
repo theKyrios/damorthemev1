@@ -103,21 +103,7 @@
           </div>
         </a>
       </div>
-      {% comment %}  collection card {% endcomment %}
-      <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
-        <a href="{{ collections['desi-tees-regular-fit'].url }}">
-          <div class="p-1 h-fit w-full p-5">
-            <img
-              class="h-auto w-full flex justify-center mx-auto"
-              src="{{ collections['desi-tees-regular-fit'].featured_image | image_url }}"
-            >
-            <h4 class="text-[0.9rem] font-extralight pt-1">
-              {{ collections['desi-tees-regular-fit'].title | upcase }}
-            </h4>
-            <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
-          </div>
-        </a>
-      </div>
+
       {% comment %}  collection card {% endcomment %}
       <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
         <a href="{{ collections['potter-head'].url }}">
@@ -140,6 +126,21 @@
               src="{{ collections['texted'].featured_image | image_url }}"
             >
             <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections.texted.title | upcase }}</h4>
+            <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
+          </div>
+        </a>
+      </div>
+      {% comment %}  collection card {% endcomment %}
+      <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+        <a href="{{ collections['desi-tees-regular-fit'].url }}">
+          <div class="p-1 h-fit w-full p-5">
+            <img
+              class="h-auto w-full flex justify-center mx-auto"
+              src="{{ collections['desi-tees-regular-fit'].featured_image | image_url }}"
+            >
+            <h4 class="text-[0.9rem] font-extralight pt-1">
+              {{ collections['desi-tees-regular-fit'].title | upcase }}
+            </h4>
             <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
           </div>
         </a>
