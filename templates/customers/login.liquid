@@ -24,8 +24,8 @@
           Sign In
         </button>
         {% if form.errors %}
-          <div class="reltive flex items-center" role="alert">
-            <p class="text-red-600">{{ form.errors | default_errors }}</p>
+          <div class="reltive" role="alert">
+            <p class="" style="color:red">{{ form.errors | default_errors }}</p>
           </div>
         {% endif %}
       {% endform %}
