@@ -81,7 +81,14 @@
       <div class="lg:flex flex-grow ml-4 my-auto hidden">
         {% for link in linklists['main-menu'].links %}
           <a href="{{ link.url }}" class="pr-4">
-            <h5 class="text-sm font-light">{{ link.title | upcase }}</h5>
+            <h5
+              class="text-sm font-light"
+              {% if link.title == 'Shop' %}
+                style="color:red"
+              {% endif %}
+            >
+              {{ link.title | upcase }}
+            </h5>
           </a>
         {% endfor %}
         <a href="/pages/contact" class="pr-4">
