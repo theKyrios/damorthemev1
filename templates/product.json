@@ -23,6 +23,11 @@
           "settings": {
           }
         },
+        "78c0bd61-29b7-44a3-b42c-8732c8294d81": {
+          "type": "shopify:\/\/apps\/vitals\/blocks\/size-chart\/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
+          "settings": {
+          }
+        },
         "checkout_buttons": {
           "type": "checkout_buttons",
           "settings": {
@@ -34,6 +39,7 @@
         "Price",
         "Description",
         "variant_selector",
+        "78c0bd61-29b7-44a3-b42c-8732c8294d81",
         "checkout_buttons"
       ],
       "settings": {
