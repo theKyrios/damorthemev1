@@ -167,7 +167,7 @@
 {% form 'product', product %}
   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
-  <section class="w-screen lg:h-screen bg-[#fcfcfc]">
+  <section class="w-screen lg:h-screen bg-[#fcfcfc] pb-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 w-screen lg:h-screen overflow-y-auto ">
       <div class="hidden lg:flex lg:flex-col w-full lg:h-screen">
         {% for media in product.media %}
