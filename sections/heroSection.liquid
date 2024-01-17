@@ -144,27 +144,30 @@
     <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">LAUNCHING SOON</h4>
   </div>
 
-  <div class="p-1 h-fit w-full p-5">
-    {% comment %}
-      <img
-        class="h-auto w-full flex justify-center mx-auto"
-        src="{{ collections['premiums-bucket'].featured_image | image_url }}"
-      >
-      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['premiums-bucket'].title | upcase }}</h4>
-      <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
-    {% endcomment %}
-  </div>
-
-  <div class="p-1 h-fit w-full p-5">
-    {% comment %}
-      <img
-        class="h-auto w-full flex justify-center mx-auto"
-        src="{{ collections['movie-feast'].featured_image | image_url }}"
-      >
-      <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['movie-feast'].title | upcase }}</h4>
-      <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
-    {% endcomment %}
-  </div>
+  <a href="">
+    <div class="p-1 h-fit w-full p-5">
+      {% comment %}
+        <img
+          class="h-auto w-full flex justify-center mx-auto"
+          src="{{ collections['premiums-bucket'].featured_image | image_url }}"
+        >
+        <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['premiums-bucket'].title | upcase }}</h4>
+        <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
+      {% endcomment %}
+    </div>
+  </a>
+  <a href="">
+    <div class="p-1 h-fit w-full p-5">
+      {% comment %}
+        <img
+          class="h-auto w-full flex justify-center mx-auto"
+          src="{{ collections['movie-feast'].featured_image | image_url }}"
+        >
+        <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['movie-feast'].title | upcase }}</h4>
+        <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
+      {% endcomment %}
+    </div>
+  </a>
 </section>
 
 <!-- collections gird end -->
