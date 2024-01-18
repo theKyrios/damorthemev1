@@ -52,7 +52,237 @@
       <h4 class="text-[0.9rem] font-extralight pt-1">LIGHT OLIVE OXFORD SHIRT </h4>
     </div>
   {% endcomment %}
-  {% for product in collections['new-collection-1'].products %}
+  {% for product in collections['new-collection-1'].products limit: 5 %}
+    <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+      <a href="{{ product.url }}">
+        <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
+        <div class="flex">
+          <p class="flex flex-grow text-[0.7rem] font-extralight">JUGAAD</p>
+          <p class="text-[0.7rem] font-extralight">INR {{ product.price | money_without_currency }}</p>
+        </div>
+        <h4 class="text-[0.9rem] font-extralight pt-1">{{ product.title | upcase }}</h4>
+        <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit my-2 px-2 py-1">
+          Sale Price :
+          <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}}</b>
+        </h4>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+<!-- Product Grid End -->
+
+<!-- Product Grid -->
+<section
+  id="ps01r"
+  class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4 divide-x-[1px] divide-y-[1px] divide-gray-500 border border-gray-500"
+>
+  <div id="tc02p" class="p-4 w-full h-fit">
+    <h4 id="he01c" class="mb-5">THEGOGH</h4>
+    <a
+      id="be02c"
+      class="border border-gray-400 w-fit h-fit px-4 py-2 cursor-pointer"
+      href="{{ collections["new-collection-1"].url }}"
+      ><label class="cursor-pointer">View All</label></a
+    >
+  </div>
+  {% for product in collections.thegogh.products limit: 5 %}
+    <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+      <a href="{{ product.url }}">
+        <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
+        <div class="flex">
+          <p class="flex flex-grow text-[0.7rem] font-extralight">JUGAAD</p>
+          <p class="text-[0.7rem] font-extralight">INR {{ product.price | money_without_currency }}</p>
+        </div>
+        <h4 class="text-[0.9rem] font-extralight pt-1">{{ product.title | upcase }}</h4>
+        <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit my-2 px-2 py-1">
+          Sale Price :
+          <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}}</b>
+        </h4>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+<!-- Product Grid End -->
+
+<!-- Product Grid -->
+<section
+  id="ps01r"
+  class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4 divide-x-[1px] divide-y-[1px] divide-gray-500 border border-gray-500"
+>
+  <div id="tc02p" class="p-4 w-full h-fit">
+    <h4 id="he01c" class="mb-5">NINJA CLAN</h4>
+    <a
+      id="be02c"
+      class="border border-gray-400 w-fit h-fit px-4 py-2 cursor-pointer"
+      href="{{ collections["ninja-clan"].url }}"
+      ><label class="cursor-pointer">View All</label></a
+    >
+  </div>
+  {% for product in collections['ninja-clan'].products limit: 5 %}
+    <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+      <a href="{{ product.url }}">
+        <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
+        <div class="flex">
+          <p class="flex flex-grow text-[0.7rem] font-extralight">JUGAAD</p>
+          <p class="text-[0.7rem] font-extralight">INR {{ product.price | money_without_currency }}</p>
+        </div>
+        <h4 class="text-[0.9rem] font-extralight pt-1">{{ product.title | upcase }}</h4>
+        <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit my-2 px-2 py-1">
+          Sale Price :
+          <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}}</b>
+        </h4>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+<!-- Product Grid End -->
+
+<!-- Product Grid -->
+<section
+  id="ps01r"
+  class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4 divide-x-[1px] divide-y-[1px] divide-gray-500 border border-gray-500"
+>
+  <div id="tc02p" class="p-4 w-full h-fit">
+    <h4 id="he01c" class="mb-5">BOXED</h4>
+    <a
+      id="be02c"
+      class="border border-gray-400 w-fit h-fit px-4 py-2 cursor-pointer"
+      href="{{ collections["boxed-collection"].url }}"
+      ><label class="cursor-pointer">View All</label></a
+    >
+  </div>
+  {% for product in collections['boxed-collection'].products limit: 5 %}
+    <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+      <a href="{{ product.url }}">
+        <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
+        <div class="flex">
+          <p class="flex flex-grow text-[0.7rem] font-extralight">JUGAAD</p>
+          <p class="text-[0.7rem] font-extralight">INR {{ product.price | money_without_currency }}</p>
+        </div>
+        <h4 class="text-[0.9rem] font-extralight pt-1">{{ product.title | upcase }}</h4>
+        <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit my-2 px-2 py-1">
+          Sale Price :
+          <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}}</b>
+        </h4>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+<!-- Product Grid End -->
+
+<!-- Product Grid -->
+<section
+  id="ps01r"
+  class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4 divide-x-[1px] divide-y-[1px] divide-gray-500 border border-gray-500"
+>
+  <div id="tc02p" class="p-4 w-full h-fit">
+    <h4 id="he01c" class="mb-5">LOST IN THOUGHTS</h4>
+    <a
+      id="be02c"
+      class="border border-gray-400 w-fit h-fit px-4 py-2 cursor-pointer"
+      href="{{ collections["new-collection-1"].url }}"
+      ><label class="cursor-pointer">View All</label></a
+    >
+  </div>
+  {% for product in collections['lost-in-thoughts'].products limit: 5 %}
+    <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+      <a href="{{ product.url }}">
+        <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
+        <div class="flex">
+          <p class="flex flex-grow text-[0.7rem] font-extralight">JUGAAD</p>
+          <p class="text-[0.7rem] font-extralight">INR {{ product.price | money_without_currency }}</p>
+        </div>
+        <h4 class="text-[0.9rem] font-extralight pt-1">{{ product.title | upcase }}</h4>
+        <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit my-2 px-2 py-1">
+          Sale Price :
+          <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}}</b>
+        </h4>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+<!-- Product Grid End -->
+
+<!-- Product Grid -->
+<section
+  id="ps01r"
+  class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4 divide-x-[1px] divide-y-[1px] divide-gray-500 border border-gray-500"
+>
+  <div id="tc02p" class="p-4 w-full h-fit">
+    <h4 id="he01c" class="mb-5">PREMIUMS</h4>
+    <a
+      id="be02c"
+      class="border border-gray-400 w-fit h-fit px-4 py-2 cursor-pointer"
+      href="{{ collections["premiums-bucket"].url }}"
+      ><label class="cursor-pointer">View All</label></a
+    >
+  </div>
+  {% for product in collections['premiums-bucket'].products limit: 5 %}
+    <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+      <a href="{{ product.url }}">
+        <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
+        <div class="flex">
+          <p class="flex flex-grow text-[0.7rem] font-extralight">JUGAAD</p>
+          <p class="text-[0.7rem] font-extralight">INR {{ product.price | money_without_currency }}</p>
+        </div>
+        <h4 class="text-[0.9rem] font-extralight pt-1">{{ product.title | upcase }}</h4>
+        <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit my-2 px-2 py-1">
+          Sale Price :
+          <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}}</b>
+        </h4>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+<!-- Product Grid End -->
+
+<!-- Product Grid -->
+<section
+  id="ps01r"
+  class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4 divide-x-[1px] divide-y-[1px] divide-gray-500 border border-gray-500"
+>
+  <div id="tc02p" class="p-4 w-full h-fit">
+    <h4 id="he01c" class="mb-5">REGULAR COMFORTS</h4>
+    <a
+      id="be02c"
+      class="border border-gray-400 w-fit h-fit px-4 py-2 cursor-pointer"
+      href="{{ collections["new-collection-1"].url }}"
+      ><label class="cursor-pointer">View All</label></a
+    >
+  </div>
+  {% for product in collections['regular-comforts'].products limit: 5 %}
+    <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+      <a href="{{ product.url }}">
+        <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
+        <div class="flex">
+          <p class="flex flex-grow text-[0.7rem] font-extralight">JUGAAD</p>
+          <p class="text-[0.7rem] font-extralight">INR {{ product.price | money_without_currency }}</p>
+        </div>
+        <h4 class="text-[0.9rem] font-extralight pt-1">{{ product.title | upcase }}</h4>
+        <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit my-2 px-2 py-1">
+          Sale Price :
+          <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}}</b>
+        </h4>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+<!-- Product Grid End -->
+<!-- Product Grid -->
+<section
+  id="ps01r"
+  class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4 divide-x-[1px] divide-y-[1px] divide-gray-500 border border-gray-500"
+>
+  <div id="tc02p" class="p-4 w-full h-fit">
+    <h4 id="he01c" class="mb-5">MOVIE FEAST</h4>
+    <a
+      id="be02c"
+      class="border border-gray-400 w-fit h-fit px-4 py-2 cursor-pointer"
+      href="{{ collections["new-collection-1"].url }}"
+      ><label class="cursor-pointer">View All</label></a
+    >
+  </div>
+  {% for product in collections['movie-feast'].products limit: 5 %}
     <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
       <a href="{{ product.url }}">
         <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
