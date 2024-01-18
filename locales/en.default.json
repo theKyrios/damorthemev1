@@ -109,12 +109,5 @@
       "to": "To",
       "clear_filter": "Remove filter"
     }
-  },
-  "shopify": {
-    "checkout": {
-      "marketing": {
-        "accept_sms_checkbox_label": "Join our SMS list and receive exclusive updates about sales, discounts, and more!"
-      }
-    }
   }
 }
