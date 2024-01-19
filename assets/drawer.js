@@ -82,9 +82,11 @@ function addCartDrawerListeners() {
             console.log(res);
             const format = document.querySelector('[data-money-format]').getAttribute('data-money-format');
               const totalDiscount = formatMoney(res.data.total_discount, format);
-              const totalPrice = formatMoney(res.data.total_price,format);
+              const totalPrice = formatMoney(res.data.original_total_price,format);
+            const subtotalPrice = formatMoney(res.data.total_price,format);
 
-              document.querySelector('.totals-label').textContent = totalPrice;
+              document.querySelector('.discount-label').textContent = totalDiscount;
+            document.querySelector('.subtotal-label').textContent = subtotalPrice;
              document.querySelector('.totals-label').textContent = totalPrice;
             if(res.data.items.length === 0){
               document.querySelector('.form_wrapper').remove();
