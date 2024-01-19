@@ -138,6 +138,11 @@
           </div>
         {% endcomment %}
         <div class="w-full flex">
+          <h6 class="w-[80%]">Origina Cart Price</h6>
+
+          <h6 class="totals-label">INR {{ cart.original_total_price | money_without_currency }}</h6>
+        </div>
+        <div class="w-full flex">
           <h6 class="w-[80%]">You Saved</h6>
 
           <h6 class="totals-label">INR {{ cart.total_discount | money_without_currency }}</h6>
