@@ -121,7 +121,9 @@
                     </button>
                     <!-- sign end -->
                   </div>
-                  <a class="item-remove hover:text-red-500 mt-auto" href="{{ item.url_to_remove }}"><p>Remove</p></a>
+                  <a class="item-remove hover:text-red-500 mt-auto p-2" href="{{ item.url_to_remove }}">
+                    <p>Remove</p>
+                  </a>
                 </div>
                 <div class="w-fit ">
                   <p class="line-item-price">{{ item.final_line_price | money_with_currency }}</p>
