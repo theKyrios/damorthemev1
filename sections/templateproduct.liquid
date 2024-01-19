@@ -216,28 +216,33 @@
                   <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}}</b>
                 </h4>
 
-                {% assign number = product.metafields.custom.discount %}
-                {% if number == 336 %}
-                  <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
-                    &#8226; Celebrations Sale - Use Code "GET45"
-                  </h6>
-                {% elsif number == 550 %}
-                  <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
-                    &#8226; Celebrations Sale - Use Code "GET50"
-                  </h6>
-                {% elsif number == 600 %}
-                  <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
-                    &#8226; Celebrations Sale - Use Code "GET40"
-                  </h6>
-                {% elsif number == 299 %}
-                  <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
-                    &#8226; Celebrations Sale - Use Code "GET30"
-                  </h6>
-                {% elsif number == 650 %}
-                  <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
-                    &#8226; Celebrations Sale - Use Code "GET46"
-                  </h6>
-                {% endif %}
+                <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
+                  &#8226; Celebrations Sale - Special Offer
+                </h6>
+                {% comment %}
+                  {% assign number = product.metafields.custom.discount %}
+                  {% if number == 336 %}
+                    <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
+                      &#8226; Celebrations Sale - Use Code "GET45"
+                    </h6>
+                  {% elsif number == 550 %}
+                    <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
+                      &#8226; Celebrations Sale - Use Code "GET50"
+                    </h6>
+                  {% elsif number == 600 %}
+                    <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
+                      &#8226; Celebrations Sale - Use Code "GET40"
+                    </h6>
+                  {% elsif number == 299 %}
+                    <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
+                      &#8226; Celebrations Sale - Use Code "GET30"
+                    </h6>
+                  {% elsif number == 650 %}
+                    <h6 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight py-1 ml-2 mt-4 text-red-600">
+                      &#8226; Celebrations Sale - Use Code "GET46"
+                    </h6>
+                  {% endif %}
+                {% endcomment %}
               </div>
             {% when 'description' %}
               <div class="tabssec min-h-[70px] sm:min-h-[100px] mt-4 mb-20 sm:mt-10 sm:mb-14 w-full sm:w-[350px] mb-4 text-[0.5rem] sm:text-[0.7rem] md:text-[0.9rem] font-extralight text-black">
