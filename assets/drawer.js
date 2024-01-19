@@ -81,9 +81,9 @@ function addCartDrawerListeners() {
           }).then((res) => {
        
             const format = document.querySelector('[data-money-format]').getAttribute('data-money-format');
-              const totalDiscount = formatMoney(res.data.total_discount, format);
-              const totalPrice = formatMoney(res.data.original_total_price,format);
-            const subtotalPrice = formatMoney(res.data.total_price,format);
+              const totalDiscount = 'INR' + res.data.total_discount;
+              const totalPrice = 'INR' + res.data.original_total_price;
+            const subtotalPrice = 'INR' + res.data.total_price;
 
               document.querySelector('.discount-label').textContent = totalDiscount;
             document.querySelector('.subtotal-label').textContent = subtotalPrice;
@@ -124,9 +124,9 @@ function addCartDrawerListeners() {
           })
           .then((res) => {
             const format = document.querySelector('[data-money-format]').getAttribute('data-money-format');
-            const totalDiscount = formatMoney(res.data.total_discount, format);
-            const totalPrice = formatMoney(res.data.original_total_price,format);
-            const subtotalPrice = formatMoney(res.data.total_price,format);
+            const totalDiscount = 'INR' + res.data.total_discount;
+            const totalPrice = 'INR' + res.data.original_total_price;
+            const subtotalPrice = 'INR' + res.data.total_price;
             const item = res.data.items.find((item) => item.key === key);
             const itemPrice = formatMoney(item.final_line_price, format);
     
