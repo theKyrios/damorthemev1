@@ -79,7 +79,7 @@ function addCartDrawerListeners() {
             id : key,
             quantity : 0,
           }).then((res) => {
-            console.log(res);
+       
             const format = document.querySelector('[data-money-format]').getAttribute('data-money-format');
               const totalDiscount = formatMoney(res.data.total_discount, format);
               const totalPrice = formatMoney(res.data.original_total_price,format);
