@@ -125,13 +125,15 @@ function addCartDrawerListeners() {
           .then((res) => {
             const format = document.querySelector('[data-money-format]').getAttribute('data-money-format');
             const totalDiscount = formatMoney(res.data.total_discount, format);
-            const totalPrice = formatMoney(res.data.total_price,format);
+            const totalPrice = formatMoney(res.data.original_total_price,format);
+            const subtotalPrice = formatMoney(res.data.total_price,format);
             const item = res.data.items.find((item) => item.key === key);
             const itemPrice = formatMoney(item.final_line_price, format);
     
             document.querySelector(`[data-key = "${key}"] .line-item-price`).textContent = itemPrice;
-            document.querySelector('.discount-label').textContent = totalDiscount;
-            document.querySelector('.totals-label').textContent = totalPrice;
+             document.querySelector('.discount-label').textContent = totalDiscount;
+            document.querySelector('.subtotal-label').textContent = subtotalPrice;
+             document.querySelector('.totals-label').textContent = totalPrice;
             document.querySelector('.cart_count').textContent = res.data.item_count;
           });
       }
