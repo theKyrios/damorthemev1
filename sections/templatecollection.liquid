@@ -65,11 +65,15 @@
     id="ps01r"
     class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-3 border-y-[1px] border-gray-500"
   >
-    <script>
-      console.log('hello');
-      console.log('{{ collection.metafields.custom.recommended }}' );
-    </script>
-
+    <div id="tc02p" class="p-4 w-full h-fit">
+      {% comment %} <h4 id="he01c" class="mb-5">New In</h4> {% endcomment %}
+      <a
+        id="be02c"
+        class="border border-gray-400 w-fit h-fit px-4 py-2 cursor-pointer"
+        href="{{ collections["new-collection-1"].url }}"
+        ><label class="cursor-pointer">View All</label></a
+      >
+    </div>
     {% for product in collections[collection.metafields.custom.recommended].products limit: 9 %}
       <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
         <a href="{{ product.url }}">
