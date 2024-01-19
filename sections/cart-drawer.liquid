@@ -138,7 +138,7 @@
         <div class="w-full flex">
           <h6 class="w-[80%]">Subtotal</h6>
 
-          <h6 class="totals-label">INR {{ cart.original_total_price | money_without_currency }}</h6>
+          <h6 class="totals-label">INR {{ cart.checkout_charge_amount | money_without_currency }}</h6>
         </div>
         <div class="w-full mt-2 mx-auto">
           <button type="submit" name="checkout" class="w-full px-10 py-1 border border-gray-500">Checkout</button>
