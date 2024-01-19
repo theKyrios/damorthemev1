@@ -79,11 +79,12 @@ function addCartDrawerListeners() {
             id : key,
             quantity : 0,
           }).then((res) => {
+            console.log(res);
             const format = document.querySelector('[data-money-format]').getAttribute('data-money-format');
               const totalDiscount = formatMoney(res.data.total_discount, format);
               const totalPrice = formatMoney(res.data.total_price,format);
 
-              
+              document.querySelector('.totals-label').textContent = totalPrice;
              document.querySelector('.totals-label').textContent = totalPrice;
             if(res.data.items.length === 0){
               document.querySelector('.form_wrapper').remove();
