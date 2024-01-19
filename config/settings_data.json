@@ -1,5 +1,6 @@
 {
   "current": {
+    "checkout_layout": "threepage",
     "sections": {
       "cart-drawer": {
         "type": "cart-drawer",
