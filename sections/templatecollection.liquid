@@ -61,7 +61,7 @@
     </div>
   </div>
 
-  {% for product in collections['{{ collection.metafields.custom.recommended }}'].products limit: 9 %}
+  {% for product in collections.thegogh.products limit: 9 %}
     <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
       <a href="{{ product.url }}">
         <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
