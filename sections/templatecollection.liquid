@@ -65,6 +65,10 @@
     id="ps01r"
     class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-3 border-y-[1px] border-gray-500"
   >
+    <script>
+      console.log('hello');
+      console.log('collection.metafields.custom.recommended' );
+    </script>
     {% for product in collections.thegogh.products limit: 9 %}
       <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
         <a href="{{ product.url }}">
