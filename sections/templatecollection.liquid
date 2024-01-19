@@ -60,24 +60,21 @@
       <h4 class=" text-white font-extralight text-[1.4rem]">SHOP THE COLLECTIONS</h4>
     </div>
   </div>
-  <section
-    class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4 divide-x-[1px] divide-y-[1px] divide-gray-500 border border-b-0 border-gray-500"
-  >
-    {% for product in collections['{{ collection.metafields.custom.recommended }}'].products limit: 9 %}
-      <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
-        <a href="{{ product.url }}">
-          <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
-          <div class="flex">
-            <p class="flex flex-grow text-[0.7rem] font-extralight">JUGAAD</p>
-            <p class="text-[0.7rem] font-extralight">INR {{ product.price | money_without_currency }}</p>
-          </div>
-          <h4 class="text-[0.9rem] font-extralight pt-1">{{ product.title | upcase }}</h4>
-          <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit my-2 px-2 py-1">
-            Sale Price :
-            <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}}</b>
-          </h4>
-        </a>
-      </div>
-    {% endfor %}
-  </section>
+
+  {% for product in collections['{{ collection.metafields.custom.recommended }}'].products limit: 9 %}
+    <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+      <a href="{{ product.url }}">
+        <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
+        <div class="flex">
+          <p class="flex flex-grow text-[0.7rem] font-extralight">JUGAAD</p>
+          <p class="text-[0.7rem] font-extralight">INR {{ product.price | money_without_currency }}</p>
+        </div>
+        <h4 class="text-[0.9rem] font-extralight pt-1">{{ product.title | upcase }}</h4>
+        <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit my-2 px-2 py-1">
+          Sale Price :
+          <b> INR {{ product.metafields.custom.customprice | minus: product.metafields.custom.discount -}}</b>
+        </h4>
+      </a>
+    </div>
+  {% endfor %}
 </section>
