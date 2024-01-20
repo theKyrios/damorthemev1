@@ -65,7 +65,7 @@
     id="ps01r"
     class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-3 border-y-[1px] border-gray-500"
   >
-    {% for product in collections[collection.metafields.custom.recommended].products limit: 9 %}
+    {% for product in collections[collection.metafields.custom.recommended].products limit: 5 %}
       <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
         <a href="{{ product.url }}">
           <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
@@ -86,7 +86,7 @@
       <a
         id="be02c"
         class="border border-gray-400 w-fit h-fit px-4 py-2 cursor-pointer"
-        href="{{ collections["new-collection-1"].url }}"
+        href="{{ collections[collection.metafields.custom.recommended].url }}"
         ><label class="cursor-pointer">View All</label></a
       >
     </div>
