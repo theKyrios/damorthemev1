@@ -170,7 +170,7 @@
 {%- assign product_form_id = 'product-form-' | append: section.id -%}
 {%- assign p_form_id = 'product_form_' | append: product.id -%}
 
-<section class="w-screen lg:h-screen  pb-10">
+<section class="w-screen lg:h-screen bg-[#fcfcfc] pb-10">
   {% form 'product', product %}
     <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
     <div class="grid grid-cols-1 lg:grid-cols-2 w-screen lg:h-screen overflow-y-auto ">
