@@ -293,7 +293,7 @@
       class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4 border-y-[1px] border-gray-500"
     >
       {%- for product in recommendations.products -%}
-        <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+        <div class="p-1 h-auto w-full border-b-[1px] border-r-[1px] border-gray-500">
           <a href="{{ product.url }}">
             <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
             <div class="flex">
