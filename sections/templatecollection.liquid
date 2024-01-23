@@ -36,7 +36,7 @@
       class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-3 border-y-[1px] border-gray-500"
     >
       {% for product in collection.products %}
-        <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+        <div class="p-1 h-auto w-full border-b-[1px] border-r-[1px] border-gray-500">
           <a href="{{ product.url }}">
             <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
             <div class="flex">
@@ -66,7 +66,7 @@
     class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-3 border-y-[1px] border-gray-500"
   >
     {% for product in collections[collection.metafields.custom.recommended].products limit: 5 %}
-      <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
+      <div class="p-1 h-auto w-full border-b-[1px] border-r-[1px] border-gray-500">
         <a href="{{ product.url }}">
           <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
           <div class="flex">
@@ -81,7 +81,7 @@
         </a>
       </div>
     {% endfor %}
-    <div id="tc02p" class="p-4 w-full h-fit">
+    <div id="tc02p" class="p-4 w-full h-auto">
       {% comment %} <h4 id="he01c" class="mb-5">New In</h4> {% endcomment %}
       <a
         id="be02c"
