@@ -15,24 +15,24 @@
   }
 </style>
 
-{% comment %}<a href="">{% endcomment %}
-<section class="">
-  <div
-    class="hero_wrapper flex h-auto w-auto justify-center"
-  >
-    <img
-      height="auto"
-      width="auto"
-      src="https://jugaadtee.in/cdn/shop/files/eclipsedbanner.png?v=1706006185&width=3000"
+<a href="{{ collections.eclipsed.url }}">
+  <section class="">
+    <div
+      class="hero_wrapper flex h-auto w-auto justify-center"
     >
-    {% comment %}
-      <h4 class="mt-auto h-fit w-fit overflow-hidden font-extralight text-center text-[80px] text-[#fcfcfc] sm:text-[100px] md:text-[180px] lg:text-[300px]">
-        DAMOR
-      </h4>
-    {% endcomment %}
-  </div>
-</section>
-{% comment %}</a>{% endcomment %}
+      <img
+        height="auto"
+        width="auto"
+        src="https://jugaadtee.in/cdn/shop/files/eclipsedbanner.png?v=1706006185&width=3000"
+      >
+      {% comment %}
+        <h4 class="mt-auto h-fit w-fit overflow-hidden font-extralight text-center text-[80px] text-[#fcfcfc] sm:text-[100px] md:text-[180px] lg:text-[300px]">
+          DAMOR
+        </h4>
+      {% endcomment %}
+    </div>
+  </section>
+</a>
 
 <section class="bg-black text-white p-2 text-xs">
   <h4 class="flex justify-center items-center">
@@ -49,11 +49,11 @@
 >
   <div id="tc02p" class="p-4 w-full h-auto border-b-[1px] border-r-[1px] border-gray-500">
     <h4 id="he01c" class="mb-5">New In</h4>
-    <h5 id="he01c" class="mb-5">Eclipsed Collection</h5>
+
     <a
       id="be02c"
       class="border border-gray-400 w-fit h-fit px-4 py-2 cursor-pointer"
-      href="{{ collections["eclipsed"].url }}"
+      href="{{ collections["new-collection-1"].url }}"
       ><label class="cursor-pointer">View All</label></a
     >
   </div>
@@ -67,7 +67,7 @@
       <h4 class="text-[0.9rem] font-extralight pt-1">LIGHT OLIVE OXFORD SHIRT </h4>
     </div>
   {% endcomment %}
-  {% for product in collections.eclipsed.products limit: 5 %}
+  {% for product in collections['new-collection-1'].products limit: 5 %}
     <div class="p-1 h-auto w-full border-b-[1px] border-r-[1px] border-gray-500">
       <a href="{{ product.url }}">
         <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
@@ -97,7 +97,7 @@
 >
   <!-- Collection Card -->
   <a href="{{ collections['boxed-collection'].url }}">
-    <div class="p-1 h-fit w-full p-5 border-b-[1px] border-r-[1px] border-gray-500">
+    <div class="p-1 h-auto w-full p-5 border-b-[1px] border-r-[1px] border-gray-500">
       <img
         class="h-auto w-full flex justify-center mx-auto"
         src="{{ collections['boxed-collection'].featured_image | image_url }}"
@@ -108,7 +108,7 @@
   </a>
   <!-- Collection Card end -->
   <a href="{{ collections['ninja-clan'].url }}">
-    <div class="p-1 h-fit w-full p-5 border-b-[1px] border-r-[1px] border-gray-500">
+    <div class="p-1 h-auto w-full p-5 border-b-[1px] border-r-[1px] border-gray-500">
       <img
         class="h-auto w-full flex justify-center mx-auto"
         src="{{ collections['ninja-clan'].featured_image | image_url }}"
@@ -118,7 +118,7 @@
     </div>
   </a>
   <a href="{{ collections['regular-comforts'].url }}">
-    <div class="p-1 h-fit w-full p-5 border-b-[1px] border-r-[1px] border-gray-500">
+    <div class="p-1 h-auto w-full p-5 border-b-[1px] border-r-[1px] border-gray-500">
       <img
         class="h-auto w-full flex justify-center mx-auto"
         src="{{ collections['regular-comforts'].featured_image | image_url }}"
@@ -130,7 +130,7 @@
     </div>
   </a>
   <a href="{{ collections['thegogh'].url }}">
-    <div class="p-1 h-fit w-full p-5 border-b-[1px] border-r-[1px] border-gray-500">
+    <div class="p-1 h-auto w-full p-5 border-b-[1px] border-r-[1px] border-gray-500">
       <img
         class="h-auto w-full flex justify-center mx-auto"
         src="{{ collections['thegogh'].featured_image | image_url }}"
@@ -140,7 +140,7 @@
     </div>
   </a>
 
-  <div class="p-1 h-fit w-full p-5 border-b-[1px] border-r-[1px] border-gray-500">
+  <div class="p-1 h-auto w-full p-5 border-b-[1px] border-r-[1px] border-gray-500">
     <img
       class="h-auto w-full flex justify-center mx-auto"
       src="{{ collections['unhide'].featured_image | image_url }}"
@@ -157,31 +157,6 @@
     <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['jugaad-basics'].title | upcase }}</h4>
     <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">LAUNCHING SOON</h4>
   </div>
-
-  <a href="">
-    <div class="p-1 h-fit w-full p-5 border-b-[1px] border-r-[1px] border-gray-500">
-      {% comment %}
-        <img
-          class="h-auto w-full flex justify-center mx-auto"
-          src="{{ collections['premiums-bucket'].featured_image | image_url }}"
-        >
-        <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['premiums-bucket'].title | upcase }}</h4>
-        <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
-      {% endcomment %}
-    </div>
-  </a>
-  <a href="">
-    <div class="p-1 h-fit w-full p-5 border-b-[1px] border-r-[1px] border-gray-500">
-      {% comment %}
-        <img
-          class="h-auto w-full flex justify-center mx-auto"
-          src="{{ collections['movie-feast'].featured_image | image_url }}"
-        >
-        <h4 class="text-[0.9rem] font-extralight pt-1">{{ collections['movie-feast'].title | upcase }}</h4>
-        <h4 class="text-[0.7rem] font-extralight pt-1 mb-2">SHOP THESE</h4>
-      {% endcomment %}
-    </div>
-  </a>
 </section>
 
 <!-- collections gird end -->
