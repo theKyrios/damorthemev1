@@ -23,7 +23,7 @@
     <img
       height="auto"
       width="auto"
-      src="https://jugaadtee.in/cdn/shop/files/eclipsed.png?v=1705897028&width=3000"
+      src="https://jugaadtee.in/cdn/shop/files/eclipsedbanner.png?v=1706006185&width=3000"
     >
     {% comment %}
       <h4 class="mt-auto h-fit w-fit overflow-hidden font-extralight text-center text-[80px] text-[#fcfcfc] sm:text-[100px] md:text-[180px] lg:text-[300px]">
@@ -41,10 +41,11 @@
 >
   <div id="tc02p" class="p-4 w-full h-fit">
     <h4 id="he01c" class="mb-5">New In</h4>
+    <h5 id="he01c" class="mb-5">Eclipsed Collection</h5>
     <a
       id="be02c"
       class="border border-gray-400 w-fit h-fit px-4 py-2 cursor-pointer"
-      href="{{ collections["new-collection-1"].url }}"
+      href="{{ collections["eclipsed"].url }}"
       ><label class="cursor-pointer">View All</label></a
     >
   </div>
@@ -58,7 +59,7 @@
       <h4 class="text-[0.9rem] font-extralight pt-1">LIGHT OLIVE OXFORD SHIRT </h4>
     </div>
   {% endcomment %}
-  {% for product in collections['new-collection-1'].products limit: 9 %}
+  {% for product in collections.eclipsed.products limit: 5 %}
     <div class="p-1 h-fit w-full border-b-[1px] border-r-[1px] border-gray-500">
       <a href="{{ product.url }}">
         <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
