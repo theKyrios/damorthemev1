@@ -48,12 +48,12 @@
   class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4  border border-gray-500"
 >
   <div id="tc02p" class="p-4 w-full h-auto border-b-[1px] border-r-[1px] border-gray-500">
-    <h4 id="he01c" class="mb-5">New In</h4>
+    <h4 id="he01c" class="mb-5">Selling Fast</h4>
 
     <a
       id="be02c"
       class="border border-gray-400 w-fit h-fit px-4 py-2 cursor-pointer"
-      href="{{ collections["new-collection-1"].url }}"
+      href="{{ collections["best-selling-collection"].url }}"
       ><label class="cursor-pointer">View All</label></a
     >
   </div>
@@ -67,7 +67,7 @@
       <h4 class="text-[0.9rem] font-extralight pt-1">LIGHT OLIVE OXFORD SHIRT </h4>
     </div>
   {% endcomment %}
-  {% for product in collections['new-collection-1'].products limit: 5 %}
+  {% for product in collections['best-selling-collection'].products limit: 5 %}
     <div class="p-1 h-auto w-full border-b-[1px] border-r-[1px] border-gray-500">
       <a href="{{ product.url }}">
         <img class="h-auto w-full flex justify-center mx-auto" src="{{ product.featured_image | image_url }}">
