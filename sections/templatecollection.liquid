@@ -1,12 +1,14 @@
 <section class="collectionPage">
   <div class="collection_head_wrapper border-b-[1px] border-gray-500">
     <div class="grid w-screen grid-cols-1 md:grid-cols-2 divide-x-[1px] divide-y-[1px] md:divide-y-0 divide-gray-500">
-      <div class="featureImage_wrapper">
-        <img
-          class="h-auto"
-          src="{{ collection.featured_image | image_url }}"
-        >
-      </div>
+      {% comment %}
+        <div class="featureImage_wrapper">
+          <img
+            class="h-auto"
+            src="{{ collection.featured_image | image_url }}"
+          >
+        </div>
+      {% endcomment %}
       <div class="description_wrapper bg-[#f7f6f3]">
         <div class="wrapper_content mt-4 ml-4 p-4 md:p-8">
           <h3 class="mt-8 md:mt-16 text-[1rem] sm:text-[1.4rem] md:text-[1.8rem] font-normal">
