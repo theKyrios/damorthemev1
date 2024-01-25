@@ -26,41 +26,49 @@
   {% endpaginate %}
 {% endcomment %}
 
-<section class="search_results w-screen">
-  {% if search.performed %}
-    <div class="head_wrapper border-b-[1px] border-gray-500">
-      <div class="h-[40px] sm:h-[60px] flex items-end">
-        <h4 class="mb-2 ml-2 text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight">
-          {{ search.results.size }} result&#x28;s&#x29; for &#x201C;{{ search.terms }}&#x201D;
-        </h4>
-      </div>
-    </div>
-    {% if search.results.size > 0 %}
-      <div class="results_wrapper ">
-        <div
-          class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4 divide-x-[1px] border-b-[1px] border-gray-500"
-        >
-          {%- for item in search.results -%}
-            {%- case item.object_type -%}
-              {%- when 'product' -%}
-                <div class="p-1 h-auto w-full border-b-[1px] border-r-[1px] border-gray-500">
-                  <a href="{{ item.url }}">
-                    <img class="h-auto w-full flex justify-center mx-auto" src="{{ item.featured_image | image_url }}">
-                    <div class="flex">
-                      <p class="flex flex-grow text-[0.7rem] font-extralight">JUGAAD</p>
-                      <p class="text-[0.7rem] font-extralight">INR {{ item.price | money_without_currency }}</p>
-                    </div>
-                    <h4 class="text-[0.9rem] font-extralight pt-1">{{ item.title | upcase }}</h4>
-                    <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit my-2 px-2 py-1">
-                      Sale Price :
-                      <b> INR {{ item.metafields.custom.customprice | minus: item.metafields.custom.discount -}}</b>
-                    </h4>
-                  </a>
-                </div>
-            {%- endcase -%}
-          {%- endfor -%}
+{% paginate search.results by 24 %}
+  <section class="search_results w-screen">
+    {% if search.performed %}
+      <div class="head_wrapper border-b-[1px] border-gray-500">
+        <div class="h-[40px] sm:h-[60px] flex items-end">
+          <h4 class="mb-2 ml-2 text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight">
+            {{ search.results.size }} result&#x28;s&#x29; for &#x201C;{{ search.terms }}&#x201D;
+          </h4>
         </div>
       </div>
+      {% if search.results.size > 0 %}
+        <div class="results_wrapper ">
+          <div
+            class="bg-[#fcfcfc] grid grid-cols-2 sm:grid-cols-4 divide-x-[1px] border-b-[1px] border-gray-500"
+          >
+            {%- for item in search.results -%}
+              {%- case item.object_type -%}
+                {%- when 'product' -%}
+                  <div class="p-1 h-auto w-full border-b-[1px] border-r-[1px] border-gray-500">
+                    <a href="{{ item.url }}">
+                      <img
+                        class="h-auto w-full flex justify-center mx-auto"
+                        src="{{ item.featured_image | image_url }}"
+                      >
+                      <div class="flex">
+                        <p class="flex flex-grow text-[0.7rem] font-extralight">JUGAAD</p>
+                        <p class="text-[0.7rem] font-extralight">INR {{ item.price | money_without_currency }}</p>
+                      </div>
+                      <h4 class="text-[0.9rem] font-extralight pt-1">{{ item.title | upcase }}</h4>
+                      <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-extralight text-green-600 bg-green-200 w-fit my-2 px-2 py-1">
+                        Sale Price :
+                        <b> INR {{ item.metafields.custom.customprice | minus: item.metafields.custom.discount -}}</b>
+                      </h4>
+                    </a>
+                  </div>
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+        </div>
+        {%- if paginate.pages > 1 -%}
+          {% render 'pagination', paginate: paginate %}
+        {%- endif -%}
+      {% endif %}
     {% endif %}
-  {% endif %}
-</section>
+  </section>
+{% endpaginate %}
