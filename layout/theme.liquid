@@ -201,60 +201,60 @@
       </div>
     </nav>
 
-    {% comment %}
-      <section class="search_wrapper border-b-[1px] border-gray-500 hidden">
-        <form action="{{ routes.search_url }}" method="get" class="flex-auto">
-          <div class="w-screen p-4 flex items-center justify-center text-[0.6rem] sm:text-[0.8rem] md:text-[1rem]">
-            <input
-              type="search"
-              name="q"
-              class="w-8/12 border-b-[1px] border-gray-300 py-2 mr-2 pl-1 focus:border-b-0 focus:border-l-[1px] focus:ring-none focus:outline-none focus:ring-opacity-0 font-light"
-              placeholder="what are you looking for?"
+    <section class="search_wrapper border-b-[1px] border-gray-500 hidden">
+      <form action="{{ routes.search_url }}" method="get" class="flex-auto">
+        <div class="w-screen p-4 flex items-center justify-center text-[0.6rem] sm:text-[0.8rem] md:text-[1rem]">
+          <input
+            type="search"
+            name="q"
+            class="w-8/12 border-b-[1px] border-gray-300 py-2 mr-2 pl-1 focus:border-b-0 focus:border-l-[1px] focus:ring-none focus:outline-none focus:ring-opacity-0 font-light"
+            placeholder="what are you looking for?"
+          >
+          <div class="flex flex-grow">
+            <button
+              type="submit"
+              class="px-6 sm:px-8 mt-2 flex items-center justify-center border border-gray-500 font-normal"
             >
-            <div class="flex flex-grow">
-              <button
-                type="submit"
-                class="px-6 sm:px-8 mt-2 flex items-center justify-center border border-gray-500 font-normal"
-              >
-                Search
-              </button>
-            </div>
-            <div class="search_trigger_close mr-auto cursor-pointer">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-[24px] h-[24px]"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </div>
+              Search
+            </button>
           </div>
-        </form>
-      </section>
-      <script>
-        document.querySelector(".search_trigger").addEventListener("click", (e) => {
-          e.preventDefault();
-          document.querySelector(".search_wrapper").classList.remove("hidden");
-          document.querySelector(".search_trigger").classList.remove("sm:flex");
-        });
-
-        document.querySelector(".search_trigger_close").addEventListener("click", (e) => {
-          e.preventDefault();
-          document.querySelector(".search_wrapper").classList.add("hidden");
-          document.querySelector(".search_trigger").classList.add("sm:flex");
-        });
-      </script>
-    {% endcomment %}
-
+          <div class="search_trigger_close mr-auto cursor-pointer">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-[24px] h-[24px]"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </div>
+        </div>
+      </form>
+    </section>
     <script>
       document.querySelector(".search_trigger").addEventListener("click", (e) => {
         e.preventDefault();
+        document.querySelector(".search_wrapper").classList.remove("hidden");
+        document.querySelector(".search_trigger").classList.remove("sm:flex");
+      });
 
+      document.querySelector(".search_trigger_close").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.querySelector(".search_wrapper").classList.add("hidden");
+        document.querySelector(".search_trigger").classList.add("sm:flex");
       });
     </script>
+
+    {% comment %}
+      <script>
+        document.querySelector(".search_trigger").addEventListener("click", (e) => {
+          e.preventDefault();
+
+        });
+      </script>
+    {% endcomment %}
 
     <main role="main">
       {{ content_for_layout }}
