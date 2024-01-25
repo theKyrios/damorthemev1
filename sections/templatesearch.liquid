@@ -65,9 +65,11 @@
             {%- endfor -%}
           </div>
         </div>
-        {%- if paginate.pages > 1 -%}
-          {% render 'pagination', pagination: paginate %}
-        {%- endif -%}
+        <div class="my-2 w-screen flex justify-center items-center">
+          {%- if paginate.pages > 1 -%}
+            {% render 'pagination', pagination: paginate %}
+          {%- endif -%}
+        </div>
       {% endif %}
     {% endif %}
   </section>
