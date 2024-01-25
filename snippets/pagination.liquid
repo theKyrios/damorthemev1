@@ -1,42 +1,44 @@
 {% if pagination.pages > 0 %}
-    <nav>
-        <ul class="flex">
-            {% if pagination.previous %}
+  <nav>
+    <ul class="flex">
+      {% if pagination.previous %}
+        <li>
+          <a
+            class="mx-1 flex h-9 w-9 items-center justify-center  bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300"
+            href="{{ pagination.previous.url }}"
+            aria-label="Previous"
+          >
+            <span class="material-icons text-sm">&#x2190</span>
+          </a>
+        </li>
+      {% endif %}
+      {% for part in pagination.parts %}
+        {% if part.is_link %}
           <li>
             <a
-              class="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300"
-              href="{{ pagination.previous.url }}"
-              aria-label="Previous"
-            >
-              <span class="material-icons text-sm">&#x2190</span>
-            </a>
-          </li>
-        {% endif %}
-        {% for part in pagination.parts %}
-            {% if part.is_link %}
-          <li>
-            <a
-              class="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300"
+              class="mx-1 flex h-9 w-9 items-center justify-center  bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300"
               href="{{ part.url }}"
             >
               {{ part.title }}
             </a>
-        </li>
-        {% else %}
-         <span class="mx-1 flex h-9 w-9 items-center justify-center rounded-full bg-gray-300 p-0 text-sm text-black shadow-md transition duration-150 ease-in-out"> {{ part.title }} </span>
-    {% endif %}
-    {% endfor %}
-          {% if pagination.next %}
-          <li>
-            <a
-              class="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300"
-              href="#"
-              aria-label="Next"
-            >
-              <span class="material-icons text-sm">&#x2192</span>
-            </a>
           </li>
+        {% else %}
+          <span class="mx-1 flex h-9 w-9 items-center justify-center  bg-gray-300 p-0 text-sm text-black shadow-md transition duration-150 ease-in-out">
+            {{ part.title }}
+          </span>
         {% endif %}
-        </ul>
-      </nav>
+      {% endfor %}
+      {% if pagination.next %}
+        <li>
+          <a
+            class="mx-1 flex h-9 w-9 items-center justify-center bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300"
+            href="#"
+            aria-label="Next"
+          >
+            <span class="material-icons text-sm">&#x2192</span>
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
 {% endif %}
