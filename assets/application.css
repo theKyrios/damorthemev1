@@ -590,6 +590,13 @@ video {
   position: absolute;
 }
 
+#shopify-section-footer {
+
+  position : sticky;
+  bottom : 0px;
+  
+}
+
 .relative {
   position: relative;
 }
