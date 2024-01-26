@@ -1,28 +1,26 @@
 <style>
-  .border-\[1px\]{
-  border-width: 1px
-}
+    .border-\[1px\]{
+    border-width: 1px
+  }
 
-.border-gray-500{
-  --tw-border-opacity: 1;
-  border-color: rgb(107 114 128 / var(--tw-border-opacity))
-}
-  
-.border-t-0{
-  border-top-width: 0px
-}
+  .border-gray-500{
+    --tw-border-opacity: 1;
+    border-color: rgb(107 114 128 / var(--tw-border-opacity))
+  }
+
+  .border-t-0{
+    border-top-width: 0px
+  }
 </style>
 
 <div class="collection_title_wrapper">
-    <div class="w-screen border-[1px] border-t-0 border-gray-500">
-      <div class="wrapper_title col-span-2 p-4">
-        <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-light">{{ page.title }}</h4>
-      </div>
+  <div class="w-screen border-[1px] border-t-0 border-gray-500 min-h-screen">
+    <div class="wrapper_title col-span-2 p-4">
+      <h4 class="text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-light mt-2 mb-2">{{ page.title }}</h4>
     </div>
   </div>
+</div>
 
 <div class="contentWrapper p-10 text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] font-light">
-   
-<div>{{ page.content }}</div>
- 
+  <div>{{ page.content }}</div>
 </div>
