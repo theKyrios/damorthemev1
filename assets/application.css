@@ -73,11 +73,11 @@ body {
 }
 
 .shopify-policy__container : {
-   display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 60vh;
+   display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 60vh !important;
 }
 
 /*
