@@ -605,8 +605,8 @@ video {
 }
 
 
-.min-h-[90vh]{
-  min-height: 90vh
+.min-h-screen{
+  min-height: 100vh
 }
 
 .-top-1 {
