@@ -63,6 +63,8 @@ body {
   line-height: inherit;
   /* 2 */
   min-height : 100vh;
+  display : flex;
+    flex-direction : column;
 }
 
 
@@ -590,11 +592,8 @@ video {
   position: absolute;
 }
 
-#shopify-section-footer {
-
-  display : block;
-  bottom : 0px;
-  
+main{
+  flex : 1;
 }
 
 .relative {
