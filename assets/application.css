@@ -592,7 +592,7 @@ video {
 
 #shopify-section-footer {
 
-  position : sticky;
+  display : block;
   bottom : 0px;
   
 }
